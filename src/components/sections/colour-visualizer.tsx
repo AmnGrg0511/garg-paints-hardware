@@ -79,14 +79,16 @@ export function ColourVisualizer({ className }: { className?: string }) {
       return;
     }
     const timer = window.setInterval(() => {
-      setActive((value) => {
-        const next = (value + 1) % WALL_SHADES.length;
-        setIndex(next);
-        return next;
-      });
+      setActive((value) => (value + 1) % WALL_SHADES.length);
     }, CYCLE_MS);
     return () => window.clearInterval(timer);
-  }, [locked, paused, setIndex]);
+  }, [locked, paused]);
+
+  // Publish the shade to the hero backdrop AFTER commit, never mid-render
+  // (prevents the zustand set-state-in-render warning).
+  useEffect(() => {
+    setIndex(active);
+  }, [active, setIndex]);
 
   const pick = (i: number) => {
     setActive(i);
