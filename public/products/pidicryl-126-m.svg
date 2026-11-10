@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Pidicryl 126 M styrene acrylic emulsion in a white industrial drum with a blue label">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F1F5FC"/>
+      <stop offset="1" stop-color="#DEE7F5"/>
+    </linearGradient>
+    <linearGradient id="drum" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.45" stop-color="#FBFCFE"/>
+      <stop offset="0.78" stop-color="#E6EBF3"/>
+      <stop offset="1" stop-color="#CBD5E4"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F8FAFD"/>
+      <stop offset="1" stop-color="#D8E0EC"/>
+    </linearGradient>
+    <linearGradient id="label" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#2456D6"/>
+      <stop offset="1" stop-color="#173B9E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="686" rx="240" ry="34" fill="#1E2A44" opacity="0.14"/>
+
+  <!-- Hanging handle -->
+  <path d="M258 236 C258 148 542 148 542 236" fill="none" stroke="#B9C6DA" stroke-width="14" stroke-linecap="round"/>
+  <path d="M258 236 C258 158 542 158 542 236" fill="none" stroke="#F2F5FA" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Lid -->
+  <rect x="248" y="196" width="304" height="44" rx="18" fill="url(#lid)" stroke="#C3CEDF" stroke-width="3"/>
+  <rect x="356" y="188" width="88" height="22" rx="10" fill="#DDE5F0" stroke="#BFCADF" stroke-width="3"/>
+  <ellipse cx="400" cy="196" rx="44" ry="9" fill="#EEF2F8" stroke="#C3CEDF" stroke-width="2"/>
+
+  <!-- Drum body -->
+  <path d="M244 240 L244 640 Q244 668 282 668 L518 668 Q556 668 556 640 L556 240 Q556 228 540 226 L260 226 Q244 228 244 240 Z" fill="url(#drum)" stroke="#B9C6DA" stroke-width="3"/>
+  <!-- Ribbed rings -->
+  <rect x="244" y="292" width="312" height="14" rx="7" fill="#DDE4EF" opacity="0.85"/>
+  <rect x="244" y="560" width="312" height="14" rx="7" fill="#DDE4EF" opacity="0.85"/>
+
+  <!-- Blue label band -->
+  <rect x="244" y="336" width="312" height="196" fill="url(#label)"/>
+  <rect x="244" y="336" width="312" height="10" fill="#FFFFFF" opacity="0.22"/>
+  <rect x="244" y="522" width="312" height="10" fill="#FFFFFF" opacity="0.18"/>
+
+  <text x="400" y="398" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="2" fill="#FFFFFF">PIDICRYL</text>
+  <text x="400" y="452" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="4" fill="#FFFFFF">126 M</text>
+  <rect x="296" y="474" width="208" height="2.5" fill="#FFFFFF" opacity="0.55"/>
+  <text x="400" y="502" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1.4" fill="#CFE0FF">STYRENE ACRYLIC EMULSION</text>
+
+  <!-- Side highlight -->
+  <rect x="268" y="252" width="26" height="392" rx="13" fill="#FFFFFF" opacity="0.65"/>
+</svg>

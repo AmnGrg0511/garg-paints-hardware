@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Two CMC powder sacks — white and yellow grades">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F4F7FA"/>
+      <stop offset="1" stop-color="#E3EAF2"/>
+    </linearGradient>
+    <linearGradient id="kraft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D2A97C"/>
+      <stop offset="0.5" stop-color="#C1955F"/>
+      <stop offset="1" stop-color="#A67F4C"/>
+    </linearGradient>
+    <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#B9905C"/>
+      <stop offset="1" stop-color="#9C7442"/>
+    </linearGradient>
+    <pattern id="weave" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="none"/>
+      <path d="M0 3.5 H14 M3.5 0 V14" stroke="#000000" stroke-opacity="0.10" stroke-width="2"/>
+    </pattern>
+    <linearGradient id="sackShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="712" rx="270" ry="32" fill="#33415C" opacity="0.14"/>
+  <g transform="translate(76 180)">
+    <path d="M0 27.720000000000006 Q-4.4 7.920000000000002 33 3.960000000000001 L297 3.960000000000001 Q334.4 7.920000000000002 330 27.720000000000006 L336.6 372.24 Q330 396.00000000000006 290.4 396.00000000000006 L39.6 396.00000000000006 Q0 396.00000000000006 -2.2 372.24 Z"
+          fill="url(#kraft)" stroke="#8F6C3E" stroke-width="4.4"/>
+    <rect x="13.200000000000001" y="0" width="303.6" height="31.680000000000007" rx="8.8" fill="url(#flap)" stroke="#8F6C3E" stroke-width="3.3000000000000003"/>
+    <g fill="#7C5C33">
+      <circle cx="33" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="66" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="99.00000000000001" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="132" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="165" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="198" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="231.00000000000003" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="264" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="297" cy="15.840000000000003" r="3.8500000000000005"/>
+    </g>
+    <rect x="19.8" y="55.44000000000001" width="290.4" height="198.00000000000003" rx="11" fill="#FFFFFF" stroke="#D9CBAF" stroke-width="3.3000000000000003"/>
+    <text x="165" y="102.96000000000002" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="46.2" font-weight="700" letter-spacing="3.3000000000000003" fill="#2E3A4E">CMC</text>
+    <text x="165" y="130.68000000000004" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.3" font-weight="700" letter-spacing="0.8800000000000001" fill="#5C6B82">CARBOXYMETHYL</text>
+    <text x="165" y="150.48000000000002" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.3" font-weight="700" letter-spacing="0.8800000000000001" fill="#5C6B82">CELLULOSE</text>
+    <rect x="118.8" y="162.36" width="92.4" height="3.3000000000000003" fill="#D9CBAF"/>
+    <rect x="99" y="178.20000000000002" width="132" height="55.44000000000001" rx="8.8" fill="#FFFFFF" stroke="#C9BFA9" stroke-width="2.75"/>
+    <circle cx="125.4" cy="205.92000000000004" r="11" fill="#F4F5F7" stroke="#B9C2CC" stroke-width="2.2"/>
+    <text x="151.8" y="207.90000000000003" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15.400000000000002" font-weight="700" letter-spacing="1.1" fill="#5C6B82">WHITE</text>
+  </g>
+  <g transform="translate(414 196)">
+    <path d="M0 27.720000000000006 Q-4.4 7.920000000000002 33 3.960000000000001 L297 3.960000000000001 Q334.4 7.920000000000002 330 27.720000000000006 L336.6 372.24 Q330 396.00000000000006 290.4 396.00000000000006 L39.6 396.00000000000006 Q0 396.00000000000006 -2.2 372.24 Z"
+          fill="url(#kraft)" stroke="#8F6C3E" stroke-width="4.4"/>
+    <rect x="13.200000000000001" y="0" width="303.6" height="31.680000000000007" rx="8.8" fill="url(#flap)" stroke="#8F6C3E" stroke-width="3.3000000000000003"/>
+    <g fill="#7C5C33">
+      <circle cx="33" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="66" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="99.00000000000001" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="132" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="165" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="198" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="231.00000000000003" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="264" cy="15.840000000000003" r="3.8500000000000005"/><circle cx="297" cy="15.840000000000003" r="3.8500000000000005"/>
+    </g>
+    <rect x="19.8" y="55.44000000000001" width="290.4" height="198.00000000000003" rx="11" fill="#FFFFFF" stroke="#D9CBAF" stroke-width="3.3000000000000003"/>
+    <text x="165" y="102.96000000000002" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="46.2" font-weight="700" letter-spacing="3.3000000000000003" fill="#2E3A4E">CMC</text>
+    <text x="165" y="130.68000000000004" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.3" font-weight="700" letter-spacing="0.8800000000000001" fill="#5C6B82">CARBOXYMETHYL</text>
+    <text x="165" y="150.48000000000002" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.3" font-weight="700" letter-spacing="0.8800000000000001" fill="#5C6B82">CELLULOSE</text>
+    <rect x="118.8" y="162.36" width="92.4" height="3.3000000000000003" fill="#D9CBAF"/>
+    <rect x="99" y="178.20000000000002" width="132" height="55.44000000000001" rx="8.8" fill="#FFFFFF" stroke="#C9BFA9" stroke-width="2.75"/>
+    <circle cx="125.4" cy="205.92000000000004" r="11" fill="#F2C230" stroke="#C79F1E" stroke-width="2.2"/>
+    <text x="151.8" y="207.90000000000003" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15.400000000000002" font-weight="700" letter-spacing="1.1" fill="#5C6B82">YELLOW</text>
+  </g>
+  <path d="M180 690 Q186 714 252 714 L318 714 Q386 714 392 692 Q400 718 310 726 L236 726 Q186 720 180 690 Z" fill="#EDF0F4"/>
+  <path d="M520 700 Q526 716 578 716 L636 716 Q690 716 696 698 Q702 720 626 726 L566 726 Q526 720 520 700 Z" fill="#EFDCA6"/>
+</svg>

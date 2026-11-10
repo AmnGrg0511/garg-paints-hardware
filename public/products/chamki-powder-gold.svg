@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Chamki glitter powder pouch, golden finish">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#232A36"/>
+      <stop offset="1" stop-color="#141922"/>
+    </linearGradient>
+    <linearGradient id="pouchFill" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FFFFFF" stop-opacity="0.16"/>
+      <stop offset="0.35" stop-color="#FFFFFF" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="labelFill" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#2C3542"/>
+      <stop offset="1" stop-color="#1B2230"/>
+    </linearGradient>
+    <linearGradient id="flakeFill" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F6D87C"/>
+      <stop offset="1" stop-color="#C08F1E"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="708" rx="230" ry="28" fill="#000000" opacity="0.45"/>
+  <g transform="translate(275 150)">
+    <path d="M0 32 Q0 0 35 0 L215 0 Q250 0 250 32 L260 368 Q250 400 220 400 L30 400 Q0 400 -10 368 Z"
+          fill="url(#pouchFill)" stroke="#C08F1E" stroke-opacity="0.55" stroke-width="3.5"/>
+    <rect x="17.5" y="-12" width="215" height="20" rx="10" fill="none" stroke="#C08F1E" stroke-opacity="0.5" stroke-width="3" stroke-dasharray="12 8"/>
+    <path d="M20 40 L20 360 L40 360 L40 40 Z" fill="#FFFFFF" opacity="0.1"/>
+    <path d="M225 48 L225 352 L207.5 352 L207.5 48 Z" fill="#000000" opacity="0.18"/>
+    <rect x="35" y="160" width="180" height="104" rx="10" fill="url(#labelFill)" stroke="#C08F1E" stroke-opacity="0.4" stroke-width="2.5"/>
+    <text x="125" y="200" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="3" fill="#E9C356">CHAMKI</text>
+    <text x="125" y="227.99999999999997" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="#9AA6B8">GOLDEN</text>
+    <path transform="translate(45 288)" fill="url(#flakeFill)" d="M0 -7 L1.9600000000000002 -1.9600000000000002 L7 0 L1.9600000000000002 1.9600000000000002 L0 7 L-1.9600000000000002 1.9600000000000002 L-7 0 L-1.9600000000000002 -1.9600000000000002 Z"/><path transform="translate(117.5 340)" fill="url(#flakeFill)" d="M0 -9 L2.5200000000000005 -2.5200000000000005 L9 0 L2.5200000000000005 2.5200000000000005 L0 9 L-2.5200000000000005 2.5200000000000005 L-9 0 L-2.5200000000000005 -2.5200000000000005 Z"/><path transform="translate(190 312)" fill="url(#flakeFill)" d="M0 -11 L3.08 -3.08 L11 0 L3.08 3.08 L0 11 L-3.08 3.08 L-11 0 L-3.08 -3.08 Z"/><path transform="translate(97.49999999999996 363.99999999999994)" fill="url(#flakeFill)" d="M0 -7 L1.9600000000000002 -1.9600000000000002 L7 0 L1.9600000000000002 1.9600000000000002 L0 7 L-1.9600000000000002 1.9600000000000002 L-7 0 L-1.9600000000000002 -1.9600000000000002 Z"/><path transform="translate(169.99999999999997 336)" fill="url(#flakeFill)" d="M0 -9 L2.5200000000000005 -2.5200000000000005 L9 0 L2.5200000000000005 2.5200000000000005 L0 9 L-2.5200000000000005 2.5200000000000005 L-9 0 L-2.5200000000000005 -2.5200000000000005 Z"/><path transform="translate(77.49999999999997 308)" fill="url(#flakeFill)" d="M0 -11 L3.08 -3.08 L11 0 L3.08 3.08 L0 11 L-3.08 3.08 L-11 0 L-3.08 -3.08 Z"/><path transform="translate(149.99999999999991 359.99999999999994)" fill="url(#flakeFill)" d="M0 -7 L1.9600000000000002 -1.9600000000000002 L7 0 L1.9600000000000002 1.9600000000000002 L0 7 L-1.9600000000000002 1.9600000000000002 L-7 0 L-1.9600000000000002 -1.9600000000000002 Z"/><path transform="translate(57.49999999999993 332)" fill="url(#flakeFill)" d="M0 -9 L2.5200000000000005 -2.5200000000000005 L9 0 L2.5200000000000005 2.5200000000000005 L0 9 L-2.5200000000000005 2.5200000000000005 L-9 0 L-2.5200000000000005 -2.5200000000000005 Z"/><path transform="translate(129.99999999999994 304)" fill="url(#flakeFill)" d="M0 -11 L3.08 -3.08 L11 0 L3.08 3.08 L0 11 L-3.08 3.08 L-11 0 L-3.08 -3.08 Z"/>
+  </g>
+  <g fill="url(#flakeFill)">
+    <path transform="translate(300 690)" fill="url(#flakeFill)" d="M0 -9 L2.5 -2.5 9 0 2.5 2.5 0 9 -2.5 2.5 -9 0 -2.5 -2.5 Z"/>
+    <path transform="translate(348 706)" fill="url(#flakeFill)" d="M0 -8 L2.2 -2.2 8 0 2.2 2.2 0 8 -2.2 2.2 -8 0 -2.2 -2.2 Z"/>
+    <path transform="translate(398 694)" fill="url(#flakeFill)" d="M0 -9 L2.5 -2.5 9 0 2.5 2.5 0 9 -2.5 2.5 -9 0 -2.5 -2.5 Z"/>
+    <path transform="translate(446 706)" fill="url(#flakeFill)" d="M0 -8 L2.2 -2.2 8 0 2.2 2.2 0 8 -2.2 2.2 -8 0 -2.2 -2.2 Z"/>
+    <path transform="translate(494 692)" fill="url(#flakeFill)" d="M0 -9 L2.5 -2.5 9 0 2.5 2.5 0 9 -2.5 2.5 -9 0 -2.5 -2.5 Z"/>
+    <circle cx="324" cy="712" r="6" fill="url(#flakeFill)"/>
+    <circle cx="372" cy="716" r="5" fill="url(#flakeFill)"/>
+    <circle cx="422" cy="712" r="6" fill="url(#flakeFill)"/>
+    <circle cx="470" cy="716" r="5" fill="url(#flakeFill)"/>
+  </g>
+</svg>

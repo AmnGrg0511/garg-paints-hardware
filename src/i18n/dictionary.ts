@@ -1,0 +1,166 @@
+export type Locale = "en" | "hi";
+
+export const LOCALE_KEY = "gph-locale";
+
+export const dictionary = {
+  en: {
+    "nav.products": "Products",
+    "nav.about": "About",
+    "nav.faq": "FAQ",
+    "nav.contact": "Contact",
+    "common.call": "Call",
+    "common.whatsapp": "WhatsApp",
+    "common.orderNow": "Order Now",
+    "common.viewProducts": "View products",
+    "common.addToCart": "Add to cart",
+    "common.added": "Added to your list",
+    "common.requestQuote": "Request quote",
+    "common.requestQuoteWhatsApp": "Request Quote on WhatsApp",
+    "common.quoteOnly": "Quote on request",
+    "common.priceOnRequest": "Contact for price",
+    "common.close": "Close",
+    "common.menu": "Menu",
+    "common.language": "Language",
+    "common.theme": "Theme",
+    "common.cart": "Order list",
+    "common.skip": "Skip to content",
+    "common.openCart": "Open order list",
+    "common.remove": "Remove",
+    "common.decrease": "Decrease quantity",
+    "common.increase": "Increase quantity",
+    "common.loading": "Loading",
+    "hero.eyebrow": "Ballabgarh · Faridabad · Since 2017",
+    "hero.title": "The right material makes the finish.",
+    "hero.body":
+      "Binders, madrasi dana, CMC, chamki and plastering tools for contractors, painters and dealers. Listed rates, GST invoice, enquiries 24x7.",
+    "hero.primary": "Order Now",
+    "hero.secondary": "Ask on WhatsApp",
+    "trust.since": "Since 2017",
+    "trust.gst": "GST invoice",
+    "trust.indiamart": "IndiaMART seller",
+    "trust.hours": "Open 24x7",
+    "cart.title": "Your order list",
+    "cart.empty": "Your list is still empty.",
+    "cart.emptyBody":
+      "Add a priced product to see an estimated total, or request a quote for bulk items.",
+    "cart.estimated": "Estimated total",
+    "cart.note":
+      "Estimate covers listed-priced items only. The final GST invoice is shared on confirmation.",
+    "cart.checkout": "Proceed to order",
+    "cart.clear": "Clear list",
+    "cart.quoteLine": "Quote on request",
+    "cart.browse": "Browse products",
+    "filters.title": "Filters",
+    "filters.category": "Category",
+    "filters.priceType": "Price type",
+    "filters.search": "Search products",
+    "filters.searchPlaceholder": "Trowel, CMC, dana…",
+    "filters.clear": "Clear all",
+    "filters.mobile": "Open filters",
+    "filters.results": "products",
+    "filters.empty": "No products match these filters.",
+    "filters.emptyBody":
+      "Try a different search, or clear the filters to see the full catalogue.",
+    "filters.active": "Active filters",
+    "bulk.title": "Dealer / contractor pricing available",
+    "bulk.body":
+      "Ordering for a site or a shop? Share the quantity and we will confirm bulk rates on WhatsApp.",
+    "bulk.cta": "Ask for bulk rates",
+    "checkout.title": "Finish your order",
+    "checkout.body":
+      "No payment is taken here. Choose where you want the final invoice sent and confirmed.",
+    "checkout.indiamart": "Purchase via IndiaMART",
+    "checkout.indiamartBody":
+      "Open our marketplace listing in a new tab and continue with the seller.",
+    "checkout.whatsapp": "Fast Order via WhatsApp",
+    "checkout.whatsappBody":
+      "Your item list is pre-filled in a WhatsApp message. Send it to start the order.",
+    "footer.rights": "All rights reserved.",
+    "footer.addressPending":
+      "Street address and map are being confirmed. Call or WhatsApp for directions.",
+    "order.thanks": "Order enquiry started",
+  },
+  hi: {
+    "nav.products": "Products",
+    "nav.about": "Hamare baare mein",
+    "nav.faq": "Sawaal-jawaab",
+    "nav.contact": "Sampark",
+    "common.call": "Call karein",
+    "common.whatsapp": "WhatsApp",
+    "common.orderNow": "Abhi Order Karein",
+    "common.viewProducts": "Products dekhein",
+    "common.addToCart": "Cart mein daalein",
+    "common.added": "List mein add ho gaya",
+    "common.requestQuote": "Rate poochein",
+    "common.requestQuoteWhatsApp": "WhatsApp par rate poochein",
+    "common.quoteOnly": "Rate poochhna hoga",
+    "common.priceOnRequest": "Rate ke liye sampark karein",
+    "common.close": "Band karein",
+    "common.menu": "Menu",
+    "common.language": "Bhasha",
+    "common.theme": "Theme",
+    "common.cart": "Order list",
+    "common.skip": "Seedha content par jaayein",
+    "common.openCart": "Order list kholein",
+    "common.remove": "Hataayein",
+    "common.decrease": "Quantity kam karein",
+    "common.increase": "Quantity badhaayein",
+    "common.loading": "Load ho raha hai",
+    "hero.eyebrow": "Ballabgarh · Faridabad · 2017 se",
+    "hero.title": "Sahi material se finish banta hai.",
+    "hero.body":
+      "Contractors, painters aur dealers ke liye binders, madrasi dana, CMC, chamki aur plastering tools. Listed rate, GST invoice, 24x7 enquiry.",
+    "hero.primary": "Abhi Order Karein",
+    "hero.secondary": "WhatsApp par poochein",
+    "trust.since": "2017 se",
+    "trust.gst": "GST invoice",
+    "trust.indiamart": "IndiaMART seller",
+    "trust.hours": "24x7 khula",
+    "cart.title": "Aapki order list",
+    "cart.empty": "List abhi khaali hai.",
+    "cart.emptyBody":
+      "Listed-price product add karein aur estimate dekhein, ya bulk item ka rate poochein.",
+    "cart.estimated": "Anumaanit total",
+    "cart.note":
+      "Estimate sirf listed-price items ka hai. Final GST invoice confirm hone par bheja jayega.",
+    "cart.checkout": "Order aage badhayein",
+    "cart.clear": "List clear karein",
+    "cart.quoteLine": "Rate poochhna hoga",
+    "cart.browse": "Products dekhein",
+    "filters.title": "Filters",
+    "filters.category": "Category",
+    "filters.priceType": "Price type",
+    "filters.search": "Product khojein",
+    "filters.searchPlaceholder": "Trowel, CMC, dana…",
+    "filters.clear": "Sab hataayein",
+    "filters.mobile": "Filters kholein",
+    "filters.results": "products",
+    "filters.empty": "In filters se koi product nahi mila.",
+    "filters.emptyBody":
+      "Doosra search try karein, ya filters hataakar poora catalogue dekhein.",
+    "filters.active": "Active filters",
+    "bulk.title": "Dealer / contractor rate uplabdh",
+    "bulk.body":
+      "Site ya dukaan ke liye order karna hai? Quantity bhejein, bulk rate WhatsApp par confirm hoga.",
+    "bulk.cta": "Bulk rate poochein",
+    "checkout.title": "Order complete karein",
+    "checkout.body":
+      "Yahan koi payment nahi liya jaata. Final invoice kahan confirm karna hai, woh chunein.",
+    "checkout.indiamart": "IndiaMART se purchase karein",
+    "checkout.indiamartBody":
+      "Marketplace listing naye tab mein kholein aur seller ke saath aage badhein.",
+    "checkout.whatsapp": "WhatsApp se fast order",
+    "checkout.whatsappBody":
+      "Aapki item list WhatsApp message mein pehle se bhari hai. Order shuru karne ke liye send karein.",
+    "footer.rights": "All rights reserved.",
+    "footer.addressPending":
+      "Street address aur map confirm ho raha hai. Directions ke liye call ya WhatsApp karein.",
+    "order.thanks": "Order enquiry shuru hui",
+  },
+} as const;
+
+export type TranslationKey = keyof (typeof dictionary)["en"];
+
+export function translate(locale: Locale, key: TranslationKey): string {
+  return dictionary[locale][key] ?? dictionary.en[key];
+}

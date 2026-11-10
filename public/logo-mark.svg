@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Garg Paints and Hardware paint can mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2456D6"/>
+      <stop offset="1" stop-color="#142E78"/>
+    </linearGradient>
+    <linearGradient id="can" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F4F7FC"/>
+      <stop offset="1" stop-color="#D7DFEC"/>
+    </linearGradient>
+    <linearGradient id="drip" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F2C14E"/>
+      <stop offset="1" stop-color="#E0A32E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="104" fill="url(#bg)"/>
+
+  <!-- Handle -->
+  <path d="M168 196 C168 128 344 128 344 196" fill="none" stroke="#BFD0EE" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Paint can -->
+  <rect x="136" y="196" width="240" height="222" rx="30" fill="url(#can)"/>
+  <rect x="128" y="180" width="256" height="42" rx="21" fill="#EDF2FA"/>
+  <rect x="128" y="180" width="256" height="42" rx="21" fill="none" stroke="#C6D2E6" stroke-width="6"/>
+
+  <!-- Label band -->
+  <rect x="136" y="272" width="240" height="66" fill="#1B3FA0"/>
+  <rect x="162" y="292" width="188" height="26" rx="6" fill="#FFFFFF" opacity="0.16"/>
+
+  <!-- Gold drip over the rim -->
+  <path d="M300 220
+           C306 268 302 306 298 336
+           C294 366 322 366 318 336
+           C314 302 312 262 316 220
+           C312 208 306 208 300 220 Z"
+        fill="url(#drip)"/>
+  <ellipse cx="308" cy="218" rx="34" ry="10" fill="url(#drip)"/>
+
+  <!-- Highlight -->
+  <rect x="156" y="216" width="24" height="180" rx="12" fill="#FFFFFF" opacity="0.55"/>
+</svg>

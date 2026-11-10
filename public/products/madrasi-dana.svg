@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Madrasi dana wall texture sacks in white, red, peach and grey with granules">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F7F2E8"/>
+      <stop offset="1" stop-color="#E9DFCC"/>
+    </linearGradient>
+    <pattern id="weave" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="none"/>
+      <path d="M0 3.5 H14 M3.5 0 V14" stroke="#000000" stroke-opacity="0.10" stroke-width="2"/>
+    </pattern>
+    <linearGradient id="sackShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="pile" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#E8D9BC"/>
+      <stop offset="1" stop-color="#C9B493"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="700" rx="300" ry="36" fill="#5C4A33" opacity="0.16"/>
+
+  <!-- Back sacks: white + grey -->
+  <g>
+    <path d="M170 300 Q168 280 190 276 L330 276 Q352 280 350 300 L358 600 Q356 622 334 624 L186 624 Q164 622 166 600 Z" fill="#F4EFE3" stroke="#C9BFA9" stroke-width="3"/>
+    <path d="M170 300 Q168 280 190 276 L330 276 Q352 280 350 300 L358 600 Q356 622 334 624 L186 624 Q164 622 166 600 Z" fill="url(#weave)"/>
+    <path d="M170 300 Q168 280 190 276 L330 276 Q352 280 350 300 L358 600 Q356 622 334 624 L186 624 Q164 622 166 600 Z" fill="url(#sackShade)"/>
+    <rect x="172" y="268" width="184" height="16" rx="8" fill="#D8CFBA"/>
+    <polyline points="180,276 196,268 212,276 228,268 244,276 260,268 276,276 292,268 308,276 324,268 340,276" fill="none" stroke="#A99F87" stroke-width="4" stroke-linecap="round"/>
+    <rect x="196" y="400" width="128" height="84" rx="8" fill="#FFFFFF" stroke="#D8CFBA" stroke-width="2.5"/>
+    <circle cx="260" cy="424" r="13" fill="#F2ECDD" stroke="#B9AE93" stroke-width="2.5"/>
+    <text x="260" y="462" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1.6" fill="#5C5342">MADRASI</text>
+    <text x="260" y="480" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2.2" fill="#8A7E64">WHITE</text>
+  </g>
+  <g>
+    <path d="M450 300 Q448 280 470 276 L610 276 Q632 280 630 300 L638 600 Q636 622 614 624 L466 624 Q444 622 446 600 Z" fill="#7C8A97" stroke="#5D6B78" stroke-width="3"/>
+    <path d="M450 300 Q448 280 470 276 L610 276 Q632 280 630 300 L638 600 Q636 622 614 624 L466 624 Q444 622 446 600 Z" fill="url(#weave)"/>
+    <path d="M450 300 Q448 280 470 276 L610 276 Q632 280 630 300 L638 600 Q636 622 614 624 L466 624 Q444 622 446 600 Z" fill="url(#sackShade)"/>
+    <rect x="452" y="268" width="184" height="16" rx="8" fill="#5F6D7A"/>
+    <polyline points="460,276 476,268 492,276 508,268 524,276 540,268 556,276 572,268 588,276 604,268 620,276" fill="none" stroke="#4C5863" stroke-width="4" stroke-linecap="round"/>
+    <rect x="476" y="400" width="128" height="84" rx="8" fill="#FFFFFF" stroke="#5D6B78" stroke-width="2.5"/>
+    <circle cx="540" cy="424" r="13" fill="#5F6F7D" stroke="#47535D" stroke-width="2.5"/>
+    <text x="540" y="462" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1.6" fill="#4A5560">MADRASI</text>
+    <text x="540" y="480" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2.2" fill="#7A8794">GREY</text>
+  </g>
+
+  <!-- Front sacks: red + peach -->
+  <g>
+    <path d="M110 430 Q108 408 132 404 L296 404 Q320 408 318 430 L330 668 Q328 692 304 694 L124 694 Q100 692 102 668 Z" fill="#A84328" stroke="#7E3220" stroke-width="3"/>
+    <path d="M110 430 Q108 408 132 404 L296 404 Q320 408 318 430 L330 668 Q328 692 304 694 L124 694 Q100 692 102 668 Z" fill="url(#weave)"/>
+    <path d="M110 430 Q108 408 132 404 L296 404 Q320 408 318 430 L330 668 Q328 692 304 694 L124 694 Q100 692 102 668 Z" fill="url(#sackShade)"/>
+    <rect x="116" y="392" width="200" height="20" rx="10" fill="#8C341F"/>
+    <polyline points="124,402 142,392 160,402 178,392 196,402 214,392 232,402 250,392 268,402 286,392 304,402" fill="none" stroke="#6B2717" stroke-width="4.5" stroke-linecap="round"/>
+    <rect x="142" y="510" width="148" height="96" rx="9" fill="#FFFFFF" stroke="#8C341F" stroke-width="2.5"/>
+    <circle cx="216" cy="538" r="15" fill="#A84328" stroke="#7E3220" stroke-width="2.5"/>
+    <text x="216" y="578" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="1.8" fill="#4A4235">MADRASI</text>
+    <text x="216" y="598" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2.4" fill="#8A7E64">RED</text>
+  </g>
+  <g>
+    <path d="M398 430 Q396 408 420 404 L584 404 Q608 408 606 430 L618 668 Q616 692 592 694 L412 694 Q388 692 390 668 Z" fill="#F0A868" stroke="#C9813F" stroke-width="3"/>
+    <path d="M398 430 Q396 408 420 404 L584 404 Q608 408 606 430 L618 668 Q616 692 592 694 L412 694 Q388 692 390 668 Z" fill="url(#weave)"/>
+    <path d="M398 430 Q396 408 420 404 L584 404 Q608 408 606 430 L618 668 Q616 692 592 694 L412 694 Q388 692 390 668 Z" fill="url(#sackShade)"/>
+    <rect x="404" y="392" width="200" height="20" rx="10" fill="#D58F51"/>
+    <polyline points="412,402 430,392 448,402 466,392 484,402 502,392 520,402 538,392 556,402 574,392 592,402" fill="none" stroke="#B3763C" stroke-width="4.5" stroke-linecap="round"/>
+    <rect x="430" y="510" width="148" height="96" rx="9" fill="#FFFFFF" stroke="#C9813F" stroke-width="2.5"/>
+    <circle cx="504" cy="538" r="15" fill="#F0A868" stroke="#C9813F" stroke-width="2.5"/>
+    <text x="504" y="578" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="1.8" fill="#4A4235">MADRASI</text>
+    <text x="504" y="598" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2.4" fill="#8A7E64">PEACH</text>
+  </g>
+
+  <!-- Granule spill -->
+  <path d="M318 668 Q322 690 360 690 L440 690 Q476 690 484 672 Q500 700 430 706 L356 706 Q316 700 318 668 Z" fill="url(#pile)"/>
+  <g fill="#C9B493">
+    <circle cx="330" cy="700" r="7"/><circle cx="352" cy="706" r="6"/><circle cx="376" cy="700" r="7"/>
+    <circle cx="398" cy="706" r="6"/><circle cx="424" cy="700" r="7"/><circle cx="446" cy="706" r="5"/>
+    <circle cx="466" cy="700" r="6"/><circle cx="486" cy="694" r="5"/><circle cx="308" cy="694" r="5"/>
+  </g>
+</svg>

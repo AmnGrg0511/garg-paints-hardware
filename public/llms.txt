@@ -1,0 +1,70 @@
+# Garg Paints & Hardware
+
+> Wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad, Haryana, India. Serving contractors, painters, dealers and builders since 2017.
+
+Canonical site: https://gargpaintshardware.example
+Note for owner: replace the `.example` domain in `src/config/businessData.ts` (or set NEXT_PUBLIC_SITE_URL) before launch.
+
+## Key facts
+
+- Store name: Garg Paints & Hardware
+- Proprietor: Mahesh
+- Established: 2017
+- GST invoice: issued on confirmed orders. No GST rate or GST number is published.
+- Locality: Ballabgarh
+- City / State / Country: Faridabad, Haryana, India
+- Phone: +91 98992 84391
+- WhatsApp: +91 98992 84391 (owner to confirm the number is active on WhatsApp)
+- Hours: Open 24x7, all seven days (as stated by the owner)
+- IndiaMART: https://www.indiamart.com/gargpaintshardware/
+- Street address, postal code, coordinates and email: not yet supplied. Do not infer or publish them.
+- No GST rate is stated anywhere on the site; public rates conflict and the owner has not confirmed a rate.
+
+## Catalogue
+
+1. Pidicryl 126 M by Pidilite — Acrylic Binders & Emulsions — ₹130/Kg — HSN 3209
+   https://gargpaintshardware.example/products/pidicryl-126-m
+   Fine-particle styrene acrylic copolymer emulsion used as a binder for interior and exterior emulsion paints, distempers and texture finishes.
+
+2. Madrasi Dana Premium Wall Textures — Wall Textures & Aggregates — HSN 3209
+   https://gargpaintshardware.example/products/madrasi-dana-wall-texture
+   White ₹150/Bag, Red ₹200/Bag, Peach ₹280/Bag, Grey "Contact for Price".
+   Decorative granule wall texture for exterior facades and plaster-finish wall texturing.
+
+3. Stainless Steel Plastering Trowel (Gurmala) — Plastering Tools & Hardware — ₹75/Piece — HSN 8205
+   https://gargpaintshardware.example/products/stainless-steel-plastering-trowel
+   Heavy-duty ergonomic stainless steel gurmala for texture application, cement flattening and wall scraping.
+
+4. Carboxymethyl Cellulose (CMC) Powder — Industrial Binders & Thickeners — quote only — HSN 3912
+   https://gargpaintshardware.example/products/cmc-powder
+   White CMC: high-purity thickener for wall putty, interior distempers and smooth texture formulation.
+   Yellow CMC: technical industrial grade binder for viscosity control and water retention.
+
+5. Premium Chamki Powder (Glitter & Metallic Flakes) — Decorative Paint Additives — pack sizes quoted — HSN 3206
+   https://gargpaintshardware.example/products/chamki-powder
+   Glitter and metallic flake additive for wall textures, roof coatings and designer emulsions.
+
+HSN codes are the owner's best-matching public references and still need CA confirmation before use on invoices.
+
+## Ordering
+
+- Review the order list at https://gargpaintshardware.example/checkout
+- Purchase via IndiaMART: https://www.indiamart.com/gargpaintshardware/
+- Fast order via WhatsApp: https://wa.me/919899284391
+- The WhatsApp message template greets the proprietor by name ("Hello Mahesh,") and lists one bullet per line ("• Item – Variant × Qty"); it never contains a GST number.
+- No payment gateway is used. The final GST invoice is shared on confirmation.
+- Quote-only items cannot be added to the cart with an estimated price; they open a WhatsApp quote request.
+
+## Pages
+
+- Home: https://gargpaintshardware.example/
+- Products: https://gargpaintshardware.example/products
+- About and verification details: https://gargpaintshardware.example/about
+- FAQ: https://gargpaintshardware.example/faq
+- Contact: https://gargpaintshardware.example/contact
+
+## What the business does not claim
+
+- No review scores, ratings, certifications, authorised-dealer status, delivery times or dispatch speeds are claimed.
+- The IndiaMART listing is a marketplace presence (sameAs), not the owner or parent organisation.
+- The business is described as a wholesaler and retailer, with dealer and contractor pricing available on request.

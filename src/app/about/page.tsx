@@ -1,0 +1,255 @@
+import Link from "next/link";
+import {
+  ArrowRightIcon,
+  BadgeCheckIcon,
+  Building2Icon,
+  ClockIcon,
+  MapPinIcon,
+  ShieldCheckIcon,
+} from "lucide-react";
+import { business, hasFullAddress, SITE_URL } from "@/config/businessData";
+import { buildPageMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/schema";
+import { SEO } from "@/components/SEO";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { SectionHeading } from "@/components/sections/section-heading";
+import { CtaBand } from "@/components/sections/cta-band";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { Localized } from "@/i18n/Localized";
+import { FacadeVisualizer } from "@/components/sections/facade-visualizer";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { generalEnquiryUrl } from "@/lib/whatsapp";
+
+export const metadata = buildPageMetadata({
+  title: "About Garg Paints & Hardware, Ballabgarh",
+  description:
+    "Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Established 2017. GST invoice on confirmed orders.",
+  path: "/about",
+});
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Garg Paints & Hardware",
+  mainEntity: { "@id": `${SITE_URL}/#store` },
+};
+
+export default function AboutPage() {
+  const verificationRows: readonly (readonly [string, string])[] = [
+    ["Store name", business.name],
+    ...(business.legalName
+      ? ([["Legal / trade name", business.legalName]] as const)
+      : []),
+    [
+      "Proprietor",
+      business.proprietor.fullName ?? business.proprietor.displayName,
+    ],
+    ["Established", String(business.established)],
+    ["Locality", `${business.locality}, ${business.city}, ${business.state}`],
+    ["Hours", business.hours.label],
+    ["Marketplace", "IndiaMART seller listing"],
+  ];
+
+  return (
+    <>
+      <SEO
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About" },
+          ]),
+          aboutSchema,
+        ]}
+      />
+
+      <div className="container-page pt-6 sm:pt-10">
+        <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "About" }]} />
+
+        <div className="mt-6 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
+          <div>
+            <p className="eyebrow">Since 2017 · Ballabgarh</p>
+            <h1 className="display-lg mt-2">
+              <Localized
+                en="A supply shop built around the finish."
+                hi="Finish ke around bana supply shop."
+              />
+            </h1>
+            <p className="mt-5 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
+              <Localized
+                en="Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Contractors, painters, dealers and builders have sourced materials here since 2017."
+                hi="Garg Paints & Hardware, Ballabgarh, Faridabad mein paint additives, binders, wall textures aur plastering tools ka wholesaler aur retailer hai. 2017 se contractors, painters, dealers aur builders yahan se material lete hain."
+              />
+            </p>
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
+              <Link
+                href="/products"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "h-12 rounded-full px-6 text-base font-semibold",
+                )}
+              >
+                <Localized en="Explore the catalogue" hi="Catalogue dekhein" />
+                <ArrowRightIcon className="size-4" aria-hidden />
+              </Link>
+              <TrackedLink
+                event="click_whatsapp"
+                params={{ source: "about" }}
+                href={generalEnquiryUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "h-12 rounded-full bg-card/60 px-6 text-base font-semibold",
+                )}
+              >
+                <Localized en="WhatsApp the shop" hi="WhatsApp par baat karein" />
+              </TrackedLink>
+            </div>
+          </div>
+
+          <FacadeVisualizer className="w-full" />
+        </div>
+
+        <section className="grid gap-8 py-10 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              icon: Building2Icon,
+              title: "Wholesaler and retailer",
+              body: "Trade quantities and single pieces from the same Ballabgarh counter.",
+            },
+            {
+              icon: MapPinIcon,
+              title: "Ballabgarh, Faridabad",
+              body: `Serving ${business.locality}, ${business.city} and the wider Delhi NCR area.`,
+            },
+            {
+              icon: ShieldCheckIcon,
+              title: "GST-registered",
+              body: "Every confirmed order receives a final GST invoice. No GST rate is stated on this site."
+            },
+            {
+              icon: ClockIcon,
+              title: "Enquiries 24x7",
+              body: "Call and WhatsApp order enquiries are accepted all seven days.",
+            },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.title}
+                className="surface-card rounded-2xl p-5"
+              >
+                <span className="grid size-10 place-items-center rounded-full bg-secondary text-primary">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <h2 className="mt-4 font-display text-xl">{item.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.body}
+                </p>
+              </div>
+            );
+          })}
+        </section>
+
+        <section className="py-8 sm:py-12" aria-labelledby="verification-heading">
+          <SectionHeading
+            id="verification-heading"
+            eyebrow="Verification details"
+            title="Facts you can check."
+            body="The business details below are repeated consistently across this site and the IndiaMART listing. Nothing here is an unverified badge or review score."
+          />
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_1fr]">
+            <dl className="surface-card divide-y divide-border/60 rounded-3xl px-6 py-2">
+              {verificationRows.map(([label, value]) => (
+                <div
+                  key={label}
+                  className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                >
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    {label}
+                  </dt>
+                  <dd className="text-sm font-medium text-foreground sm:text-right">
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="space-y-4">
+              <div className="surface-card rounded-3xl p-6">
+                <p className="flex items-center gap-2 font-semibold">
+                  <BadgeCheckIcon className="size-4 text-primary" aria-hidden />
+                  What this site does not claim
+                </p>
+                <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                  <li>No review scores or ratings are published.</li>
+                  <li>No delivery time, dispatch speed or certification is claimed.</li>
+                  <li>No GST rate is stated, because public rates conflict.</li>
+                  <li>No street address, map or pincode is shown until the owner confirms it.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-3xl border border-border/70 bg-background/40 p-6">
+                <p className="font-semibold">
+                  <Localized en="Address status" hi="Address status" />
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {hasFullAddress
+                    ? `${business.address.street}, ${business.locality}, ${business.city}, ${business.state} ${business.address.postalCode}`
+                    : "Street address, pincode and coordinates are still being confirmed by the owner. Until then, call or WhatsApp for directions before visiting."}
+                </p>
+                <TrackedLink
+                  event="click_indiamart"
+                  params={{ source: "about_verification" }}
+                  href={business.marketplaceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary"
+                >
+                  Find us on IndiaMART
+                  <ArrowRightIcon className="size-4" aria-hidden />
+                </TrackedLink>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-10 sm:py-16" aria-labelledby="approach-heading">
+          <SectionHeading
+            id="approach-heading"
+            eyebrow="How we work"
+            title="Plain answers, confirmed invoices."
+            body="This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued."
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Material, not marketing",
+                body: "The catalogue describes what each product is, what it is used for and whether a price is listed or quoted. Nothing is priced by guesswork.",
+              },
+              {
+                title: "Trade-first quantities",
+                body: "Contractors, painters and dealers can order by the kilogram, bag or piece, and ask for dealer pricing on a project quantity.",
+              },
+              {
+                title: "GST invoice on confirmation",
+                body: "Every confirmed order is invoiced with GST. The final invoice is shared directly by the business; no GST rate is stated on this site.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="surface-card rounded-2xl p-6">
+                <h3 className="font-display text-xl">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <CtaBand />
+    </>
+  );
+}

@@ -1,0 +1,444 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-fraunces);
+  --font-display: var(--font-fraunces);
+  --font-devanagari: var(--font-noto-deva);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-terracotta: var(--terracotta);
+  --color-peach: var(--peach);
+  --color-slate-tone: var(--slate-tone);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Paint shades — flat, colour-chip values used across the catalogue. */
+  --cream: #f2ecdd;
+  --terracotta: #a84328;
+  --peach: #f0a868;
+  --slate-tone: #5f6f7d;
+  --ink: #14213b;
+  --gold: #e9b84b;
+  --surface: #ffffff;
+  --surface-2: #f4f7fd;
+
+  /* Store palette: white base, cobalt primary, amber accent. */
+  --brand: #1d4fd7;
+  --brand-deep: #17378f;
+
+  --background: #ffffff;
+  --foreground: #10192e;
+  --card: #ffffff;
+  --card-foreground: #10192e;
+  --popover: #ffffff;
+  --popover-foreground: #10192e;
+  --primary: var(--brand);
+  --primary-foreground: #ffffff;
+  --secondary: #eef3fe;
+  --secondary-foreground: #16307a;
+  --muted: #f2f5fa;
+  --muted-foreground: #52617a;
+  --accent: #fff3d6;
+  --accent-foreground: #5c4708;
+  --destructive: #c0392b;
+  --border: #e3e9f2;
+  --input: #d7dfeb;
+  --ring: var(--brand);
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #eef3fe;
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --glass: color-mix(in oklab, #ffffff 82%, transparent);
+  --shadow-color: 220 45% 20%;
+}
+
+.dark {
+  --cream: #efe9d8;
+  --terracotta: #c4552f;
+  --peach: #f2b075;
+  --slate-tone: #8ba1b0;
+  --ink: #eef2fa;
+  --gold: #ecc25c;
+  --surface: #101a2e;
+  --surface-2: #16223c;
+
+  --brand: #5b8bff;
+  --brand-deep: #9db9ff;
+
+  --background: #0a1120;
+  --foreground: #e9eef8;
+  --card: #101a2e;
+  --card-foreground: var(--foreground);
+  --popover: #121d33;
+  --popover-foreground: var(--foreground);
+  --primary: var(--brand);
+  --primary-foreground: #0a1120;
+  --secondary: #1b2946;
+  --secondary-foreground: #dbe6fb;
+  --muted: #17223a;
+  --muted-foreground: #9dabc4;
+  --accent: #2c3a5c;
+  --accent-foreground: #e9eef8;
+  --destructive: #e5484d;
+  --border: #22304e;
+  --input: #2a3957;
+  --ring: var(--brand);
+  --sidebar: #0e1728;
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: #1b2946;
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --glass: color-mix(in oklab, #0a1120 80%, transparent);
+  --shadow-color: 225 60% 2%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-height: 100dvh;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2 {
+    @apply font-heading text-balance;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+  }
+
+  h3,
+  h4 {
+    @apply text-balance;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  @keyframes gph-badge-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .gph-badge-pop {
+    animation: gph-badge-pop 0.28s cubic-bezier(0.22, 0.9, 0.24, 1) both;
+  }
+
+  @keyframes gph-icon-in {
+    from {
+      opacity: 0;
+      transform: rotate(-20deg) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  .gph-icon-in {
+    animation: gph-icon-in 0.2s ease-out both;
+  }
+
+  @keyframes gph-twinkle {
+    0%,
+    100% {
+      opacity: 0.12;
+      transform: scale(0.4);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+  }
+
+  .gph-sparkle {
+    animation: gph-twinkle 1.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* The rupee sign (U+20B9) lives in the latin-ext webfont subset; rendering
+     it with the system stack keeps that 86 KB subset from loading. */
+  .rupee {
+    font-family: system-ui, sans-serif;
+  }
+
+  /* Claim U+20B9 with a local face under the webfont family name so the
+     latin-ext subset is never fetched just for the rupee sign. Declared
+     after the next/font stylesheet, which the head order guarantees. */
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 100 900;
+    src: local("DejaVu Sans"), local(Arial), local(system-ui);
+    unicode-range: U+20B9;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gph-badge-pop,
+    .gph-icon-in,
+    .gph-sparkle {
+      animation: none;
+    }
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Granule-textured colour surfaces: irregular dots and impurities over the
+     shade, like a dana finish, instead of flat colour. */
+  .dana-texture {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .dana-texture::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("/art/dana-texture.png");
+    background-repeat: repeat;
+    background-size: 320px 320px;
+    mix-blend-mode: overlay;
+    opacity: 0.85;
+  }
+
+  .hairline {
+    border-top: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+  }
+
+  .display-xl {
+    font-size: clamp(2.6rem, 7.4vw, 5.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .display-lg {
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .text-link {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+  }
+
+  .surface-card {
+    background: var(--card);
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    box-shadow:
+      0 1px 2px rgb(15 32 64 / 0.04),
+      0 10px 28px -18px hsl(var(--shadow-color) / 0.16);
+  }
+
+  /* Paint-shade chips: flat, honest colour blocks. */
+  .swatch-cream {
+    background: var(--cream);
+  }
+
+  .swatch-terracotta {
+    background: var(--terracotta);
+  }
+
+  .swatch-slate {
+    background: var(--slate-tone);
+  }
+
+  .swatch-gold {
+    background: var(--gold);
+  }
+
+  .swatch-peach {
+    background: var(--peach);
+  }
+}
+
+@layer utilities {
+  [data-locale="hi"] .lang-en,
+  [data-locale="en"] .lang-hi,
+  html:not([data-locale="hi"]) .lang-hi {
+    display: none;
+  }
+
+  .font-devanagari {
+    font-family: var(--font-noto-deva), var(--font-inter), sans-serif;
+  }
+
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
+
+  /* Scroll-reveal: applied by the shared useInView hook. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s cubic-bezier(0.22, 0.9, 0.24, 1);
+  }
+
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

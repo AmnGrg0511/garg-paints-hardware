@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="CMC powder sack, white grade">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F4F7FA"/>
+      <stop offset="1" stop-color="#E3EAF2"/>
+    </linearGradient>
+    <linearGradient id="kraft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D2A97C"/>
+      <stop offset="0.5" stop-color="#C1955F"/>
+      <stop offset="1" stop-color="#A67F4C"/>
+    </linearGradient>
+    <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#B9905C"/>
+      <stop offset="1" stop-color="#9C7442"/>
+    </linearGradient>
+    <pattern id="weave" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="none"/>
+      <path d="M0 3.5 H14 M3.5 0 V14" stroke="#000000" stroke-opacity="0.10" stroke-width="2"/>
+    </pattern>
+    <linearGradient id="sackShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="712" rx="250" ry="32" fill="#33415C" opacity="0.14"/>
+  <g transform="translate(236 230)">
+    <path d="M0 28.224000000000007 Q-4.48 8.064000000000002 33.60000000000001 4.032000000000001 L302.40000000000003 4.032000000000001 Q340.4800000000001 8.064000000000002 336.00000000000006 28.224000000000007 L342.7200000000001 379.00800000000004 Q336.00000000000006 403.20000000000005 295.68000000000006 403.20000000000005 L40.32000000000001 403.20000000000005 Q0 403.20000000000005 -2.24 379.00800000000004 Z"
+          fill="url(#kraft)" stroke="#8F6C3E" stroke-width="4.48"/>
+    <rect x="13.440000000000003" y="0" width="309.12000000000006" height="32.25600000000001" rx="8.96" fill="url(#flap)" stroke="#8F6C3E" stroke-width="3.3600000000000003"/>
+    <g fill="#7C5C33">
+      <circle cx="33.60000000000001" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="67.20000000000002" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="100.80000000000003" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="134.40000000000003" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="168.00000000000003" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="201.60000000000002" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="235.20000000000007" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="268.80000000000007" cy="16.128000000000004" r="3.9200000000000004"/><circle cx="302.40000000000003" cy="16.128000000000004" r="3.9200000000000004"/>
+    </g>
+    <rect x="20.160000000000004" y="56.448000000000015" width="295.68000000000006" height="201.60000000000002" rx="11.200000000000001" fill="#FFFFFF" stroke="#D9CBAF" stroke-width="3.3600000000000003"/>
+    <text x="168.00000000000003" y="104.83200000000002" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="47.040000000000006" font-weight="700" letter-spacing="3.3600000000000003" fill="#2E3A4E">CMC</text>
+    <text x="168.00000000000003" y="133.056" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.560000000000002" font-weight="700" letter-spacing="0.8960000000000001" fill="#5C6B82">CARBOXYMETHYL</text>
+    <text x="168.00000000000003" y="153.216" text-anchor="middle" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="14.560000000000002" font-weight="700" letter-spacing="0.8960000000000001" fill="#5C6B82">CELLULOSE</text>
+    <rect x="120.96000000000002" y="165.312" width="94.08000000000003" height="3.3600000000000003" fill="#D9CBAF"/>
+    <rect x="100.80000000000001" y="181.44000000000003" width="134.40000000000003" height="56.448000000000015" rx="8.96" fill="#FFFFFF" stroke="#C9BFA9" stroke-width="2.8000000000000003"/>
+    <circle cx="127.68000000000002" cy="209.66400000000004" r="11.200000000000001" fill="#F4F5F7" stroke="#B9C2CC" stroke-width="2.24"/>
+    <text x="154.56000000000003" y="211.68000000000004" font-family="Inter, DejaVu Sans, Arial, sans-serif" font-size="15.680000000000001" font-weight="700" letter-spacing="1.12" fill="#5C6B82">WHITE</text>
+  </g>
+  <path d="M320 690 Q326 714 392 714 L450 714 Q518 714 524 692 Q530 718 440 726 L384 726 Q326 720 320 690 Z" fill="#EDF0F4"/>
+</svg>
