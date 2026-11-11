@@ -75,21 +75,19 @@ Cloudflare Pages(OpenNext)/self-hosted `next start` all work.
 - `NEXT_PUBLIC_SITE_URL` — set to the final production domain (canonical,
   OG, sitemap and llms.txt all read it). Already set on Vercel.
 
-#### Capturing clicks and leads without WhatsApp
+#### Getting found on Google
 
-1. **Click analytics (free, no backend)** — Google Analytics 4:
-   - Create a GA4 property (analytics.google.com) and copy the
-     Measurement ID (`G-…`).
-   - Set `NEXT_PUBLIC_GA_ID` on the host (Vercel → Settings → Environment
-     Variables) and redeploy.
-   - The loader is **gated by the consent banner**: nothing loads before the
-     visitor taps Allow, and Google consent-mode stays denied until then.
-   - Every tracked action (add to cart, WhatsApp/IndiaMART clicks, call
-     clicks, kit orders, lead submissions) flows to GA4 via `trackEvent`,
-     alongside the local `dataLayer` mirror.
+- Submit the site to **Google Search Console**: verify the domain, then
+  submit `https://<your-domain>/sitemap.xml`. The site ships complete
+  structured data (HardwareStore, Product/ProductGroup, FAQPage), an
+  AI-crawler-friendly robots.txt and llms.txt, so indexing is ready.
+- Local pack ranking needs a **Google Business Profile** — create one with
+  the shop's phone number and (once confirmed) its street address. Add the
+  same NAP data to the site config so both stay consistent.
 
-2. **Phone numbers without WhatsApp (durable storage)** — `/api/lead`
-   writes each lead to every channel configured:
+#### Capturing numbers without WhatsApp
+
+`/api/lead` writes each lead to every channel configured:
    - **Vercel Blob** (recommended on Vercel): create a Blob store
      (Vercel → Storage → Blob) and connect it to the project — the
      `BLOB_READ_WRITE_TOKEN` env var is injected automatically. Each lead

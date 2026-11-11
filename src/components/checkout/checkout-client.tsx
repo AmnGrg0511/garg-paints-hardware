@@ -25,6 +25,7 @@ import {
 import { formatAmount, getUnitLabel } from "@/lib/pricing";
 import { trackEvent } from "@/lib/analytics";
 import { useIsClient } from "@/lib/use-is-client";
+import { CallBackForm } from "@/components/lead/call-back-form";
 import { Localized } from "@/i18n/Localized";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { TrackedLink } from "@/components/analytics/tracked-link";
@@ -391,6 +392,22 @@ export function CheckoutClient() {
               item, variant and quantity already filled in.
             </p>
           </details>
+
+          <div className="mt-4 rounded-2xl border border-border/70 bg-card/50 p-4 sm:p-5">
+            <p className="font-semibold text-foreground">
+              <Localized
+                en="Too busy to chat now?"
+                hi="Abhi baat karne ka time nahi?"
+              />
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              <Localized
+                en="Leave your number — our team calls you back with the invoice and availability."
+                hi="Number chhod dein — team call back karegi invoice aur availability ke saath."
+              />
+            </p>
+            <CallBackForm source="checkout" className="mt-3 border-0 bg-transparent p-0 sm:p-0" />
+          </div>
 
           <div className="mt-4 rounded-2xl border border-border/70 bg-card/50 p-4 text-xs leading-relaxed text-muted-foreground">
             <p className="font-semibold text-foreground">

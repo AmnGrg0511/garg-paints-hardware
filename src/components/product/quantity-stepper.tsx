@@ -40,14 +40,15 @@ export function QuantityStepper({
     setText(String(clamped));
     onChange(clamped);
   };
-  const commitInput = () => {
-    const digits = text.replace(/\D/g, "");
-    const parsed = digits === "" ? value : Number(digits);
-    if (!Number.isFinite(parsed) || clamp(parsed) === value) {
-      setText(String(value));
-      return;
-    }
-    bump(parsed);
+  // Live price: every valid keystroke updates the totals immediately.
+  const commitInput = (raw: string) => {
+    const digits = raw.replace(/\D/g, "");
+    if (digits === "") return; // keep the previous value until something is typed
+    const parsed = Number(digits);
+    if (!Number.isFinite(parsed)) return;
+    const clamped = clamp(parsed);
+    setText(String(clamped));
+    onChange(clamped);
   };
 
   const btnBase =
@@ -79,13 +80,9 @@ export function QuantityStepper({
           type="text"
           inputMode="numeric"
           value={text}
-          onChange={(event) => setText(event.target.value)}
-          onBlur={commitInput}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              commitInput();
-            }
+          onChange={(event) => {
+            setText(event.target.value);
+            commitInput(event.target.value);
           }}
           aria-label={`${label} — type a value`}
           className={cn(

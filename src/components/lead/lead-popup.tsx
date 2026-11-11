@@ -12,8 +12,9 @@ const DISMISS_KEY = "gph-lead-popup-dismissed";
 const DONE_KEY = "gph-lead-submitted";
 
 /**
- * A one-time-per-session modal asking for a callback number. Appears after a
- * short delay or when the visitor scrolls halfway — whichever comes first.
+ * A one-time-per-session modal asking for a callback number. Appears after
+ * a short delay or when the visitor scrolls a third of the page — whichever
+ * comes first.
  * No OTP; the submitted number is stored server-side and handed to WhatsApp.
  */
 export function LeadPopup() {
@@ -37,12 +38,12 @@ export function LeadPopup() {
     if (dismissed || submitted) return;
 
     const frame = window.requestAnimationFrame(() => setArmed(true));
-    const timer = window.setTimeout(() => setOpen(true), 14000);
+    const timer = window.setTimeout(() => setOpen(true), 8000);
     const onScroll = () => {
       const progress =
         window.scrollY /
         Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      if (progress > 0.45) {
+      if (progress > 0.3) {
         window.clearTimeout(timer);
         window.removeEventListener("scroll", onScroll);
         setOpen(true);

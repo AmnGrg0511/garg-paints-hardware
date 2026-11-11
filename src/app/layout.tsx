@@ -7,7 +7,6 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileOrderBar } from "@/components/layout/mobile-order-bar";
 import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp";
 import { SEO } from "@/components/SEO";
-import { AnalyticsGate } from "@/components/analytics/analytics-gate";
 import { storeSchema, websiteSchema } from "@/lib/schema";
 import { SITE_URL, business } from "@/config/businessData";
 import { LOCALE_KEY } from "@/i18n/dictionary";
@@ -122,9 +121,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
           <MobileOrderBar />
           <FloatingWhatsApp />
-          {process.env.NEXT_PUBLIC_GA_ID && (
-            <AnalyticsGate gaId={process.env.NEXT_PUBLIC_GA_ID} />
-          )}
         </Providers>
         <SEO data={[storeSchema(), websiteSchema()]} />
       </body>
