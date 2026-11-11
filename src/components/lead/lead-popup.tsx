@@ -96,7 +96,7 @@ export function LeadPopup() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Get a call back — leave your number"
+        aria-label="कॉल बैक पाएँ — leave your number"
         className="fixed bottom-[5.5rem] right-7 z-40 hidden size-11 items-center justify-center rounded-full border border-border bg-card text-primary shadow-[0_12px_30px_-12px_rgba(16,25,46,0.45)] transition-transform hover:scale-105 md:flex"
       >
         <PhoneIcon className="size-5" aria-hidden />
@@ -121,13 +121,13 @@ export function LeadPopup() {
                 <p id="lead-popup-title" className="text-lg font-extrabold tracking-tight">
                   <Localized
                     en="Get rates on a call"
-                    hi="Rate call par paayein"
+                    hi="रेट call पर पाएँ"
                   />
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   <Localized
                     en="Leave your mobile number — the shop sees it instantly and calls you back. No OTP, no spam."
-                    hi="Mobile number chhod dein — dukaan ko turant dikhega aur call back aayega. Na OTP, na spam."
+                    hi="मोबाइल नंबर छोड़ें — दुकान को तुरंत दिखेगा और call back आएगा। Na OTP, na spam."
                   />
                 </p>
               </div>
@@ -146,14 +146,14 @@ export function LeadPopup() {
             <p className="mt-3 text-center text-[0.66rem] leading-relaxed text-muted-foreground">
               <Localized
                 en="Prefer WhatsApp or IndiaMART? Continue browsing — the shop is one tap away."
-                hi="WhatsApp ya IndiaMART chahiye? Browse karte raho — dukaan ek tap door hai."
+                hi="व्हाट्सएप या इंडियामार्ट चाहिए? ब्राउज़ करते रहें — दुकान एक tap दूर है।"
               />
               <Link
                 href="/products"
                 onClick={close}
                 className="ml-1 inline-flex items-center gap-0.5 font-semibold text-primary"
               >
-                <Localized en="Browse products" hi="Products dekhein" />
+                <Localized en="Browse products" hi="उत्पाद देखें" />
                 <ArrowRightIcon className="size-3.5" aria-hidden />
               </Link>
             </p>

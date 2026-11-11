@@ -283,17 +283,17 @@
   @keyframes gph-twinkle {
     0%,
     100% {
-      opacity: 0.12;
-      transform: scale(0.4);
+      opacity: 0.25;
+      transform: scale(0.72);
     }
     50% {
-      opacity: 1;
-      transform: scale(1.25);
+      opacity: 0.9;
+      transform: scale(1.08);
     }
   }
 
   .gph-sparkle {
-    animation: gph-twinkle 1.6s ease-in-out infinite;
+    animation: gph-twinkle 2.6s ease-in-out infinite;
     transform-box: fill-box;
     transform-origin: center;
   }

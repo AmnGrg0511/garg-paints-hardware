@@ -76,6 +76,15 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   robots: { index: true, follow: true },
+  // Paste the google-site-verification token from Search Console as
+  // NEXT_PUBLIC_GSC_VERIFICATION when the domain is verified there.
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+        },
+      }
+    : {}),
 };
 
 export const viewport: Viewport = {

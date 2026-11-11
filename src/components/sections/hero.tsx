@@ -34,7 +34,7 @@ const trustBadges = [
   {
     icon: ClockIcon,
     label: "Open 24x7",
-    hi: "24x7 khula",
+    hi: "24x7 खुला",
   },
   {
     icon: StoreIcon,
@@ -45,7 +45,7 @@ const trustBadges = [
   {
     icon: BadgeCheckIcon,
     label: "Since 2017",
-    hi: "2017 se",
+    hi: "2017 से",
   },
 ];
 
@@ -62,22 +62,22 @@ export function Hero() {
         <div className="max-w-2xl">
           <p className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-secondary-foreground">
             <Localized
-              en="Ballabgarh, Faridabad · Paints & hardware"
-              hi="Ballabgarh, Faridabad · Paints & hardware"
+              en="बल्लभगढ़, फ़रीदाबाद · पेंट और हार्डवेयर"
+              hi="बल्लभगढ़, फ़रीदाबाद · पेंट और हार्डवेयर"
             />
           </p>
 
           <h1 id={headingId} className="display-xl mt-4">
             <Localized
               en="Paint, texture and tools for every wall."
-              hi="Paint, texture aur tools — har wall ke liye."
+              hi="पेंट, टेक्सचर और टूल्स — हर दीवार के लिए।"
             />
           </h1>
 
           <p className="mt-4 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-[1.05rem]">
             <Localized
               en="Madrasi dana wall textures, Pidicryl binders, CMC, chamki and stainless steel trowels — at listed rates, with a GST invoice on every confirmed order."
-              hi="Madrasi dana wall textures, Pidicryl binders, CMC, chamki aur stainless steel trowels — listed rate par, har confirm order ke saath GST invoice."
+              hi="मदरासी दाना वॉल टेक्सचर, पिडिक्रिल बाइंडर, सीएमसी, चमकी और स्टेनलेस स्टील गुरमाले — लिस्टेड रेट पर, हर कन्फ़र्म ऑर्डर के साथ जीएसटी इनवॉइस।"
             />
           </p>
 
@@ -89,7 +89,7 @@ export function Hero() {
                 "h-12 rounded-full px-7 text-base font-bold",
               )}
             >
-              <Localized en="Shop products" hi="Products dekhein" />
+              <Localized en="उत्पाद देखें" hi="उत्पाद देखें" />
             </Link>
             <TrackedLink
               event="click_whatsapp"
@@ -102,7 +102,7 @@ export function Hero() {
                 "h-12 rounded-full bg-card px-6 text-base font-bold",
               )}
             >
-              <Localized en="Order on WhatsApp" hi="WhatsApp par order" />
+              <Localized en="व्हाट्सएप पर ऑर्डर करें" hi="व्हाट्सएप पर ऑर्डर" />
             </TrackedLink>
             <TrackedLink
               event="click_call"
@@ -158,7 +158,7 @@ export function Hero() {
             />
             <Localized
               en="No payment on this website. Availability and the final GST invoice are confirmed by the team on call or WhatsApp."
-              hi="Is website par payment nahi. Availability aur final GST invoice team call ya WhatsApp par confirm karegi."
+              hi="इस वेबसाइट पर payment नहीं। उपलब्धता और फ़ाइनल जीएसटी इनवॉइस टीम call या व्हाट्सएप पर कन्फ़र्म करेगी।"
             />
           </p>
 

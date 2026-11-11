@@ -20,7 +20,7 @@ export function Localized({
       <span lang="en" className="lang-en">
         {en}
       </span>
-      <span lang="hi-Latn" className="lang-hi">
+      <span lang="hi" className="lang-hi">
         {hi}
       </span>
     </Tag>

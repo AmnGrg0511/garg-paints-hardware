@@ -19,20 +19,20 @@ export function SiteFooter() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             <Localized
               en="Wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Supplying contractors, painters, dealers and builders since 2017."
-              hi="Ballabgarh, Faridabad mein paint additives, binders, wall textures aur plastering tools ka wholesaler aur retailer. 2017 se contractors, painters, dealers aur builders ko supply."
+              hi="बल्लभगढ़, फ़रीदाबाद में paint additives, binders, wall textures और plastering tools का wholesaler और retailer। 2017 से contractors, painters, dealers और builders को supply।"
             />
           </p>
           <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
             <Localized
               en="Prices shown are listed product rates. Availability and the final GST invoice are confirmed on call or WhatsApp. No GST rate is stated on this site."
-              hi="Yahan dikhaye rate listed product rates hain. Availability aur final GST invoice call ya WhatsApp par confirm hota hai. Is site par GST rate nahi bataya gaya."
+              hi="यहाँ दिखे रेट listed product rates हैं। उपलब्धता और फ़ाइनल जीएसटी इनवॉइस call या व्हाट्सएप पर कन्फ़र्म होता है। इस site पर जीएसटी रेट नहीं बताया गया।"
             />
           </p>
         </div>
 
         <nav aria-label="Footer">
           <h2 className="eyebrow">
-            <Localized en="Explore" hi="Dekhein" />
+            <Localized en="Explore" hi="देखें" />
           </h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             {navigation.map((item) => (
@@ -50,7 +50,7 @@ export function SiteFooter() {
                 href="/checkout"
                 className="inline-flex min-h-8 items-center text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Localized en="Review order" hi="Order review" />
+                <Localized en="Review order" hi="ऑर्डर की समीक्षा" />
               </Link>
             </li>
           </ul>
@@ -58,26 +58,26 @@ export function SiteFooter() {
 
         <div>
           <h2 className="eyebrow">
-            <Localized en="Verification" hi="Verification" />
+            <Localized en="प्रमाणन" hi="प्रमाणन" />
           </h2>
           <dl className="mt-4 space-y-3 text-sm">
             <div>
               <dt className="text-xs text-muted-foreground">
-                <Localized en="Established" hi="Shuruaat" />
+                <Localized en="Established" hi="शुरुआत" />
               </dt>
               <dd className="font-medium">{business.established}</dd>
             </div>
             {business.legalName && (
               <div>
                 <dt className="text-xs text-muted-foreground">
-                  <Localized en="Legal name" hi="Legal naam" />
+                  <Localized en="Legal name" hi="कानूनी नाम" />
                 </dt>
                 <dd className="font-medium">{business.legalName}</dd>
               </div>
             )}
             <div>
               <dt className="text-xs text-muted-foreground">
-                <Localized en="Hours" hi="Samay" />
+                <Localized en="Hours" hi="समय" />
               </dt>
               <dd className="font-medium">{business.hours.label}</dd>
             </div>
@@ -86,7 +86,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className="eyebrow">
-            <Localized en="Contact" hi="Sampark" />
+            <Localized en="Contact" hi="संपर्क" />
           </h2>
           <ul className="mt-4 space-y-3 text-sm">
             <li>
@@ -137,7 +137,7 @@ export function SiteFooter() {
                   <span className="mt-1 block text-xs">
                     <Localized
                       en="Street address and map are being confirmed. Call or WhatsApp for directions."
-                      hi="Street address aur map confirm ho raha hai. Directions ke liye call ya WhatsApp karein."
+                      hi="सड़क का पता और map कन्फ़र्म हो रहा है। रास्ता जानने के लिए call या व्हाट्सएप करें।"
                     />
                   </span>
                 )}
@@ -151,12 +151,12 @@ export function SiteFooter() {
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {COPYRIGHT_YEAR} {business.name}.{" "}
-            <Localized en="All rights reserved." hi="All rights reserved." />
+            <Localized en="सर्वाधिकार सुरक्षित।" hi="सर्वाधिकार सुरक्षित।" />
           </p>
           <p>
             <Localized
               en="Order enquiries 24x7 on call and WhatsApp."
-              hi="Call aur WhatsApp par 24x7 order enquiry."
+              hi="Call aur व्हाट्सएप पर 24x7 ऑर्डर enquiry."
             />
           </p>
         </div>

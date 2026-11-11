@@ -87,13 +87,13 @@ export default function ContactPage() {
           <h1 className="display-lg mt-2">
             <Localized
               en="Talk to the shop, not a call centre."
-              hi="Dukaan se baat karein, call centre se nahi."
+              hi="दुकान से बात करें, call centre से नहीं।"
             />
           </h1>
           <p className="mt-4 text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
             <Localized
               en="Order enquiries are accepted 24x7 on call and WhatsApp. For a price, a pack size or directions, use the channel that suits you — the team confirms availability and the final GST invoice directly."
-              hi="Call aur WhatsApp par 24x7 order enquiry. Rate, pack size ya directions ke liye jo channel theek lage use karein — team availability aur final GST invoice seedha confirm karegi."
+              hi="call और व्हाट्सएप पर 24x7 ऑर्डर संपर्क। रेट, pack size या रास्ता जानने के लिए जो तरीका सही लगे वह चुनें — टीम उपलब्धता और फ़ाइनल जीएसटी इनवॉइस सीधे कन्फ़र्म करेगी।"
             />
           </p>
         </header>
@@ -109,7 +109,7 @@ export default function ContactPage() {
               <PhoneIcon className="size-5" aria-hidden />
             </span>
             <span className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-              <Localized en="Call now" hi="Abhi call karein" />
+              <Localized en="Call now" hi="अभी call करें" />
             </span>
             <span className="mt-1 font-display text-2xl">
               {business.phoneDisplay}
@@ -117,7 +117,7 @@ export default function ContactPage() {
             <span className="mt-2 text-sm text-muted-foreground">
               <Localized
                 en="Order enquiries, 24x7"
-                hi="Order enquiry, 24x7"
+                hi="ऑर्डर संपर्क, 24x7"
               />
             </span>
           </TrackedLink>
@@ -137,12 +137,12 @@ export default function ContactPage() {
               <Localized en="WhatsApp" hi="WhatsApp" />
             </span>
             <span className="mt-1 font-display text-2xl">
-              <Localized en="Send an enquiry" hi="Enquiry bhejein" />
+              <Localized en="पूछताछ भेजें" hi="पूछताछ भेजें" />
             </span>
             <span className="mt-2 text-sm text-muted-foreground">
               <Localized
                 en="Pre-filled message, no forms"
-                hi="Pre-filled message, koi form nahi"
+                hi="मैसेज पहले से तैयार, कोई फ़ॉर्म नहीं"
               />
             </span>
           </TrackedLink>
@@ -162,16 +162,16 @@ export default function ContactPage() {
               IndiaMART
             </span>
             <span className="mt-1 font-display text-2xl">
-              <Localized en="Marketplace listing" hi="Marketplace listing" />
+              <Localized en="मार्केटप्लेस listing" hi="मार्केटप्लेस listing" />
             </span>
             <span className="mt-2 text-sm text-muted-foreground">
               <Localized
                 en="Buy through the IndiaMART seller page"
-                hi="IndiaMART seller page se khareedein"
+                hi="इंडियामार्ट सेलर page से ख़रीदें"
               />
             </span>
             <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary">
-              <Localized en="Open listing" hi="Listing kholein" />
+              <Localized en="Open listing" hi="listing खोलें" />
               <ArrowRightIcon className="size-3.5" aria-hidden />
             </span>
           </TrackedLink>
@@ -183,13 +183,13 @@ export default function ContactPage() {
           <h2 id="callback-heading" className="font-display text-2xl sm:text-3xl">
             <Localized
               en="Leave your number — we call back."
-              hi="Number chhod dein — hum call karenge."
+              hi="नंबर छोड़ें — हम call करेंगे।"
             />
           </h2>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
             <Localized
               en="One field, no OTP. Your number goes straight to the shop with a WhatsApp callback request ready to send."
-              hi="Sirf ek field, OTP nahi. Aapka number call-back request ke saath seedha dukaan tak jaata hai."
+              hi="सिर्फ़ एक field, OTP नहीं। आपका नंबर call-back request के साथ सीधे दुकान तक जाता है।"
             />
           </p>
           <CallBackForm source="contact" className="mt-5 max-w-md" />
@@ -197,7 +197,7 @@ export default function ContactPage() {
 
         <section aria-labelledby="location-heading">
           <h2 id="location-heading" className="font-display text-2xl sm:text-3xl">
-            <Localized en="Location & hours" hi="Location aur samay" />
+            <Localized en="Location & hours" hi="जगह और समय" />
           </h2>
 
           <dl className="mt-5 space-y-4 text-sm">
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   className="mt-0.5 size-4 shrink-0 text-primary"
                   aria-hidden
                 />
-                <Localized en="Address" hi="Pata" />
+                <Localized en="Address" hi="पता" />
               </dt>
               <dd className="mt-0.5 text-muted-foreground">
                 {hasFullAddress ? (
@@ -239,7 +239,7 @@ export default function ContactPage() {
                   className="mt-0.5 size-4 shrink-0 text-primary"
                   aria-hidden
                 />
-                <Localized en="Hours" hi="Samay" />
+                <Localized en="Hours" hi="समय" />
               </dt>
               <dd className="mt-0.5 text-muted-foreground">
                 {business.hours.label}. Order enquiries accepted on call and
@@ -312,7 +312,7 @@ export default function ContactPage() {
                 "h-11 rounded-full px-5 text-sm font-semibold",
               )}
             >
-              <Localized en="Browse products" hi="Products dekhein" />
+              <Localized en="Browse products" hi="उत्पाद देखें" />
             </Link>
             <TrackedLink
               event="click_whatsapp"
@@ -322,7 +322,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center rounded-full border border-border bg-card/60 px-5 text-sm font-semibold"
             >
-              <Localized en="Ask for directions" hi="Directions poochein" />
+              <Localized en="Ask for directions" hi="रास्ता पूछें" />
             </TrackedLink>
           </div>
         </section>
@@ -335,7 +335,7 @@ export default function ContactPage() {
           >
             <Localized
               en="Contact questions, answered."
-              hi="Contact sawaal, jawaab ke saath."
+              hi="संपर्क के सवाल, जवाब के साथ।"
             />
           </h2>
           <FaqAccordion faqs={contactFaqs} className="mt-5" />

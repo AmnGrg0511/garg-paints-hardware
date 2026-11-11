@@ -18,27 +18,27 @@ const categoryMeta: Record<
     blurb:
       "Madrasi dana granules in four shades for facades and plaster finishes.",
     tone: "swatch-terracotta",
-    image: "/products/madrasi-dana.webp?v=7",
+    image: "/products/madrasi-dana.webp?v=8",
   },
   "Acrylic Binders & Emulsions": {
     blurb: "Pidicryl 126 M binder for emulsions, distempers and textures.",
     tone: "swatch-cream",
-    image: "/products/pidicryl-126-m.webp?v=7",
+    image: "/products/pidicryl-126-m.webp?v=8",
   },
   "Plastering Tools & Hardware": {
     blurb: "Stainless steel gurmala for spreading, flattening and scraping.",
     tone: "swatch-peach",
-    image: "/products/plastering-trowel.webp?v=7",
+    image: "/products/plastering-trowel.webp?v=8",
   },
   "Industrial Binders & Thickeners": {
     blurb: "White and yellow CMC powder for putty and viscosity control.",
     tone: "swatch-slate",
-    image: "/products/cmc-powder.webp?v=7",
+    image: "/products/cmc-powder.webp?v=8",
   },
   "Decorative Paint Additives": {
     blurb: "Chamki glitter flakes for textured and designer finishes.",
     tone: "swatch-gold",
-    image: "/products/chamki-powder.webp?v=7",
+    image: "/products/chamki-powder.webp?v=8",
   },
 };
 

@@ -147,7 +147,7 @@ export function SiteHeader() {
             <SheetDescription>
               <Localized
                 en="Ballabgarh, Faridabad · Open 24x7"
-                hi="Ballabgarh, Faridabad · 24x7 khula"
+                hi="Ballabgarh, Faridabad · 24x7 खुला"
               />
             </SheetDescription>
           </SheetHeader>
@@ -202,14 +202,14 @@ export function SiteHeader() {
               <span>
                 {business.phoneDisplay}
                 <span className="block text-xs font-normal text-muted-foreground">
-                  <Localized en="Call for orders" hi="Order ke liye call" />
+                  <Localized en="ऑर्डर के लिए call" hi="ऑर्डर के लिए call" />
                 </span>
               </span>
             </TrackedLink>
             <p className="text-xs leading-relaxed text-muted-foreground">
               <Localized
                 en="GST invoice on every confirmed order. No payment is taken on this website."
-                hi="Confirm order par GST invoice. Is website par payment nahi liya jaata."
+                hi="Confirm order par GST invoice. इस वेबसाइट पर payment नहीं लिया जाता."
               />
             </p>
             <button
@@ -218,7 +218,7 @@ export function SiteHeader() {
               className="tap-target inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground"
             >
               <XIcon className="size-4" aria-hidden />
-              <Localized en="Close" hi="Band karein" />
+              <Localized en="Close" hi="बंद करें" />
             </button>
           </div>
         </SheetContent>

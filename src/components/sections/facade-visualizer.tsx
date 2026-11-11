@@ -7,11 +7,12 @@ import {
   ChamkiFinishPicker,
   SparkleFlake,
   chamkiColourFor,
+  type ChamkiMode,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
 
-const CYCLE_MS = 3000;
+const CYCLE_MS = 4200;
 
 const SPARKLE_SPOTS: Array<[number, number, number, number]> = [
   [74, 142, 4, 0],
@@ -88,8 +89,8 @@ export function FacadeVisualizer({ className }: { className?: string }) {
     return () => window.clearInterval(timer);
   }, [hold, paused, inView]);
 
-  const [chamkiHold, setChamkiHold] = useState<"gold" | "silver" | null>(null);
-  const chamkiColour = chamkiHold ?? chamkiColourFor(active);
+  const [chamkiPin, setChamkiPin] = useState<ChamkiMode>(null);
+  const chamkiColour = chamkiColourFor(active, chamkiPin);
 
   // Derived palette: the whole house responds to the selected shade.
   const wallMain = lighten(shade.hex, 0.88);
@@ -156,16 +157,16 @@ export function FacadeVisualizer({ className }: { className?: string }) {
           </g>
 
           {/* Building mass: main block + upper recess */}
-          <rect x="34" y="96" width="412" height="200" fill={wallMain} />
+          <rect x="34" y="96" width="412" height="200" fill={wallMain} style={{ transition: "fill 700ms ease" }} />
           <rect x="34" y="96" width="412" height="200" fill="none" stroke="#0F172A" strokeOpacity="0.06" strokeWidth="2" />
 
           {/* Roof slab */}
-          <rect x="22" y="80" width="436" height="20" rx="4" fill={trim} />
+          <rect x="22" y="80" width="436" height="20" rx="4" fill={trim} style={{ transition: "fill 700ms ease" }} />
           <rect x="22" y="80" width="436" height="5" rx="2.5" fill={darken(shade.hex, 0.68)} />
 
           {/* Feature render wall — the repaintable dana surface */}
           <g>
-            <rect x="52" y="112" width="148" height="184" fill={shade.hex} style={{ transition: "fill 420ms ease" }} />
+            <rect x="52" y="112" width="148" height="184" fill={shade.hex} style={{ transition: "fill 700ms ease" }} />
             <rect x="52" y="112" width="148" height="184" fill="url(#fc2-granules)" opacity="0.55" />
             <rect x="52" y="112" width="148" height="184" fill="url(#fc2-granules2)" opacity="0.5" />
             <g opacity="0.28">
@@ -222,21 +223,21 @@ export function FacadeVisualizer({ className }: { className?: string }) {
 
           {/* Entrance: recessed portal + door */}
           <g>
-            <rect x="356" y="200" width="90" height="96" fill={wallUpper} />
-            <rect x="368" y="210" width="66" height="86" rx="3" fill={door} />
+            <rect x="356" y="200" width="90" height="96" fill={wallUpper} style={{ transition: "fill 700ms ease" }} />
+            <rect x="368" y="210" width="66" height="86" rx="3" fill={door} style={{ transition: "fill 700ms ease" }} />
             <rect x="368" y="210" width="66" height="86" rx="3" fill="none" stroke={darken(shade.hex, 0.3)} strokeWidth="2" />
             <rect x="374" y="218" width="54" height="30" rx="2" fill="url(#fc2-glass)" opacity="0.9" />
             <circle cx="426" cy="262" r="3.2" fill="#E3C98A" />
             {/* House number, clear of the door edge */}
-            <rect x="356" y="222" width="9" height="34" fill={rail} />
+            <rect x="356" y="222" width="9" height="34" fill={rail} style={{ transition: "fill 700ms ease" }} />
           </g>
 
           {/* Canopy over the entrance */}
-          <rect x="348" y="192" width="106" height="10" rx="3" fill={rail} />
+          <rect x="348" y="192" width="106" height="10" rx="3" fill={rail} style={{ transition: "fill 700ms ease" }} />
 
           {/* Planter on the path, clear of the entrance */}
           <g>
-            <rect x="136" y="270" width="40" height="26" rx="4" fill={planter} />
+            <rect x="136" y="270" width="40" height="26" rx="4" fill={planter} style={{ transition: "fill 700ms ease" }} />
             <path d="M156 268c-2-14 4-24 2-31 6 7 8 19 5 31Z" fill="#3E7C4F" />
             <path d="M156 268c-9-10-10-21-15-26 10 3 17 15 15 26Z" fill="#4E9260" />
             <path d="M156 268c8-9 10-19 15-23-9 1-15 13-15 23Z" fill="#356B44" />
@@ -245,7 +246,7 @@ export function FacadeVisualizer({ className }: { className?: string }) {
           {/* Active shade pill — sized generously so text never leaves the box */}
           <g>
             <rect x="34" y="40" width="168" height="30" rx="15" fill="#0F172A" fillOpacity="0.74" />
-            <circle cx="54" cy="55" r="8" fill={shade.hex} style={{ transition: "fill 420ms ease" }} stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="1.5" />
+            <circle cx="54" cy="55" r="8" fill={shade.hex} style={{ transition: "fill 700ms ease" }} stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="1.5" />
             <text x="70" y="59" fontFamily="Inter, DejaVu Sans, Arial, sans-serif" fontSize="10.5" fontWeight="700" letterSpacing="1.2" fill="#FFFFFF">
               {shade.name.toUpperCase()} · RENDER
             </text>
@@ -260,7 +261,7 @@ export function FacadeVisualizer({ className }: { className?: string }) {
         <div className="border-t border-border/70 bg-card p-4 sm:p-5">
           <fieldset>
             <legend className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-              Tap a shade to render the facade
+              फ़ैसाडे पर रंग भरने के लिए शेड चुनें
             </legend>
             <div className="mt-3 flex flex-wrap gap-2.5">
               {WALL_SHADES.map((option, i) => (
@@ -299,20 +300,14 @@ export function FacadeVisualizer({ className }: { className?: string }) {
           <ChamkiFinishPicker
             colour={chamkiColour}
             onPick={(colour) => {
-              setChamkiHold(colour);
-              setHold(true);
-              if (holdTimer.current) window.clearTimeout(holdTimer.current);
-              holdTimer.current = window.setTimeout(() => {
-                setHold(false);
-                setChamkiHold(null);
-              }, 9000);
+              setChamkiPin(chamkiPin === colour ? null : colour);
             }}
           />
           <OrderKitButton className="mt-4" chamkiColour={chamkiColour} />
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            Shades cycle automatically; tap one to lock it. “Order this
-            setup” adds the picked shade bag plus a starter binder, CMC,
-            chamki and gurmala — every quantity stays adjustable in your
+            शेड अपने आप बदलते रहते हैं; पक्का करने के लिए किसी एक पर tap करें। “इस सेटअप को
+            ऑर्डर करें” आपके चुने शेड का बैग और स्टार्टर बाइंडर, सीएमसी,
+            चमकी और गुरमाला जोड़ता है — हर मात्रा ऑर्डर लिस्ट में बदल सकती है।
             order list.
           </p>
         </div>

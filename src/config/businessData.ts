@@ -183,7 +183,7 @@ export const products: readonly Product[] = [
     summary:
       "Pidicryl 126 M is a fine-particle styrene acrylic copolymer emulsion from Pidilite, used as a binder in interior and exterior emulsions, distempers and texture finishes. Garg Paints & Hardware supplies it by the kilogram in Ballabgarh, Faridabad, with a GST invoice and 24x7 call or WhatsApp ordering.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
-    image: "/products/pidicryl-126-m.webp?v=7",
+    image: "/products/pidicryl-126-m.webp?v=8",
     imageAlt:
       "White industrial drum of Pidicryl 126 M styrene acrylic emulsion with a blue product label",
     tone: "cream",
@@ -245,32 +245,32 @@ export const products: readonly Product[] = [
       {
         label: "White Madrasi Dana",
         price: "₹ 150/Bag",
-        image: "/products/madrasi-dana-white.webp?v=7",
+        image: "/products/madrasi-dana-white.webp?v=8",
         tint: "#F2ECDD",
       },
       {
         label: "Red Madrasi Dana",
         price: "₹ 200/Bag",
-        image: "/products/madrasi-dana-red.webp?v=7",
+        image: "/products/madrasi-dana-red.webp?v=8",
         tint: "#A84328",
       },
       {
         label: "Yellow Madrasi Dana",
         price: "₹ 280/Bag",
-        image: "/products/madrasi-dana-yellow.webp?v=7",
+        image: "/products/madrasi-dana-yellow.webp?v=8",
         tint: "#F0A868",
       },
       // TODO owner: confirm rates for the green and black shades.
       {
         label: "Green Madrasi Dana",
         price: "Contact for Price",
-        image: "/products/madrasi-dana-green.webp?v=7",
+        image: "/products/madrasi-dana-green.webp?v=8",
         tint: "#3D6B41",
       },
       {
         label: "Black Madrasi Dana",
         price: "Contact for Price",
-        image: "/products/madrasi-dana-black.webp?v=7",
+        image: "/products/madrasi-dana-black.webp?v=8",
         tint: "#2B2B2E",
       },
     ],
@@ -281,7 +281,7 @@ export const products: readonly Product[] = [
     summary:
       "Madrasi dana is a decorative granule wall texture for exterior facades and plaster-finish wall texturing. Garg Paints & Hardware stocks five shades — white, red, yellow, green and black — in Ballabgarh, Faridabad. White, red and yellow bags carry listed prices; green and black are quoted on request. Order by call or WhatsApp, with a GST invoice on confirmation.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
-    image: "/products/madrasi-dana.webp?v=7",
+    image: "/products/madrasi-dana.webp?v=8",
     imageAlt:
       "Woven sacks of madrasi dana wall texture in white, red, yellow, green and black with spilled granules",
     tone: "terracotta",
@@ -346,7 +346,7 @@ export const products: readonly Product[] = [
     summary:
       "The Gurmala is a heavy-duty stainless steel plastering trowel for texture application, cement flattening and wall scraping. Garg Paints & Hardware supplies it per piece in Ballabgarh, Faridabad, at a listed price of ₹75. Call or WhatsApp to order; a GST invoice is shared on confirmation. Dealer and contractor pricing is available on request.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
-    image: "/products/plastering-trowel.webp?v=7",
+    image: "/products/plastering-trowel.webp?v=8",
     imageAlt:
       "Stainless steel gurmala plastering trowel with a turned wooden handle and a texture dollop",
     tone: "peach",
@@ -402,7 +402,7 @@ export const products: readonly Product[] = [
     variants: [
       {
         label: "White CMC Powder",
-        image: "/products/cmc-powder-white.webp?v=7",
+        image: "/products/cmc-powder-white.webp?v=8",
         tint: "#E8EDF4",
         description:
           "High-purity water-soluble thickener for wall putty, interior distempers and smooth texture formulation.",
@@ -410,7 +410,7 @@ export const products: readonly Product[] = [
       },
       {
         label: "Yellow CMC Powder",
-        image: "/products/cmc-powder-yellow.webp?v=7",
+        image: "/products/cmc-powder-yellow.webp?v=8",
         tint: "#F2C230",
         description:
           "Technical industrial grade binder for viscosity control and water retention in construction applications.",
@@ -424,7 +424,7 @@ export const products: readonly Product[] = [
     summary:
       "CMC (carboxymethyl cellulose) is a water-soluble thickening and film-forming agent used in wall putty, distempers and architectural coatings. Garg Paints & Hardware offers white CMC for putty and smooth textures, and yellow CMC for technical viscosity control, in Ballabgarh, Faridabad. Both variants are bulk-quote items: share your quantity on WhatsApp.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
-    image: "/products/cmc-powder.webp?v=7",
+    image: "/products/cmc-powder.webp?v=8",
     imageAlt:
       "Multiwall paper sack of CMC powder with white and yellow grade chips",
     tone: "slate",
@@ -487,13 +487,13 @@ export const products: readonly Product[] = [
       {
         label: "Golden Chamki Powder",
         price: "Contact for Pack Sizes",
-        image: "/products/chamki-powder-gold.webp?v=7",
+        image: "/products/chamki-powder-gold.webp?v=8",
         tint: "#E9B84B",
       },
       {
         label: "Silver Chamki Powder",
         price: "Contact for Pack Sizes",
-        image: "/products/chamki-powder-silver.webp?v=7",
+        image: "/products/chamki-powder-silver.webp?v=8",
         tint: "#9AA6B8",
       },
     ],
@@ -504,7 +504,7 @@ export const products: readonly Product[] = [
     summary:
       "Chamki powder is a glitter and metallic-flake additive for wall textures, roof coatings and designer emulsions, in golden and silver finishes. It adds a sparkle when mixed into the coating. Garg Paints & Hardware supplies both finishes in Ballabgarh, Faridabad, with pack sizes quoted on request. Send your required quantity on WhatsApp for current pack options and pricing.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
-    image: "/products/chamki-powder.webp?v=7",
+    image: "/products/chamki-powder.webp?v=8",
     imageAlt:
       "Golden and silver chamki glitter pouches with metallic flakes spilling out",
     tone: "gold",

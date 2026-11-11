@@ -88,20 +88,20 @@ export default function HomePage() {
           <h2 id="faq-heading" className="display-lg mt-2">
             <Localized
               en="Direct answers, before you call."
-              hi="Call se pehle seedhe jawaab."
+              hi="call से पहले सीधे जवाब।"
             />
           </h2>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
             <Localized
               en="Ordering, GST invoices and quote-only items — the details contractors ask about most."
-              hi="Ordering, GST invoice aur quote-only items — contractors ke sabse common sawaal."
+              hi="ऑर्डरिंग, जीएसटी इनवॉइस और रेट-पूछने वाले items — ठेकेदारों के आम सवाल।"
             />
           </p>
           <Link
             href="/faq"
             className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary"
           >
-            <Localized en="All questions" hi="Saare sawaal" />
+            <Localized en="All questions" hi="सभी सवाल" />
             <ArrowRightIcon className="size-4" aria-hidden />
           </Link>
         </div>

@@ -14,7 +14,7 @@ export const trustPoints = [
   {
     key: "indiamart",
     label: "IndiaMART seller",
-    detail: "Marketplace listing",
+    detail: "मार्केटप्लेस listing",
   },
   {
     key: "hours",
@@ -67,10 +67,10 @@ export const globalFaqs = [
 ] as const;
 
 export const navigation = [
-  { href: "/products", label: "Products", hiLabel: "Products" },
-  { href: "/about", label: "About", hiLabel: "Hamare baare mein" },
-  { href: "/faq", label: "FAQ", hiLabel: "Sawaal-jawaab" },
-  { href: "/contact", label: "Contact", hiLabel: "Sampark" },
+  { href: "/products", label: "Products", hiLabel: "उत्पाद" },
+  { href: "/about", label: "About", hiLabel: "हमारे बारे में" },
+  { href: "/faq", label: "FAQ", hiLabel: "सवाल-जवाब" },
+  { href: "/contact", label: "Contact", hiLabel: "संपर्क" },
 ] as const;
 
 export const orderSteps = [

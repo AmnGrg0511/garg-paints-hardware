@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
     localPatterns: [
       {
         pathname: "/products/**",
-        search: "?v=7",
+        search: "?v=8",
       },
       {
         pathname: "/art/**",

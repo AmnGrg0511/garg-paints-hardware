@@ -66,7 +66,7 @@ function lineFor(
  */
 export function buildStarterKitLines(
   shadeIndex: number,
-  chamkiColour: "gold" | "silver",
+  chamkiColour: "gold" | "silver" | null,
 ): { lines: KitLine[]; skipped: string[] } {
   const lines: KitLine[] = [];
   const skipped: string[] = [];
@@ -106,6 +106,7 @@ export function buildStarterKitLines(
     const label =
       chamki.kind === "variant"
         ? chamki.variants.find((variant) =>
+            chamkiColour === null ||
             variant.label.toLowerCase().startsWith(chamkiColour),
           )?.label ?? null
         : null;

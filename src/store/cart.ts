@@ -25,7 +25,7 @@ type CartState = {
   hydrated: boolean;
   isOpen: boolean;
   addItem: (item: NewCartLine) => void;
-  setQty: (key: string, qty: number) => void;
+  setमात्रा: (key: string, qty: number) => void;
   increment: (key: string) => void;
   decrement: (key: string) => void;
   remove: (key: string) => void;
@@ -66,7 +66,7 @@ export const useCartStore = create<CartState>()(
             lines: [...state.lines, { ...item, key, qty }],
           };
         }),
-      setQty: (key, qty) =>
+      setमात्रा: (key, qty) =>
         set((state) => ({
           lines: state.lines
             .map((line) =>

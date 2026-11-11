@@ -10,11 +10,12 @@ import {
   ChamkiFinishPicker,
   SparkleFlake,
   chamkiColourFor,
+  type ChamkiMode,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
 
-const CYCLE_MS = 3000;
+const CYCLE_MS = 4200;
 
 /** Glitter spots across the room wall (480x300 viewBox space). */
 const HERO_SPARKLE_SPOTS: Array<[number, number, number, number]> = [
@@ -72,8 +73,8 @@ export function ColourVisualizer({ className }: { className?: string }) {
   const [paused, setPaused] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>();
 
-  const [chamkiHold, setChamkiHold] = useState<"gold" | "silver" | null>(null);
-  const chamkiColour = chamkiHold ?? chamkiColourFor(active);
+  const [chamkiPin, setChamkiPin] = useState<ChamkiMode>(null);
+  const chamkiColour = chamkiColourFor(active, chamkiPin);
 
   const shade = WALL_SHADES[active] ?? WALL_SHADES[0];
 
@@ -125,7 +126,7 @@ export function ColourVisualizer({ className }: { className?: string }) {
             width="480"
             height="300"
             fill={shade.hex}
-            style={{ transition: "fill 420ms ease" }}
+            style={{ transition: "fill 700ms ease" }}
           />
           {/* Granule texture on the wall: two irregular passes + impurities */}
           <rect x="0" y="0" width="480" height="300" fill="url(#gph-granules)" opacity="0.55" />
@@ -149,7 +150,7 @@ export function ColourVisualizer({ className }: { className?: string }) {
                 height="300"
                 fill={chamkiColour === "gold" ? "#F2C14E" : "#C9D6E4"}
                 opacity="0.07"
-                style={{ transition: "fill 420ms ease" }}
+                style={{ transition: "fill 700ms ease" }}
               />
               {HERO_GLITTER_DOTS.map(([cx, cy, r, delay], i) => (
                 <circle
@@ -178,12 +179,12 @@ export function ColourVisualizer({ className }: { className?: string }) {
           {/* Window with light */}
           <rect x="316" y="46" width="112" height="140" rx="6" fill="#FFFFFF" opacity="0.85" />
           <rect x="316" y="46" width="112" height="140" rx="6" fill="url(#gph-sky)" opacity="0.9" />
-          <rect x="368" y="46" width="6" height="140" fill={shade.hex} style={{ transition: "fill 420ms ease" }} />
-          <rect x="316" y="112" width="112" height="6" fill={shade.hex} style={{ transition: "fill 420ms ease" }} />
+          <rect x="368" y="46" width="6" height="140" fill={shade.hex} style={{ transition: "fill 700ms ease" }} />
+          <rect x="316" y="112" width="112" height="6" fill={shade.hex} style={{ transition: "fill 700ms ease" }} />
           <rect x="316" y="46" width="112" height="140" rx="6" fill="none" stroke="#0F172A" strokeOpacity="0.18" strokeWidth="3" />
           {/* Frame on wall */}
           <rect x="86" y="78" width="92" height="70" rx="4" fill="#FFFFFF" opacity="0.92" />
-          <rect x="94" y="86" width="76" height="54" rx="3" fill={shade.hex} style={{ transition: "fill 420ms ease" }} opacity="0.35" />
+          <rect x="94" y="86" width="76" height="54" rx="3" fill={shade.hex} style={{ transition: "fill 700ms ease" }} opacity="0.35" />
           {/* Sideboard */}
           <rect x="60" y="212" width="200" height="74" rx="8" fill="#8A6B4F" />
           <rect x="60" y="212" width="200" height="10" rx="5" fill="#79593F" />
@@ -269,13 +270,8 @@ export function ColourVisualizer({ className }: { className?: string }) {
         <ChamkiFinishPicker
           colour={chamkiColour}
           onPick={(colour) => {
-            setChamkiHold(colour);
-            setHold(true);
-            if (holdTimer.current) window.clearTimeout(holdTimer.current);
-            holdTimer.current = window.setTimeout(() => {
-              setHold(false);
-              setChamkiHold(null);
-            }, 9000);
+            // Tap the active chip again to resume the shared cycle.
+            setChamkiPin(chamkiPin === colour ? null : colour);
           }}
         />
         <OrderKitButton className="mt-4" chamkiColour={chamkiColour} />
@@ -283,7 +279,7 @@ export function ColourVisualizer({ className }: { className?: string }) {
           href="/products/madrasi-dana-wall-texture"
           className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"
         >
-          Shop Madrasi dana textures
+          मदरासी दाना टेक्सचर देखें
           <ArrowRightIcon className="size-4" aria-hidden />
         </Link>
         </div>

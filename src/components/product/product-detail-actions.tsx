@@ -30,7 +30,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
     setSelectedLabel(label);
     selectVariant(product.id, label);
   };
-  const [qty, setQty] = useState(1);
+  const [qty, setमात्रा] = useState(1);
   const addItem = useCartStore((state) => state.addItem);
   const quantityConfig = getQuantityConfig(product.id);
   const addButtonRef = useRef<HTMLButtonElement>(null);
@@ -95,7 +95,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
       {product.kind === "variant" && (
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-            <Localized en="Choose a variant" hi="Variant chunein" />
+            <Localized en="Choose a variant" hi="वेरिएंट चुनें" />
           </p>
           <div
             className="mt-2 grid gap-2 sm:grid-cols-2"
@@ -161,7 +161,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
 
           <QuantityStepper
             value={qty}
-            onChange={setQty}
+            onChange={setमात्रा}
             steps={quantityConfig.steps}
             max={quantityConfig.max}
             label={`Quantity in ${quantityConfig.unit.toLowerCase()}${quantityConfig.unit === "Kg" ? "s" : "s"}`}
@@ -201,7 +201,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
               <p className="text-center text-[0.7rem] leading-relaxed text-muted-foreground">
                 <Localized
                   en="This item has no published price. The team replies with pack sizes and a bulk rate on WhatsApp."
-                  hi="Is item ka price published nahi hai. Team WhatsApp par pack size aur bulk rate bhejegi."
+                  hi="इस item का रेट सूचित नहीं है। टीम व्हाट्सएप पर pack size और बल्क रेट भेजेगी।"
                 />
               </p>
             </>
@@ -241,7 +241,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
         <p className="mt-3 text-center text-[0.68rem] leading-relaxed text-muted-foreground">
           <Localized
             en="Estimated total shown in the order list. Final GST invoice is shared on confirmation."
-            hi="Order list mein estimated total dikhega. Final GST invoice confirm hone par bheja jayega."
+            hi="ऑर्डर लिस्ट में अनुमानित total दिखेगा। फ़ाइनल जीएसटी इनवॉइस कन्फ़र्म होने पर भेजा जाएगा।"
           />
         </p>
       </div>

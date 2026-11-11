@@ -12,13 +12,13 @@ export default function NotFound() {
       <h1 className="display-lg mt-2 max-w-lg">
         <Localized
           en="This shelf is empty."
-          hi="Yeh shelf khaali hai."
+          hi="यह shelf खाली है।"
         />
       </h1>
       <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
         <Localized
           en="The page may have moved. The full catalogue is one tap away, or call the shop and we will point you to the right product."
-          hi="Page shayad move ho gaya hai. Poora catalogue ek tap door hai, ya dukaan par call karein."
+          hi="यह page शायद हट गया है। पूरा कैटलॉग एक tap दूर है, या दुकान पर call करें।"
         />
       </p>
       <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
@@ -26,14 +26,14 @@ export default function NotFound() {
           href="/products"
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground"
         >
-          <Localized en="Browse products" hi="Products dekhein" />
+          <Localized en="Browse products" hi="उत्पाद देखें" />
           <ArrowRightIcon className="size-4" aria-hidden />
         </Link>
         <Link
           href="/"
           className="inline-flex h-12 items-center justify-center rounded-full border border-border bg-card/60 px-6 text-sm font-semibold"
         >
-          <Localized en="Back home" hi="Home par jaayein" />
+          <Localized en="Back home" hi="होम पर जाएँ" />
         </Link>
       </div>
     </div>

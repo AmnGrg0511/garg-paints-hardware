@@ -75,15 +75,41 @@ Cloudflare Pages(OpenNext)/self-hosted `next start` all work.
 - `NEXT_PUBLIC_SITE_URL` — set to the final production domain (canonical,
   OG, sitemap and llms.txt all read it). Already set on Vercel.
 
-#### Getting found on Google
+#### Getting found on Google (the important part)
 
-- Submit the site to **Google Search Console**: verify the domain, then
-  submit `https://<your-domain>/sitemap.xml`. The site ships complete
-  structured data (HardwareStore, Product/ProductGroup, FAQPage), an
-  AI-crawler-friendly robots.txt and llms.txt, so indexing is ready.
-- Local pack ranking needs a **Google Business Profile** — create one with
-  the shop's phone number and (once confirmed) its street address. Add the
-  same NAP data to the site config so both stay consistent.
+The site already ships everything Google needs to index it: unique titles
+and descriptions per product, HardwareStore + Product/ProductGroup +
+FAQPage structured data, breadcrumbs, a sitemap, llms.txt and an
+AI-crawler-friendly robots.txt. What is missing is Google learning the site
+exists — that is an owner step, not a code step:
+
+1. **Verify the site in Google Search Console** (search.google.com/search-console).
+   Easiest: choose the "HTML tag" method, copy the
+   `google-site-verification=…` token, set it as
+   `NEXT_PUBLIC_GSC_VERIFICATION` on Vercel and redeploy — the tag renders
+   automatically.
+2. **Submit the sitemap**: Search Console → Sitemaps → enter `sitemap.xml`.
+3. **Request indexing** for the five product URLs (Search Console → URL
+   Inspection → paste each URL → Request indexing). This is the fastest way
+   to get product names searchable — new domains otherwise take days to
+   weeks to be crawled.
+4. **Create a Google Business Profile** with the shop's phone number (and
+   the street address once confirmed) — this is what wins local "near me"
+   searches in Faridabad.
+
+Note: search rankings take time after indexing; the plumbing above is the
+complete on-site portion.
+
+#### Hindi (Devanagari)
+
+The language toggle switches every UI string between English and proper
+हिन्दी (Devanagari) — rendered with the Noto Sans Devanagari font that
+loads on demand. Brand/product names (Pidicryl, Madrasi Dana, CMC, Chamki)
+stay in Latin script inside the Hindi copy, as they appear on the labels.
+
+#### Capturing numbers without WhatsApp
+
+`/api/lead` writes each lead to every channel configured:
 
 #### Capturing numbers without WhatsApp
 

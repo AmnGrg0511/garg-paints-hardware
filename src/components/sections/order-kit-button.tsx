@@ -21,8 +21,8 @@ export function OrderKitButton({
   chamkiColour = "gold",
 }: {
   className?: string;
-  /** The chamki finish currently shown by the visualizer. */
-  chamkiColour?: "gold" | "silver";
+  /** The chamki finish currently shown by the visualizer (null = Off). */
+  chamkiColour?: "gold" | "silver" | null;
 }) {
   const open = useCartStore((state) => state.open);
   const addItem = useCartStore((state) => state.addItem);

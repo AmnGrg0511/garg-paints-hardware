@@ -203,22 +203,22 @@ export default async function ProductPage({
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
-                  en="GST-registered seller"
-                  hi="GST-registered seller"
+                  en="जीएसटी-रजिस्टर्ड सेलर"
+                  hi="जीएसटी-रजिस्टर्ड सेलर"
                 />
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
                   en="Order 24x7 on WhatsApp"
-                  hi="WhatsApp par 24x7 order"
+                  hi="व्हाट्सएप पर 24x7 ऑर्डर"
                 />
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
                   en="No online payment"
-                  hi="Online payment nahi"
+                  hi="ऑनलाइन payment नहीं"
                 />
               </span>
             </div>
@@ -229,12 +229,12 @@ export default async function ProductPage({
       <div className="container-page grid gap-10 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
         <section aria-labelledby="specs-heading">
           <h2 id="specs-heading" className="font-display text-2xl sm:text-3xl">
-            <Localized en="Specifications" hi="Specifications" />
+            <Localized en="विशेषताएँ" hi="विशेषताएँ" />
           </h2>
           <div className="mt-4 overflow-hidden rounded-2xl border border-border/70">
             <table className="w-full border-collapse text-left text-sm">
               <caption className="sr-only">
-                Specifications for {product.name}
+                विशेषताएँ for {product.name}
               </caption>
               <tbody>
                 {[
@@ -277,7 +277,7 @@ export default async function ProductPage({
 
         <section aria-labelledby="buy-heading" className="space-y-4">
           <h2 id="buy-heading" className="font-display text-2xl sm:text-3xl">
-            <Localized en="How to buy" hi="Kaise khareedein" />
+            <Localized en="How to buy" hi="कैसे ख़रीदें" />
           </h2>
           <div className="surface-card rounded-2xl p-5">
             <ol className="space-y-4">
@@ -302,7 +302,7 @@ export default async function ProductPage({
               href="/checkout"
               className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary"
             >
-              <Localized en="Review your order list" hi="Order list review karein" />
+              <Localized en="Review your order list" hi="ऑर्डर लिस्ट देखें" />
               <ArrowRightIcon className="size-4" aria-hidden />
             </Link>
           </div>
@@ -310,13 +310,13 @@ export default async function ProductPage({
             <p className="font-semibold text-foreground">
               <Localized
                 en="Bulk or dealer pricing"
-                hi="Bulk ya dealer rate"
+                hi="बल्क या डीलर रेट"
               />
             </p>
             <p className="mt-1">
               <Localized
                 en="Share the project quantity for a contractor rate. The final GST invoice is confirmed directly by the business."
-                hi="Project quantity bhejein, contractor rate ke liye. Final GST invoice business seedha confirm karega."
+                hi="प्रोजेक्ट की मात्रा भेजें — contractor रेट के लिए। फ़ाइनल जीएसटी इनवॉइस सीधे business कन्फ़र्म करेगा।"
               />
             </p>
           </div>
@@ -343,14 +343,14 @@ export default async function ProductPage({
           <h2 id="use-heading" className="font-display text-2xl sm:text-3xl">
             <Localized
               en="Who uses it, and how"
-              hi="Kaun use karta hai, kaise"
+              hi="कौन इस्तेमाल करता है, कैसे"
             />
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div className="surface-card rounded-2xl p-5">
               <p className="flex items-center gap-2 font-semibold">
                 <LayersIcon className="size-4 text-primary" aria-hidden />
-                <Localized en="Who uses this" hi="Kaun use karta hai" />
+                <Localized en="Who uses this" hi="कौन इस्तेमाल करता है" />
               </p>
               <ul className="mt-3 space-y-2.5">
                 {guide.audience.map((item) => (
@@ -367,7 +367,7 @@ export default async function ProductPage({
             <div className="surface-card rounded-2xl p-5">
               <p className="flex items-center gap-2 font-semibold">
                 <WrenchIcon className="size-4 text-primary" aria-hidden />
-                <Localized en="How to use it" hi="Kaise use karein" />
+                <Localized en="How to use it" hi="कैसे इस्तेमाल करें" />
               </p>
               <ol className="mt-3 space-y-2.5">
                 {guide.usage.map((item, index) => (
@@ -400,7 +400,7 @@ export default async function ProductPage({
             >
               <Localized
                 en="Answers before you order."
-                hi="Order se pehle jawaab."
+                hi="ऑर्डर से पहले जवाब।"
               />
             </h2>
           </div>
@@ -419,7 +419,7 @@ export default async function ProductPage({
               <h2 id="related-heading" className="display-lg mt-2 text-[2rem] sm:text-[2.6rem]">
                 <Localized
                   en="Frequently bought together"
-                  hi="Aksar saath khareede jaate hain"
+                  hi="अक्सर साथ ख़रीदे जाते हैं"
                 />
               </h2>
             </div>
@@ -427,7 +427,7 @@ export default async function ProductPage({
               href="/products"
               className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary"
             >
-              <Localized en="All products" hi="Saare products" />
+              <Localized en="All products" hi="सभी उत्पाद" />
               <ArrowRightIcon className="size-4" aria-hidden />
             </Link>
           </div>

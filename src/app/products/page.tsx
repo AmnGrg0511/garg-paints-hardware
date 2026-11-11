@@ -37,7 +37,7 @@ export default function ProductsPage() {
           <h1 className="display-lg mt-2">
             <Localized
               en="Five supply lines for a finished wall."
-              hi="Finished wall ke liye paanch supply lines."
+              hi="बेहतरीन दीवार के लिए पाँच supply lines।"
             />
           </h1>
           <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground sm:text-base">
@@ -58,12 +58,12 @@ export default function ProductsPage() {
 
         <div className="mt-8">
           <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
-            <Localized en="All five products" hi="Saare paanch products" />
+            <Localized en="All five products" hi="सभी पाँच उत्पाद" />
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
             <Localized
               en="Filter by category or price type, or search — every line shows its honest price state."
-              hi="Kategorie ya price type se filter karein, ya search karein — har line apna sachcha price state dikhata hai."
+              hi="श्रेणी या रेट के हिसाब से फ़िल्टर करें, या search करें — हर उत्पाद अपनी सही रेट स्थिति दिखाता है।"
             />
           </p>
           <ProductsExplorer initialProducts={getCatalogueCards()} />

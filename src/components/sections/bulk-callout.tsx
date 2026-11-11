@@ -14,18 +14,18 @@ export function BulkCallout() {
         <div className="relative grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white">
-              <Localized en="Wholesale · Retail" hi="Wholesale · Retail" />
+              <Localized en="थोक · फ़ुटकर" hi="थोक · फ़ुटकर" />
             </p>
             <h2 id="bulk-heading" className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
               <Localized
-                en="Dealer / contractor pricing available"
-                hi="Dealer / contractor rate uplabdh"
+                en="डीलर / ठेकेदार रेट उपलब्ध"
+                hi="डीलर / ठेकेदार रेट उपलब्ध"
               />
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/85 sm:text-[0.95rem]">
               <Localized
                 en="Ordering for a site, a shop or a full crew? Share the material, variant and quantity. We will confirm bulk rates and the final GST invoice on call or WhatsApp."
-                hi="Site, dukaan ya poori team ke liye order? Material, variant aur quantity bhejein. Bulk rate aur final GST invoice call ya WhatsApp par confirm hoga."
+                hi="साइट, दुकान या पूरी टीम के लिए ऑर्डर? मटेरियल, वेरिएंट और मात्रा भेजें। बल्क रेट और फ़ाइनल जीएसटी इनवॉइस call या व्हाट्सएप पर कन्फ़र्म होगा।"
               />
             </p>
           </div>
@@ -38,7 +38,7 @@ export function BulkCallout() {
               rel="noopener noreferrer"
               className="dana-texture inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-bold text-primary transition-transform hover:scale-[1.02]"
             >
-              <Localized en="Ask for bulk rates" hi="Bulk rate poochein" />
+              <Localized en="Ask for bulk rates" hi="बल्क रेट पूछें" />
             </TrackedLink>
             <TrackedLink
               event="click_call"
@@ -47,7 +47,7 @@ export function BulkCallout() {
               className="dana-texture inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               <PhoneIcon className="size-4" aria-hidden />
-              <Localized en="Call the shop" hi="Dukaan par call" />
+              <Localized en="दुकान पर call करें" hi="दुकान पर call करें" />
             </TrackedLink>
           </div>
         </div>
@@ -57,19 +57,19 @@ export function BulkCallout() {
             <StoreIcon className="size-3.5" aria-hidden />
             <Localized
               en="Wholesaler and retailer, Ballabgarh"
-              hi="Wholesaler aur retailer, Ballabgarh"
+              hi="थोक और फ़ुटकर बिक्री, बल्लभगढ़"
             />
           </span>
           <span>
             <Localized
               en="No payment taken on this website"
-              hi="Is website par payment nahi liya jaata"
+              hi="इस वेबसाइट पर payment नहीं लिया जाता"
             />
           </span>
           <span>
             <Localized
               en="GST invoice on confirmation"
-              hi="Confirm hone par GST invoice"
+              hi="कन्फ़र्म होने पर जीएसटी इनवॉइस"
             />
           </span>
         </div>

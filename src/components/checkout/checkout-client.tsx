@@ -97,13 +97,13 @@ export function CheckoutClient() {
         <h1 className="display-lg mt-6 max-w-lg">
           <Localized
             en="Your order list is empty."
-            hi="Aapki order list khaali hai."
+            hi="आपकी ऑर्डर लिस्ट खाली है।"
           />
         </h1>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
           <Localized
             en="Add a priced product to start an order. Items marked “Contact for Price” open a WhatsApp quote instead of a fake cart price."
-            hi="Order shuru karne ke liye listed-price product add karein. “Contact for Price” items fake cart rate ke bajaye WhatsApp quote kholte hain."
+            hi="शुरू करने के लिए लिस्टेड-रेट वाला उत्पाद जोड़ें। “Contact for Price” वाले items अनुमानित रेट की जगह व्हाट्सएप quote खोलते हैं।"
           />
         </p>
         <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
@@ -111,28 +111,28 @@ export function CheckoutClient() {
             href="/products"
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground"
           >
-            <Localized en="Browse products" hi="Products dekhein" />
+            <Localized en="Browse products" hi="उत्पाद देखें" />
             <ArrowRightIcon className="size-4" aria-hidden />
           </Link>
           <Link
             href="/faq"
             className="inline-flex h-12 items-center justify-center rounded-full border border-border bg-card/60 px-6 text-sm font-semibold"
           >
-            <Localized en="How ordering works" hi="Ordering kaise hoti hai" />
+            <Localized en="How ordering works" hi="ऑर्डरिंग कैसे होती है" />
           </Link>
         </div>
 
         <div className="mx-auto mt-8 w-full max-w-md">
           <p className="text-center text-sm font-semibold text-foreground">
             <Localized
-              en="Not ready to browse yet?"
-              hi="Abhi browse nahi karna?"
+              en="अभी ब्राउज़ नहीं करना?"
+              hi="अभी ब्राउज़ नहीं करना?"
             />
           </p>
           <p className="mx-auto mt-1 max-w-sm text-center text-xs leading-relaxed text-muted-foreground">
             <Localized
-              en="Leave your number — the shop calls you back with prices and availability."
-              hi="Number chhod dein — dukaan rate aur availability ke saath call karegi."
+              en="नंबर छोड़ें — दुकान रेट और उपलब्धता के साथ call करेगी।"
+              hi="नंबर छोड़ें — दुकान रेट और उपलब्धता के साथ call करेगी।"
             />
           </p>
           <CallBackForm source="checkout-empty" className="mt-4" />
@@ -147,16 +147,16 @@ export function CheckoutClient() {
         <p className="eyebrow">
           <Localized
             en="Checkout · No payment gateway"
-            hi="Checkout · Koi payment gateway nahi"
+            hi="चेकआउट · कोई payment gateway नहीं"
           />
         </p>
         <h1 className="display-lg mt-2">
-          <Localized en="Finish your order." hi="Order complete karein." />
+          <Localized en="ऑर्डर पूरा करें।" hi="ऑर्डर पूरा करें।" />
         </h1>
         <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground">
           <Localized
-            en="Choose one of two channels. Both open a new tab; your list stays saved in this browser until you clear it."
-            hi="Do channels mein se ek chunein. Dono naya tab kholte hain; aapki list clear karne tak is browser mein saved rehti hai."
+            en="दो तरीकों में से एक चुनें। दोनों नए tab में खुलते हैं; आपकी लिस्ट खाली करने तक इस browser में सेव रहती है।"
+            hi="दो तरीकों में से एक चुनें। दोनों नए tab में खुलते हैं; आपकी लिस्ट खाली करने तक इस browser में सेव रहती है।"
           />
         </p>
       </div>
@@ -176,17 +176,17 @@ export function CheckoutClient() {
               <div>
                 <p className="font-display text-xl">
                   <Localized
-                    en="Order enquiry started"
-                    hi="Order enquiry shuru hui"
+                    en="ऑर्डर की पूछताछ शुरू हुई"
+                    hi="ऑर्डर की पूछताछ शुरू हुई"
                   />
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {started === "whatsapp"
                     ? locale === "hi"
-                      ? "WhatsApp tab mein message ready hai — send dabayein. Team confirm karegi."
+                      ? "व्हाट्सएप tab में मैसेज तैयार है — send दबाएँ। टीम कन्फ़र्म करेगी।"
                       : "Your WhatsApp tab has the message ready. Press send so the team can confirm."
                     : locale === "hi"
-                      ? "IndiaMART tab khula hai. Listing par seller ke saath aage badhein."
+                      ? "इंडियामार्ट tab खुला है। listing पर सेलर के साथ आगे बढ़ें।"
                       : "The IndiaMART tab is open. Continue with the seller on the listing."}
                 </p>
               </div>
@@ -196,13 +196,13 @@ export function CheckoutClient() {
               onClick={() => {
                 clear();
                 toast.success(
-                  locale === "hi" ? "Order list clear ho gayi" : "Order list cleared",
+                  locale === "hi" ? "Order list clear ho gayi" : "ऑर्डर लिस्ट खाली हो गई",
                 );
               }}
               className="h-11 shrink-0 rounded-full"
             >
               <Trash2Icon className="size-4" aria-hidden />
-              <Localized en="Clear order list" hi="Order list clear karein" />
+              <Localized en="Clear order list" hi="ऑर्डर लिस्ट खाली करें" />
             </Button>
           </div>
         </div>
@@ -215,7 +215,7 @@ export function CheckoutClient() {
         >
           <div className="flex items-center justify-between gap-3">
             <h2 id="summary-heading" className="font-display text-2xl">
-              <Localized en="Order summary" hi="Order summary" />
+              <Localized en="ऑर्डर की झलक" hi="ऑर्डर की झलक" />
             </h2>
             <button
               type="button"
@@ -223,7 +223,7 @@ export function CheckoutClient() {
               className="inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-primary"
             >
               <PencilIcon className="size-3.5" aria-hidden />
-              <Localized en="Edit list" hi="List edit karein" />
+              <Localized en="लिस्ट बदलें" hi="लिस्ट बदलें" />
             </button>
           </div>
 
@@ -255,7 +255,7 @@ export function CheckoutClient() {
                     </p>
                   )}
                   <p className="mt-1 text-xs text-muted-foreground">
-                    <Localized en="Qty" hi="Qty" /> {line.qty}
+                    <Localized en="मात्रा" hi="मात्रा" /> {line.qty}
                     {line.unit ? (
                       <>
                         {" × "}
@@ -282,7 +282,7 @@ export function CheckoutClient() {
           <div className="mt-4 flex items-center justify-between border-t border-border/70 pt-4">
             <div>
               <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                <Localized en="Estimated total" hi="Anumaanit total" />
+                <Localized en="Estimated total" hi="अनुमानित total" />
               </p>
               <p className="font-display text-3xl">
                 <span className="rupee">₹</span>
@@ -291,8 +291,8 @@ export function CheckoutClient() {
               {hasQuoteLines && (
                 <p className="mt-1 text-xs text-primary">
                   <Localized
-                    en="Some lines are quote-only."
-                    hi="Kuch lines quote-only hain."
+                    en="कुछ lines रेट-पूछने वाली हैं।"
+                    hi="कुछ lines रेट-पूछने वाली हैं।"
                   />
                 </p>
               )}
@@ -300,7 +300,7 @@ export function CheckoutClient() {
             <p className="max-w-[15rem] text-right text-[0.68rem] leading-relaxed text-muted-foreground">
               <Localized
                 en="Estimate covers listed-priced items only. The final GST invoice is shared on confirmation."
-                hi="Estimate sirf listed-price items ka hai. Final GST invoice confirm hone par bheja jayega."
+                hi="अनुमानित total सिर्फ़ लिस्टेड-रेट वाले items का है। फ़ाइनल जीएसटी इनवॉइस कन्फ़र्म होने पर भेजा जाएगा।"
               />
             </p>
           </div>
@@ -312,14 +312,14 @@ export function CheckoutClient() {
         >
           <h2 id="channel-heading" className="font-display text-2xl">
             <Localized
-              en="Choose your order channel"
-              hi="Order channel chunein"
+              en="ऑर्डर का तरीका चुनें"
+              hi="ऑर्डर का तरीका चुनें"
             />
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
             <Localized
               en="No card, UPI or payment is taken on this website."
-              hi="Is website par card, UPI ya payment nahi liya jaata."
+              hi="इस वेबसाइट पर card, UPI या payment नहीं लिया जाता।"
             />
           </p>
 
@@ -341,7 +341,7 @@ export function CheckoutClient() {
                   <span className="font-display text-xl">
                     <Localized
                       en="Purchase via IndiaMART"
-                      hi="IndiaMART se purchase karein"
+                      hi="इंडियामार्ट से ख़रीदें"
                     />
                   </span>
                   <ArrowRightIcon
@@ -352,7 +352,7 @@ export function CheckoutClient() {
                 <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
                   <Localized
                     en="Opens our IndiaMART seller listing in a new tab. Continue the order there."
-                    hi="Hamari IndiaMART seller listing naye tab mein khulti hai. Order wahan aage badhayein."
+                    hi="हमारी इंडियामार्ट seller listing नए tab में खुलती है। ऑर्डर वहीं आगे बढ़ाएँ।"
                   />
                 </span>
               </span>
@@ -375,7 +375,7 @@ export function CheckoutClient() {
                   <span className="font-display text-xl">
                     <Localized
                       en="Fast Order via WhatsApp"
-                      hi="WhatsApp se fast order"
+                      hi="व्हाट्सएप से तुरंत ऑर्डर"
                     />
                   </span>
                   <ArrowRightIcon
@@ -386,7 +386,7 @@ export function CheckoutClient() {
                 <span className="mt-1 block text-xs leading-relaxed text-white/75">
                   <Localized
                     en="Opens WhatsApp with every item, variant and quantity already written."
-                    hi="WhatsApp khulta hai jisme har item, variant aur quantity pehle se likhi hai."
+                    hi="व्हाट्सएप खुलता है जिसमें हर item, वेरिएंट और मात्रा पहले से लिखी है।"
                   />
                 </span>
               </span>
@@ -397,7 +397,7 @@ export function CheckoutClient() {
             <summary className="cursor-pointer list-none text-xs font-semibold text-foreground [&::-webkit-details-marker]:hidden">
               <Localized
                 en="Preview the WhatsApp message"
-                hi="WhatsApp message preview"
+                hi="व्हाट्सएप मैसेझ की झलक"
               />
             </summary>
             <p className="mt-2 whitespace-pre-wrap text-xs leading-relaxed text-muted-foreground">
@@ -413,13 +413,13 @@ export function CheckoutClient() {
             <p className="font-semibold text-foreground">
               <Localized
                 en="Too busy to chat now?"
-                hi="Abhi baat karne ka time nahi?"
+                hi="अभी बात करने का समय नहीं?"
               />
             </p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               <Localized
                 en="Leave your number — our team calls you back with the invoice and availability."
-                hi="Number chhod dein — team call back karegi invoice aur availability ke saath."
+                hi="नंबर छोड़ें — टीम इनवॉइस और उपलब्धता के साथ call back करेगी।"
               />
             </p>
             <CallBackForm source="checkout" className="mt-3 border-0 bg-transparent p-0 sm:p-0" />
@@ -429,7 +429,7 @@ export function CheckoutClient() {
             <p className="font-semibold text-foreground">
               <Localized
                 en="What happens next"
-                hi="Aage kya hota hai"
+                hi="आगे क्या होता है"
               />
             </p>
             <ol className="mt-2 space-y-1.5">

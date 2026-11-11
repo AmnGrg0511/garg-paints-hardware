@@ -23,7 +23,7 @@ const chamkiOf = (svgLabel) => page.evaluate((label) => {
 }, svgLabel);
 
 const chips = () => page.evaluate(() => {
-  const f = [...document.querySelectorAll("fieldset")].find((f) => f.textContent?.includes("Chamki finish"));
+  const f = [...document.querySelectorAll("fieldset")].find((f) => f.textContent?.includes("Chamki finish") || f.textContent?.includes("चमकी"));
   return f ? [...f.querySelectorAll("button[role='radio']")].map((b) => b.textContent?.trim()) : [];
 });
 
@@ -49,7 +49,7 @@ ok("hover pauses shade + chamki", shadeStill, `shade held=${shadeStill}`);
 
 // 3. Pick a chamki chip → holds that colour 9s → resumes.
 await page.evaluate(() => {
-  const f = [...document.querySelectorAll("fieldset")].find((f) => f.textContent?.includes("Chamki finish"));
+  const f = [...document.querySelectorAll("fieldset")].find((f) => f.textContent?.includes("Chamki finish") || f.textContent?.includes("चमकी"));
   [...f.querySelectorAll("button[role='radio']")].find((b) => b.textContent?.includes("Silver"))?.click();
 });
 await new Promise((r) => setTimeout(r, 400));

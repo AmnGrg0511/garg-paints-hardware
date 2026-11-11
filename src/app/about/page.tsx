@@ -72,13 +72,13 @@ export default function AboutPage() {
             <h1 className="display-lg mt-2">
               <Localized
                 en="A supply shop built around the finish."
-                hi="Finish ke around bana supply shop."
+                hi="फ़िनिश के इर्द-गिर्द बनी supply दुकान।"
               />
             </h1>
             <p className="mt-5 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
               <Localized
                 en="Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Contractors, painters, dealers and builders have sourced materials here since 2017."
-                hi="Garg Paints & Hardware, Ballabgarh, Faridabad mein paint additives, binders, wall textures aur plastering tools ka wholesaler aur retailer hai. 2017 se contractors, painters, dealers aur builders yahan se material lete hain."
+                hi="Garg Paints & Hardware, Ballabgarh, Faridabad mein paint additives, binders, wall textures aur plastering tools ka wholesaler aur retailer hai. 2017 से contractors, painters, dealers aur builders yahan se material lete hain."
               />
             </p>
             <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
@@ -89,7 +89,7 @@ export default function AboutPage() {
                   "h-12 rounded-full px-6 text-base font-semibold",
                 )}
               >
-                <Localized en="Explore the catalogue" hi="Catalogue dekhein" />
+                <Localized en="Explore the catalogue" hi="कैटलॉग देखें" />
                 <ArrowRightIcon className="size-4" aria-hidden />
               </Link>
               <TrackedLink
@@ -103,7 +103,7 @@ export default function AboutPage() {
                   "h-12 rounded-full bg-card/60 px-6 text-base font-semibold",
                 )}
               >
-                <Localized en="WhatsApp the shop" hi="WhatsApp par baat karein" />
+                <Localized en="WhatsApp the shop" hi="व्हाट्सएप पर बात करें" />
               </TrackedLink>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
         <section className="py-8 sm:py-12" aria-labelledby="verification-heading">
           <SectionHeading
             id="verification-heading"
-            eyebrow="Verification details"
+            eyebrow="प्रमाणन details"
             title="Facts you can check."
             body="The business details below are repeated consistently across this site and the IndiaMART listing. Nothing here is an unverified badge or review score."
           />
@@ -193,7 +193,7 @@ export default function AboutPage() {
 
               <div className="rounded-3xl border border-border/70 bg-background/40 p-6">
                 <p className="font-semibold">
-                  <Localized en="Address status" hi="Address status" />
+                  <Localized en="पते की स्थिति" hi="पते की स्थिति" />
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {hasFullAddress

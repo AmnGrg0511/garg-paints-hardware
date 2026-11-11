@@ -49,7 +49,7 @@ export default function FaqPage() {
           <h1 className="display-lg mt-2">
             <Localized
               en="Everything a contractor asks before ordering."
-              hi="Order se pehle contractor ke common sawaal."
+              hi="ऑर्डर से पहले ठेकेदारों के आम सवाल।"
             />
           </h1>
           <p className="mt-4 text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
@@ -103,7 +103,7 @@ export default function FaqPage() {
               <h2 id="ordering-heading" className="font-display text-2xl sm:text-3xl">
                 <Localized
                   en="Ordering, pricing and GST"
-                  hi="Ordering, price aur GST"
+                  hi="ऑर्डरिंग, रेट और जीएसटी"
                 />
               </h2>
               <FaqAccordion faqs={globalFaqs} className="mt-4" />
@@ -116,7 +116,7 @@ export default function FaqPage() {
               >
                 <Localized
                   en="Product questions"
-                  hi="Product ke sawaal"
+                  hi="उत्पाद के सवाल"
                 />
               </h2>
               <FaqAccordion faqs={productFaqs} className="mt-4" />

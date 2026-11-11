@@ -281,7 +281,7 @@ export function ProductCard({
               rel="noopener noreferrer"
               className="dana-texture inline-flex min-h-11 max-w-[9.5rem] items-center justify-center rounded-full bg-[#0d7a5f] px-3 text-center text-xs font-bold leading-tight text-white transition-transform hover:brightness-110 active:scale-[0.98]"
             >
-              <Localized en="Request quote" hi="Rate poochein" />
+              <Localized en="Request quote" hi="रेट पूछें" />
             </TrackedLink>
           ) : (
             <button
@@ -292,7 +292,7 @@ export function ProductCard({
               aria-label={`${t("common.addToCart")}: ${product.name}${selectedVariant ? `, ${selectedVariant.label}` : ""}`}
             >
               <PlusIcon className="size-4" aria-hidden />
-              <Localized en="Add to cart" hi="Cart mein daalein" />
+              <Localized en="Add to cart" hi="लिस्ट में डालें" />
             </button>
           )}
           </div>
