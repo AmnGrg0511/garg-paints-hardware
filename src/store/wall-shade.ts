@@ -5,15 +5,16 @@ import { create } from "zustand";
 export type WallShade = {
   key: string;
   name: string;
+  nameHi: string;
   hex: string;
 };
 
 export const WALL_SHADES: WallShade[] = [
-  { key: "white", name: "White", hex: "#F2ECDD" },
-  { key: "yellow", name: "Yellow", hex: "#F0A868" },
-  { key: "red", name: "Red", hex: "#A84328" },
-  { key: "green", name: "Green", hex: "#3D6B41" },
-  { key: "black", name: "Black", hex: "#2B2B2E" },
+  { key: "white", name: "White", nameHi: "सफ़ेद", hex: "#F2ECDD" },
+  { key: "yellow", name: "Yellow", nameHi: "पीला", hex: "#F0A868" },
+  { key: "red", name: "Red", nameHi: "लाल", hex: "#A84328" },
+  { key: "green", name: "Green", nameHi: "हरा", hex: "#3D6B41" },
+  { key: "black", name: "Black", nameHi: "काला", hex: "#2B2B2E" },
 ];
 
 type WallShadeState = {

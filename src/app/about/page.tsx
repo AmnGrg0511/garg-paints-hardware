@@ -155,9 +155,9 @@ export default function AboutPage() {
         <section className="py-8 sm:py-12" aria-labelledby="verification-heading">
           <SectionHeading
             id="verification-heading"
-            eyebrow="प्रमाणन details"
-            title="Facts you can check."
-            body="The business details below are repeated consistently across this site and the IndiaMART listing. Nothing here is an unverified badge or review score."
+            eyebrow={{ en: "Verification details", hi: "प्रमाणन की जानकारी" }}
+            title={{ en: "Facts you can check.", hi: "जाँचे जा सकने वाले तथ्य।" }}
+            body={{ en: "The business details below are repeated consistently across this site and the IndiaMART listing. Nothing here is an unverified badge or review score.", hi: "नीचे दी गई business जानकारी इस site और IndiaMART listing में एक जैसी है। यहाँ कोई बिना प्रमाण वाला badge या review स्कोर नहीं है।" }}
           />
 
           <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_1fr]">
@@ -219,9 +219,9 @@ export default function AboutPage() {
         <section className="py-10 sm:py-16" aria-labelledby="approach-heading">
           <SectionHeading
             id="approach-heading"
-            eyebrow="How we work"
-            title="Plain answers, confirmed invoices."
-            body="This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued."
+            eyebrow={{ en: "How we work", hi: "हम कैसे काम करते हैं" }}
+            title={{ en: "Plain answers, confirmed invoices.", hi: "सीधे जवाब, कन्फ़र्म इनवॉइस।" }}
+            body={{ en: "This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued.", hi: "यह website ऑर्डर-पूछताछ का माध्यम है, payment gateway नहीं। हर ऑर्डर business द्वारा कन्फ़र्म होने के बाद ही फ़ाइनल जीएसटी इनवॉइस जारी होता है।" }}
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[

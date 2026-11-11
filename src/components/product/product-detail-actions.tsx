@@ -30,7 +30,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
     setSelectedLabel(label);
     selectVariant(product.id, label);
   };
-  const [qty, setमात्रा] = useState(1);
+  const [qty, setQty] = useState(1);
   const addItem = useCartStore((state) => state.addItem);
   const quantityConfig = getQuantityConfig(product.id);
   const addButtonRef = useRef<HTMLButtonElement>(null);
@@ -161,7 +161,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
 
           <QuantityStepper
             value={qty}
-            onChange={setमात्रा}
+            onChange={setQty}
             steps={quantityConfig.steps}
             max={quantityConfig.max}
             label={`Quantity in ${quantityConfig.unit.toLowerCase()}${quantityConfig.unit === "Kg" ? "s" : "s"}`}

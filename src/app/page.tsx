@@ -41,11 +41,11 @@ export default function HomePage() {
       >
         <SectionHeading
           id="featured-heading"
-          eyebrow="Popular right now"
-          title="What contractors order most."
-          body="Real catalogue items with honest price states. Add priced items to your order list, or request a quote for bulk and pack-size items."
+          eyebrow={{ en: "Popular right now", hi: "अभी सबसे ज़्यादा ऑर्डर" }}
+          title={{ en: "What contractors order most.", hi: "ठेकेदार सबसे ज़्यादा क्या ऑर्डर करते हैं।" }}
+          body={{ en: "Real catalogue items with honest price states. Add priced items to your order list, or request a quote for bulk and pack-size items.", hi: "असली कैटलॉग items ईमानदार रेट स्थिति के साथ। लिस्टेड-रेट items लिस्ट में जोड़ें, या बल्क और pack size के लिए रेट पूछें।" }}
           href="/products"
-          linkLabel="View all products"
+          linkLabel={{ en: "View all products", hi: "सभी उत्पाद देखें" }}
         />
         <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {featured.map((product) => (

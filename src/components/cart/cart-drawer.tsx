@@ -36,7 +36,7 @@ export function CartDrawer() {
   const lines = useCartStore((state) => state.lines);
   const hydrated = useCartStore((state) => state.hydrated);
   const remove = useCartStore((state) => state.remove);
-  const setमात्रा = useCartStore((state) => state.setमात्रा);
+  const setQty = useCartStore((state) => state.setQty);
   const clear = useCartStore((state) => state.clear);
   const { amount, hasQuoteLines } = useEstimatedTotal();
   const { t } = useLocale();
@@ -156,7 +156,7 @@ export function CartDrawer() {
                     <div className="mt-2.5 flex justify-center">
                       <QuantityStepper
                         value={line.qty}
-                        onChange={(next) => setमात्रा(line.key, next)}
+                        onChange={(next) => setQty(line.key, next)}
                         steps={getQuantityConfig(line.productId).steps}
                         max={getQuantityConfig(line.productId).max}
                         min={0}

@@ -16,7 +16,7 @@ export function FloatingWhatsApp() {
       href={generalEnquiryUrl()}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with Garg Paints & Hardware on WhatsApp"
+      aria-label="Chat with Garg Paints & Hardware on व्हाट्सएप"
       className="fixed bottom-7 right-7 z-40 hidden size-14 items-center justify-center rounded-full bg-[#0d7a5f] text-white shadow-[0_16px_40px_-12px_rgba(13,122,95,0.7)] transition-transform hover:scale-105 focus-visible:scale-105 md:flex"
     >
       <WhatsAppGlyph className="size-7" />

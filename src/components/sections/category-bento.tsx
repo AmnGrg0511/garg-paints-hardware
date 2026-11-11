@@ -59,11 +59,11 @@ export function CategoryBento() {
     >
       <SectionHeading
         id="categories-heading"
-        eyebrow="Shop by category"
-        title="Everything for the wall, from one counter."
-        body="Five supply lines for contractors, painters, dealers and builders — from the binder that holds the mix to the tool that finishes it."
+        eyebrow={{ en: "Shop by category", hi: "श्रेणी से ख़रीदें" }}
+        title={{ en: "Everything for the wall, from one counter.", hi: "दीवार के लिए सब कुछ, एक ही counter से।" }}
+        body={{ en: "Five supply lines for contractors, painters, dealers and builders — from the binder that holds the mix to the tool that finishes it.", hi: "ठेकेदारों, पेंटरों, डीलरों और बिल्डरों के लिए पाँच supply lines — mix को जोड़ने वाले binder से लेकर फ़िनिश कराने वाले tool तक।" }}
         href="/products"
-        linkLabel="View all products"
+        linkLabel={{ en: "View all products", hi: "सभी उत्पाद देखें" }}
       />
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
