@@ -66,7 +66,11 @@ export function QuantityStepper({
 
   return (
     <div className={cn("max-w-full", className)}>
-      <div className="inline-flex items-center gap-1 rounded-full border border-border bg-background/80 p-1">
+      <div
+        role="group"
+        aria-label={label}
+        className="inline-flex items-center gap-1 rounded-full border border-border bg-background/80 p-1"
+      >
         <button
           type="button"
           className={cn(btn, btnBase)}

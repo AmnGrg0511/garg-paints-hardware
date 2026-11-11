@@ -12,9 +12,9 @@ const U = "https://garg-paints-hardware.vercel.app";
 // 1. Checkout: lead form renders after hydration and posts successfully.
 await page.goto(`${U}/checkout`, { waitUntil: "networkidle0", timeout: 90000 });
 try {
-  await page.waitForSelector("#lead-phone-checkout", { timeout: 15000 });
+  await page.waitForSelector("#lead-phone-checkout-empty", { timeout: 15000 });
 } catch {}
-let form = await page.evaluate(() => Boolean(document.querySelector("#lead-phone-checkout")));
+let form = await page.evaluate(() => Boolean(document.querySelector("#lead-phone-checkout-empty")));
 ok("checkout lead form renders live (empty cart)", form);
 if (form) {
   const res = await page.evaluate(async () => {
@@ -41,9 +41,9 @@ await page.evaluate(() => {
     .find((b) => b.getAttribute("aria-label") === "Increase by one")?.click();
 });
 await new Promise((r) => setTimeout(r, 300));
-const input = await page.waitForSelector("[role='group'][aria-label*='Quantity'] input", { timeout: 20000 });
+const input = await page.waitForSelector("[role='group'][aria-label='Quantity in drums'] input", { timeout: 20000 });
 await input.click({ clickCount: 3 });
-await page.type(input.selector || input, "5");
+await page.type(input, "5");
 await new Promise((r) => setTimeout(r, 500));
 const price = await page.evaluate(() => {
   const group = document.querySelector("[role='group'][aria-label*='Quantity']");
