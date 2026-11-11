@@ -39,7 +39,7 @@ export function CartDrawer() {
   const setQty = useCartStore((state) => state.setQty);
   const clear = useCartStore((state) => state.clear);
   const { amount, hasQuoteLines } = useEstimatedTotal();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const isClient = useIsClient();
 
   const count = lines.reduce((total, line) => total + line.qty, 0);
@@ -192,7 +192,9 @@ export function CartDrawer() {
                 type="button"
                 onClick={() => {
                   clear();
-                  toast.success("ऑर्डर लिस्ट खाली हो गई");
+                  toast.success(
+                  locale === "hi" ? "ऑर्डर लिस्ट खाली हो गई" : "Order list cleared",
+                );
                 }}
                 className="text-xs font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
               >

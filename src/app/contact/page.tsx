@@ -93,7 +93,7 @@ export default function ContactPage() {
           <p className="mt-4 text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
             <Localized
               en="Order enquiries are accepted 24x7 on call and WhatsApp. For a price, a pack size or directions, use the channel that suits you — the team confirms availability and the final GST invoice directly."
-              hi="call और व्हाट्सएप पर 24x7 ऑर्डर संपर्क। रेट, pack size या रास्ता जानने के लिए जो तरीका सही लगे वह चुनें — टीम उपलब्धता और फ़ाइनल जीएसटी इनवॉइस सीधे कन्फ़र्म करेगी।"
+              hi="call और WhatsApp पर 24x7 ऑर्डर संपर्क। रेट, pack size या रास्ता जानने के लिए जो तरीका सही लगे वह चुनें — टीम उपलब्धता और फ़ाइनल GST invoice सीधे कन्फ़र्म करेगी।"
             />
           </p>
         </header>
@@ -137,7 +137,7 @@ export default function ContactPage() {
               <Localized en="WhatsApp" hi="WhatsApp" />
             </span>
             <span className="mt-1 font-display text-2xl">
-              <Localized en="पूछताछ भेजें" hi="पूछताछ भेजें" />
+              <Localized en="Send an enquiry" hi="पूछताछ भेजें" />
             </span>
             <span className="mt-2 text-sm text-muted-foreground">
               <Localized
@@ -162,12 +162,12 @@ export default function ContactPage() {
               IndiaMART
             </span>
             <span className="mt-1 font-display text-2xl">
-              <Localized en="मार्केटप्लेस listing" hi="मार्केटप्लेस listing" />
+              <Localized en="Marketplace listing" hi="मार्केटप्लेस listing" />
             </span>
             <span className="mt-2 text-sm text-muted-foreground">
               <Localized
                 en="Buy through the IndiaMART seller page"
-                hi="इंडियामार्ट सेलर page से ख़रीदें"
+                hi="IndiaMART सेलर page से ख़रीदें"
               />
             </span>
             <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary">

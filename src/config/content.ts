@@ -14,7 +14,7 @@ export const trustPoints = [
   {
     key: "indiamart",
     label: "IndiaMART seller",
-    detail: "मार्केटप्लेस listing",
+    detail: "Marketplace listing",
   },
   {
     key: "hours",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "lucide-react";
 import { useInView } from "@/lib/use-in-view";
+import { Localized } from "@/i18n/Localized";
 import { WALL_SHADES, useWallShade } from "@/store/wall-shade";
 import { VisualizerGlow } from "@/components/sections/hero-backdrop";
 import {
@@ -279,7 +280,10 @@ export function ColourVisualizer({ className }: { className?: string }) {
           href="/products/madrasi-dana-wall-texture"
           className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"
         >
-          मदरासी दाना टेक्सचर देखें
+          <Localized
+            en="Shop Madrasi dana textures"
+            hi="Madrasi dana टेक्सचर देखें"
+          />
           <ArrowRightIcon className="size-4" aria-hidden />
         </Link>
         </div>

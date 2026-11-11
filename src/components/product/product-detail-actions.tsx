@@ -201,7 +201,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
               <p className="text-center text-[0.7rem] leading-relaxed text-muted-foreground">
                 <Localized
                   en="This item has no published price. The team replies with pack sizes and a bulk rate on WhatsApp."
-                  hi="इस item का रेट सूचित नहीं है। टीम व्हाट्सएप पर pack size और बल्क रेट भेजेगी।"
+                  hi="इस item का रेट सूचित नहीं है। टीम WhatsApp पर pack size और बल्क रेट भेजेगी।"
                 />
               </p>
             </>
@@ -241,7 +241,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
         <p className="mt-3 text-center text-[0.68rem] leading-relaxed text-muted-foreground">
           <Localized
             en="Estimated total shown in the order list. Final GST invoice is shared on confirmation."
-            hi="ऑर्डर लिस्ट में अनुमानित total दिखेगा। फ़ाइनल जीएसटी इनवॉइस कन्फ़र्म होने पर भेजा जाएगा।"
+            hi="ऑर्डर लिस्ट में अनुमानित total दिखेगा। फ़ाइनल GST invoice कन्फ़र्म होने पर भेजा जाएगा।"
           />
         </p>
       </div>

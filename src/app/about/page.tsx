@@ -78,7 +78,7 @@ export default function AboutPage() {
             <p className="mt-5 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
               <Localized
                 en="Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Contractors, painters, dealers and builders have sourced materials here since 2017."
-                hi="Garg Paints & Hardware, Ballabgarh, Faridabad mein paint additives, binders, wall textures aur plastering tools ka wholesaler aur retailer hai. 2017 से contractors, painters, dealers aur builders yahan se material lete hain."
+                hi="Garg Paints & Hardware, बल्लभगढ़, फ़रीदाबाद में paint additives, binders, wall textures और plastering tools का wholesaler और retailer है। 2017 से contractors, painters, dealers और builders यहाँ से material लेते हैं।"
               />
             </p>
             <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
@@ -103,7 +103,7 @@ export default function AboutPage() {
                   "h-12 rounded-full bg-card/60 px-6 text-base font-semibold",
                 )}
               >
-                <Localized en="WhatsApp the shop" hi="व्हाट्सएप पर बात करें" />
+                <Localized en="WhatsApp the shop" hi="WhatsApp पर बात करें" />
               </TrackedLink>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default function AboutPage() {
 
               <div className="rounded-3xl border border-border/70 bg-background/40 p-6">
                 <p className="font-semibold">
-                  <Localized en="पते की स्थिति" hi="पते की स्थिति" />
+                  <Localized en="Address status" hi="पते की स्थिति" />
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {hasFullAddress
@@ -220,8 +220,8 @@ export default function AboutPage() {
           <SectionHeading
             id="approach-heading"
             eyebrow={{ en: "How we work", hi: "हम कैसे काम करते हैं" }}
-            title={{ en: "Plain answers, confirmed invoices.", hi: "सीधे जवाब, कन्फ़र्म इनवॉइस।" }}
-            body={{ en: "This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued.", hi: "यह website ऑर्डर-पूछताछ का माध्यम है, payment gateway नहीं। हर ऑर्डर business द्वारा कन्फ़र्म होने के बाद ही फ़ाइनल जीएसटी इनवॉइस जारी होता है।" }}
+            title={{ en: "Plain answers, confirmed invoices.", hi: "सीधे जवाब, कन्फ़र्म invoice।" }}
+            body={{ en: "This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued.", hi: "यह website ऑर्डर-पूछताछ का माध्यम है, payment gateway नहीं। हर ऑर्डर business द्वारा कन्फ़र्म होने के बाद ही फ़ाइनल GST invoice जारी होता है।" }}
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[

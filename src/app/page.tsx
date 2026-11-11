@@ -94,7 +94,7 @@ export default function HomePage() {
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
             <Localized
               en="Ordering, GST invoices and quote-only items — the details contractors ask about most."
-              hi="ऑर्डरिंग, जीएसटी इनवॉइस और रेट-पूछने वाले items — ठेकेदारों के आम सवाल।"
+              hi="ऑर्डरिंग, GST invoice और रेट-पूछने वाले items — ठेकेदारों के आम सवाल।"
             />
           </p>
           <Link

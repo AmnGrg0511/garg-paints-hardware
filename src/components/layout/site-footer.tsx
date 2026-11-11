@@ -25,7 +25,7 @@ export function SiteFooter() {
           <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
             <Localized
               en="Prices shown are listed product rates. Availability and the final GST invoice are confirmed on call or WhatsApp. No GST rate is stated on this site."
-              hi="यहाँ दिखे रेट listed product rates हैं। उपलब्धता और फ़ाइनल जीएसटी इनवॉइस call या व्हाट्सएप पर कन्फ़र्म होता है। इस site पर जीएसटी रेट नहीं बताया गया।"
+              hi="यहाँ दिखे रेट listed product rates हैं। उपलब्धता और फ़ाइनल GST invoice call या WhatsApp पर कन्फ़र्म होता है। इस site पर GST रेट नहीं बताया गया।"
             />
           </p>
         </div>
@@ -58,7 +58,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className="eyebrow">
-            <Localized en="प्रमाणन" hi="प्रमाणन" />
+            <Localized en="Verification" hi="प्रमाणन" />
           </h2>
           <dl className="mt-4 space-y-3 text-sm">
             <div>
@@ -137,7 +137,7 @@ export function SiteFooter() {
                   <span className="mt-1 block text-xs">
                     <Localized
                       en="Street address and map are being confirmed. Call or WhatsApp for directions."
-                      hi="सड़क का पता और map कन्फ़र्म हो रहा है। रास्ता जानने के लिए call या व्हाट्सएप करें।"
+                      hi="सड़क का पता और map कन्फ़र्म हो रहा है। रास्ता जानने के लिए call या WhatsApp करें।"
                     />
                   </span>
                 )}
@@ -151,12 +151,12 @@ export function SiteFooter() {
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {COPYRIGHT_YEAR} {business.name}.{" "}
-            <Localized en="सर्वाधिकार सुरक्षित।" hi="सर्वाधिकार सुरक्षित।" />
+            <Localized en="All rights reserved." hi="सर्वाधिकार सुरक्षित।" />
           </p>
           <p>
             <Localized
               en="Order enquiries 24x7 on call and WhatsApp."
-              hi="Call aur व्हाट्सएप पर 24x7 ऑर्डर enquiry."
+              hi="call और WhatsApp पर 24x7 ऑर्डर enquiry."
             />
           </p>
         </div>

@@ -43,10 +43,10 @@ const guides: Record<
     audience: [
       "Paint formulators mixing water-based architectural coatings",
       "Painters working with emulsions, distempers and texture finishes",
-      "Dealers stocking बाइंडरs for local contractor crews",
+      "Dealers stocking binders for local contractor crews",
     ],
     usage: [
-      "Use as the बाइंडर component in an interior or exterior emulsion, distemper or texture formulation.",
+      "Use as the binder component in an interior or exterior emulsion, distemper or texture formulation.",
       "Confirm the addition ratio for your specific formulation with your technical supervisor before mixing.",
       "Keep the container closed and store it in a cool, dry place; check the manufacturer's handling guidance.",
     ],
@@ -73,7 +73,7 @@ const guides: Record<
     usage: [
       "Use the stainless steel blade for texture application, cement flattening and wall scraping.",
       "Keep the blade clean and dry after use to protect the finish.",
-      "Confirm the exact blade and handle requirement on व्हाट्सएप if your team has a specification.",
+      "Confirm the exact blade and handle requirement on WhatsApp if your team has a specification.",
     ],
   },
   "gph-04": {
@@ -85,7 +85,7 @@ const guides: Record<
     usage: [
       "White CMC is used as a thickener in wall putty, interior distempers and smooth texture formulation.",
       "Yellow CMC is the technical industrial grade used for viscosity control and water retention.",
-      "Confirm the dosage for your formulation and request the available pack size on व्हाट्सएप.",
+      "Confirm the dosage for your formulation and request the available pack size on WhatsApp.",
     ],
   },
   "gph-05": {
@@ -117,7 +117,7 @@ export async function generateMetadata({
 
   return buildPageMetadata({
     title: `${product.name} in Ballabgarh, Faridabad`,
-    description: `${product.description} Buy from Garg Paints & Hardware in ${business.locality}, ${business.city} with a जीएसटी इनवॉइस and dealer pricing on request.`,
+    description: `${product.description} Buy from Garg Paints & Hardware in ${business.locality}, ${business.city} with a GST invoice and dealer pricing on request.`,
     path: `/products/${product.slug}`,
     image: product.image,
   });
@@ -170,7 +170,7 @@ export default async function ProductPage({
                 <dd className="mt-0.5 font-semibold">{product.packaging}</dd>
               </div>
               <div className="rounded-xl border border-border bg-card p-3">
-                <dt className="text-muted-foreground">जीएसटी इनवॉइस</dt>
+                <dt className="text-muted-foreground">GST invoice</dt>
                 <dd className="mt-0.5 font-semibold">Yes, on confirmation</dd>
               </div>
               <div className="rounded-xl border border-border bg-card p-3">
@@ -203,15 +203,15 @@ export default async function ProductPage({
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
-                  en="जीएसटी-registered seller"
-                  hi="जीएसटी-रजिस्टर्ड सेलर"
+                  en="GST-registered seller"
+                  hi="GST-registered seller"
                 />
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
-                  en="Order 24x7 on व्हाट्सएप"
-                  hi="व्हाट्सएप पर 24x7 ऑर्डर"
+                  en="Order 24x7 on WhatsApp"
+                  hi="WhatsApp पर 24x7 ऑर्डर"
                 />
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
@@ -234,7 +234,7 @@ export default async function ProductPage({
           <div className="mt-4 overflow-hidden rounded-2xl border border-border/70">
             <table className="w-full border-collapse text-left text-sm">
               <caption className="sr-only">
-                विशेषताएँ for {product.name}
+                Specifications for {product.name}
               </caption>
               <tbody>
                 {[
@@ -245,7 +245,7 @@ export default async function ProductPage({
                   ["Use cases", product.useCases.join(", ")],
                   ["HSN code", `${product.hsnCode} (as provided by the owner)`],
                   ["Price type", priceType],
-                  ["जीएसटी इनवॉइस", "Yes · shared on confirmation"],
+                  ["GST invoice", "Yes · shared on confirmation"],
                 ].map(([label, value], index) => (
                   <tr
                     key={label}
@@ -270,8 +270,8 @@ export default async function ProductPage({
           </div>
           <p className="mt-2 text-[0.7rem] leading-relaxed text-muted-foreground">
             HSN codes are shown as provided by the owner and still need CA
-            confirmation. No जीएसटी rate is stated on this site; the final
-            classification and इनवॉइस are shared on confirmation.
+            confirmation. No GST rate is stated on this site; the final
+            classification and invoice are shared on confirmation.
           </p>
         </section>
 
@@ -283,10 +283,10 @@ export default async function ProductPage({
             <ol className="space-y-4">
               {[
                 quoteOnly
-                  ? "Send the variant and quantity on व्हाट्सएप for a bulk quote."
+                  ? "Send the variant and quantity on WhatsApp for a bulk quote."
                   : "Choose a variant if applicable, set the quantity and add it to the order list.",
-                "Continue to इंडियामार्ट or send the pre-filled व्हाट्सएप message.",
-                "The team confirms availability and shares the final जीएसटी इनवॉइस.",
+                "Continue to IndiaMART or send the pre-filled WhatsApp message.",
+                "The team confirms availability and shares the final GST invoice.",
               ].map((step, index) => (
                 <li key={step} className="flex gap-3">
                   <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/10 font-display text-sm font-semibold text-primary">
@@ -315,8 +315,8 @@ export default async function ProductPage({
             </p>
             <p className="mt-1">
               <Localized
-                en="Share the project quantity for a contractor rate. The final जीएसटी इनवॉइस is confirmed directly by the business."
-                hi="प्रोजेक्ट की मात्रा भेजें — contractor रेट के लिए। फ़ाइनल जीएसटी इनवॉइस सीधे business कन्फ़र्म करेगा।"
+                en="Share the project quantity for a contractor rate. The final GST invoice is confirmed directly by the business."
+                hi="प्रोजेक्ट की मात्रा भेजें — contractor रेट के लिए। फ़ाइनल GST invoice सीधे business कन्फ़र्म करेगा।"
               />
             </p>
           </div>

@@ -103,7 +103,7 @@ export default function FaqPage() {
               <h2 id="ordering-heading" className="font-display text-2xl sm:text-3xl">
                 <Localized
                   en="Ordering, pricing and GST"
-                  hi="ऑर्डरिंग, रेट और जीएसटी"
+                  hi="ऑर्डरिंग, रेट और GST"
                 />
               </h2>
               <FaqAccordion faqs={globalFaqs} className="mt-4" />

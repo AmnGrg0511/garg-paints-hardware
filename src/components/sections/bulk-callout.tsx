@@ -14,18 +14,18 @@ export function BulkCallout() {
         <div className="relative grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white">
-              <Localized en="थोक · फ़ुटकर" hi="थोक · फ़ुटकर" />
+              <Localized en="Wholesale · Retail" hi="थोक · फ़ुटकर" />
             </p>
             <h2 id="bulk-heading" className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
               <Localized
-                en="डीलर / ठेकेदार रेट उपलब्ध"
+                en="Dealer / contractor pricing available"
                 hi="डीलर / ठेकेदार रेट उपलब्ध"
               />
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/85 sm:text-[0.95rem]">
               <Localized
                 en="Ordering for a site, a shop or a full crew? Share the material, variant and quantity. We will confirm bulk rates and the final GST invoice on call or WhatsApp."
-                hi="साइट, दुकान या पूरी टीम के लिए ऑर्डर? मटेरियल, वेरिएंट और मात्रा भेजें। बल्क रेट और फ़ाइनल जीएसटी इनवॉइस call या व्हाट्सएप पर कन्फ़र्म होगा।"
+                hi="साइट, दुकान या पूरी टीम के लिए ऑर्डर? मटेरियल, वेरिएंट और मात्रा भेजें। बल्क रेट और फ़ाइनल GST invoice call या WhatsApp पर कन्फ़र्म होगा।"
               />
             </p>
           </div>
@@ -47,7 +47,7 @@ export function BulkCallout() {
               className="dana-texture inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               <PhoneIcon className="size-4" aria-hidden />
-              <Localized en="दुकान पर call करें" hi="दुकान पर call करें" />
+              <Localized en="Call the shop" hi="दुकान पर call करें" />
             </TrackedLink>
           </div>
         </div>
@@ -69,7 +69,7 @@ export function BulkCallout() {
           <span>
             <Localized
               en="GST invoice on confirmation"
-              hi="कन्फ़र्म होने पर जीएसटी इनवॉइस"
+              hi="कन्फ़र्म होने पर GST invoice"
             />
           </span>
         </div>

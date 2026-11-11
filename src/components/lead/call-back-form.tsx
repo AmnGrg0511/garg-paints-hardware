@@ -86,7 +86,7 @@ export function CallBackForm({
             <p className="text-sm font-bold">
               <Localized
                 en="Thanks — WhatsApp is opening with your number."
-                hi="शुक्रिया — व्हाट्सएप आपका नंबर लेकर खुल रहा है।"
+                hi="शुक्रिया — WhatsApp आपका नंबर लेकर खुल रहा है।"
               />
             </p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
@@ -101,7 +101,7 @@ export function CallBackForm({
                   rel="noopener noreferrer"
                   className="font-semibold text-primary underline underline-offset-4"
                 >
-                  <Localized en="Open WhatsApp" hi="व्हाट्सएप खोलें" />
+                  <Localized en="Open WhatsApp" hi="WhatsApp खोलें" />
                 </a>
               )}
             </p>
@@ -112,20 +112,20 @@ export function CallBackForm({
           <p className="flex items-center gap-1.5 text-sm font-bold">
             <PhoneIcon className="size-4 text-primary" aria-hidden />
             <Localized
-              en="कॉल बैक पाएँ"
+              en="Get a call back"
               hi="कॉल बैक पाएँ"
             />
           </p>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
             <Localized
-              en="अपना नंबर छोड़ें — यह सीधे दुकान तक पहुँचेगा। ना OTP, ना साइन-अप।"
+              en="Leave your number — it goes straight to the shop. No OTP, no sign-up."
               hi="नंबर छोड़ें — सीधे दुकान तक पहुँचेगा। ना OTP, ना साइन-अप।"
             />
           </p>
           <div className="mt-3 flex flex-col gap-2 sm:flex-row">
             <div className="flex-1">
               <label htmlFor={`lead-phone-${source}`} className="sr-only">
-                <Localized en="मोबाइल नंबर" hi="मोबाइल नंबर" />
+                <Localized en="Mobile number" hi="मोबाइल नंबर" />
               </label>
               <input
                 id={`lead-phone-${source}`}
@@ -158,8 +158,8 @@ export function CallBackForm({
             >
               <WhatsAppGlyph className="size-4.5" />
               <Localized
-                en={status === "sending" ? "भेज रहे हैं…" : "दुकान को भेजें"}
-                hi={status === "sending" ? "Bhej rahe hain…" : "Dukaan ko bhejein"}
+                en={status === "sending" ? "Sending…" : "Send to shop"}
+                hi={status === "sending" ? "भेज रहे हैं…" : "दुकान को भेजें"}
               />
               <ArrowRightIcon className="size-4" aria-hidden />
             </button>
@@ -171,15 +171,15 @@ export function CallBackForm({
               className="mt-2 text-xs font-semibold text-destructive"
             >
               <Localized
-                en="मान्य 10 अंकों का भारतीय मोबाइल नंबर डालें।"
+                en="Enter a valid 10-digit Indian mobile number."
                 hi="मान्य 10 अंकों का भारतीय मोबाइल नंबर डालें।"
               />
             </p>
           )}
           <p className="mt-2 text-[0.66rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="आपका नंबर सिर्फ़ आपकी पूछताछ के लिए call back में इस्तेमाल होगा। दुकान के साथ व्हाट्सएप चैट खुलेगी; पूरा करने के लिए send दबाएँ।"
-              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। दुकान के साथ व्हाट्सएप चैट खुलेगी; पूरा करने के लिए send दबाएँ।"
+              en="Your number is used only to call back about your enquiry. It opens a WhatsApp chat with the shop; press send to complete it."
+              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। दुकान के साथ WhatsApp चैट खुलेगी; पूरा करने के लिए send दबाएँ।"
             />
           </p>
         </form>

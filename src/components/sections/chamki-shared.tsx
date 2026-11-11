@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Localized } from "@/i18n/Localized";
 
 export type ChamkiMode = "gold" | "silver" | "off" | null;
 
@@ -46,7 +47,7 @@ export function SparkleFlake({
 
 /**
  * Two finish chips styled exactly like the shade row: colour dot + label.
- * गोल्डन, सिल्वर — picking one holds it briefly, then the cycle resumes.
+ * Golden, silver — picking one holds it briefly, then the cycle resumes.
  */
 export function ChamkiFinishPicker({
   colour,
@@ -58,14 +59,14 @@ export function ChamkiFinishPicker({
   className?: string;
 }) {
   const options = [
-    { key: "gold" as const, label: "गोल्डन", dot: "#E9B84B" },
-    { key: "silver" as const, label: "सिल्वर", dot: "#C9D6E4" },
+    { key: "gold" as const, label: "Golden", dot: "#E9B84B" },
+    { key: "silver" as const, label: "Silver", dot: "#C9D6E4" },
   ];
 
   return (
     <fieldset className={cn("mt-4", className)}>
       <legend className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-        चमकी फ़िनिश
+        <Localized en="Chamki finish" hi="chamki फ़िनिश" />
       </legend>
       <div className="mt-3 flex flex-wrap gap-2.5">
         {options.map((option) => (

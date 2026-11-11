@@ -62,7 +62,7 @@ export function Hero() {
         <div className="max-w-2xl">
           <p className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-secondary-foreground">
             <Localized
-              en="बल्लभगढ़, फ़रीदाबाद · पेंट और हार्डवेयर"
+              en="Ballabgarh, Faridabad · Paints & hardware"
               hi="बल्लभगढ़, फ़रीदाबाद · पेंट और हार्डवेयर"
             />
           </p>
@@ -77,7 +77,7 @@ export function Hero() {
           <p className="mt-4 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-[1.05rem]">
             <Localized
               en="Madrasi dana wall textures, Pidicryl binders, CMC, chamki and stainless steel trowels — at listed rates, with a GST invoice on every confirmed order."
-              hi="मदरासी दाना वॉल टेक्सचर, पिडिक्रिल बाइंडर, सीएमसी, चमकी और स्टेनलेस स्टील गुरमाले — लिस्टेड रेट पर, हर कन्फ़र्म ऑर्डर के साथ जीएसटी इनवॉइस।"
+              hi="Madrasi dana वॉल टेक्सचर, Pidicryl binder, CMC, chamki और स्टेनलेस स्टील gurmala — लिस्टेड रेट पर, हर कन्फ़र्म ऑर्डर के साथ GST invoice।"
             />
           </p>
 
@@ -89,7 +89,7 @@ export function Hero() {
                 "h-12 rounded-full px-7 text-base font-bold",
               )}
             >
-              <Localized en="उत्पाद देखें" hi="उत्पाद देखें" />
+              <Localized en="Shop products" hi="उत्पाद देखें" />
             </Link>
             <TrackedLink
               event="click_whatsapp"
@@ -102,7 +102,7 @@ export function Hero() {
                 "h-12 rounded-full bg-card px-6 text-base font-bold",
               )}
             >
-              <Localized en="व्हाट्सएप पर ऑर्डर करें" hi="व्हाट्सएप पर ऑर्डर" />
+              <Localized en="Order on WhatsApp" hi="WhatsApp पर ऑर्डर" />
             </TrackedLink>
             <TrackedLink
               event="click_call"
@@ -158,7 +158,7 @@ export function Hero() {
             />
             <Localized
               en="No payment on this website. Availability and the final GST invoice are confirmed by the team on call or WhatsApp."
-              hi="इस वेबसाइट पर payment नहीं। उपलब्धता और फ़ाइनल जीएसटी इनवॉइस टीम call या व्हाट्सएप पर कन्फ़र्म करेगी।"
+              hi="इस वेबसाइट पर payment नहीं। उपलब्धता और फ़ाइनल GST invoice टीम call या WhatsApp पर कन्फ़र्म करेगी।"
             />
           </p>
 

@@ -96,7 +96,7 @@ export function LeadPopup() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="कॉल बैक पाएँ — leave your number"
+        aria-label="Get a call back — leave your number"
         className="fixed bottom-[5.5rem] right-7 z-40 hidden size-11 items-center justify-center rounded-full border border-border bg-card text-primary shadow-[0_12px_30px_-12px_rgba(16,25,46,0.45)] transition-transform hover:scale-105 md:flex"
       >
         <PhoneIcon className="size-5" aria-hidden />
@@ -146,7 +146,7 @@ export function LeadPopup() {
             <p className="mt-3 text-center text-[0.66rem] leading-relaxed text-muted-foreground">
               <Localized
                 en="Prefer WhatsApp or IndiaMART? Continue browsing — the shop is one tap away."
-                hi="व्हाट्सएप या इंडियामार्ट चाहिए? ब्राउज़ करते रहें — दुकान एक tap दूर है।"
+                hi="WhatsApp या IndiaMART चाहिए? ब्राउज़ करते रहें — दुकान एक tap दूर है।"
               />
               <Link
                 href="/products"

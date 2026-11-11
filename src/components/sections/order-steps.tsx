@@ -18,7 +18,7 @@ export function OrderSteps() {
         id="order-steps-heading"
         eyebrow={{ en: "How ordering works", hi: "ऑर्डरिंग कैसे होती है" }}
         title={{ en: "Three steps, no payment gateway.", hi: "तीन steps, कोई payment gateway नहीं।" }}
-        body={{ en: "This site is an order-enquiry layer. You choose the channel, and the team confirms availability and the final GST invoice directly.", hi: "यह site ऑर्डर-पूछताछ का माध्यम है। आप channel चुनें, और टीम उपलब्धता व फ़ाइनल जीएसटी इनवॉइस सीधे कन्फ़र्म करेगी।" }}
+        body={{ en: "This site is an order-enquiry layer. You choose the channel, and the team confirms availability and the final GST invoice directly.", hi: "यह site ऑर्डर-पूछताछ का माध्यम है। आप channel चुनें, और टीम उपलब्धता व फ़ाइनल GST invoice सीधे कन्फ़र्म करेगी।" }}
         align="center"
       />
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { WALL_SHADES } from "@/store/wall-shade";
 import { useInView } from "@/lib/use-in-view";
+import { Localized } from "@/i18n/Localized";
 import {
   ChamkiFinishPicker,
   SparkleFlake,
@@ -261,7 +262,10 @@ export function FacadeVisualizer({ className }: { className?: string }) {
         <div className="border-t border-border/70 bg-card p-4 sm:p-5">
           <fieldset>
             <legend className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-              फ़ैसाडे पर रंग भरने के लिए शेड चुनें
+              <Localized
+                en="Tap a shade to render the facade"
+                hi="फ़ैसाडे पर रंग भरने के लिए शेड चुनें"
+              />
             </legend>
             <div className="mt-3 flex flex-wrap gap-2.5">
               {WALL_SHADES.map((option, i) => (
@@ -305,10 +309,10 @@ export function FacadeVisualizer({ className }: { className?: string }) {
           />
           <OrderKitButton className="mt-4" chamkiColour={chamkiColour} />
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            शेड अपने आप बदलते रहते हैं; पक्का करने के लिए किसी एक पर tap करें। “इस सेटअप को
-            ऑर्डर करें” आपके चुने शेड का बैग और स्टार्टर बाइंडर, सीएमसी,
-            चमकी और गुरमाला जोड़ता है — हर मात्रा ऑर्डर लिस्ट में बदल सकती है।
-            order list.
+            <Localized
+              en="Shades cycle automatically; tap one to lock it. “Order this setup” adds the picked shade bag plus a starter binder, CMC, chamki and gurmala — every quantity stays adjustable in your order list."
+              hi="शेड अपने आप बदलते रहते हैं; पक्का करने के लिए किसी एक पर tap करें। “इस सेटअप को ऑर्डर करें” आपके चुने शेड का बैग और starter binder, CMC, chamki और gurmala जोड़ता है — हर मात्रा ऑर्डर लिस्ट में बदल सकती है।"
+            />
           </p>
         </div>
       </div>

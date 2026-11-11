@@ -147,7 +147,7 @@ export function SiteHeader() {
             <SheetDescription>
               <Localized
                 en="Ballabgarh, Faridabad · Open 24x7"
-                hi="Ballabgarh, Faridabad · 24x7 खुला"
+                hi="बल्लभगढ़, फ़रीदाबाद · 24x7 खुला"
               />
             </SheetDescription>
           </SheetHeader>
@@ -202,7 +202,7 @@ export function SiteHeader() {
               <span>
                 {business.phoneDisplay}
                 <span className="block text-xs font-normal text-muted-foreground">
-                  <Localized en="ऑर्डर के लिए call" hi="ऑर्डर के लिए call" />
+                  <Localized en="Call for orders" hi="ऑर्डर के लिए call" />
                 </span>
               </span>
             </TrackedLink>

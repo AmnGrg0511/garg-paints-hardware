@@ -62,7 +62,7 @@ export const dictionary = {
     "filters.emptyBody":
       "Try a different search, or clear the filters to see the full catalogue.",
     "filters.active": "Active filters",
-    "bulk.title": "डीलर / ठेकेदार रेट उपलब्ध",
+    "bulk.title": "Dealer / contractor pricing available",
     "bulk.body":
       "Ordering for a site or a shop? Share the quantity and we will confirm bulk rates on WhatsApp.",
     "bulk.cta": "Ask for bulk rates",
@@ -75,10 +75,10 @@ export const dictionary = {
     "checkout.whatsapp": "Fast Order via WhatsApp",
     "checkout.whatsappBody":
       "Your item list is pre-filled in a WhatsApp message. Send it to start the order.",
-    "footer.rights": "सर्वाधिकार सुरक्षित।",
+    "footer.rights": "All rights reserved.",
     "footer.addressPending":
       "Street address and map are being confirmed. Call or WhatsApp for directions.",
-    "order.thanks": "ऑर्डर की पूछताछ शुरू हुई",
+    "order.thanks": "Order enquiry started",
   },
   hi: {
     "nav.products": "उत्पाद",
@@ -86,13 +86,13 @@ export const dictionary = {
     "nav.faq": "सवाल-जवाब",
     "nav.contact": "संपर्क",
     "common.call": "कॉल करें",
-    "common.whatsapp": "व्हाट्सएप",
+    "common.whatsapp": "WhatsApp",
     "common.orderNow": "अभी ऑर्डर करें",
     "common.viewProducts": "उत्पाद देखें",
     "common.addToCart": "लिस्ट में डालें",
     "common.added": "लिस्ट में जुड़ गया",
     "common.requestQuote": "रेट पूछें",
-    "common.requestQuoteWhatsApp": "व्हाट्सएप पर रेट पूछें",
+    "common.requestQuoteWhatsApp": "WhatsApp पर रेट पूछें",
     "common.quoteOnly": "रेट पूछना होगा",
     "common.priceOnRequest": "रेट के लिए संपर्क करें",
     "common.close": "बंद करें",
@@ -109,12 +109,12 @@ export const dictionary = {
     "hero.eyebrow": "बल्लभगढ़ · फ़रीदाबाद · 2017 से",
     "hero.title": "सही मटेरियल से बनता है बेहतरीन फ़िनिश।",
     "hero.body":
-      "ठेकेदारों, पेंटरों और डीलरों के लिए बाइंडर, मदरासी दाना, सीएमसी, चमकी और प्लास्टरिंग टूल्स। लिस्टेड रेट, जीएसटी इनवॉइस, 24x7 संपर्क।",
+      "ठेकेदारों, पेंटरों और डीलरों के लिए binder, Madrasi dana, CMC, chamki और प्लास्टरिंग टूल्स। लिस्टेड रेट, GST invoice, 24x7 संपर्क।",
     "hero.primary": "अभी ऑर्डर करें",
-    "hero.secondary": "व्हाट्सएप पर पूछें",
+    "hero.secondary": "WhatsApp पर पूछें",
     "trust.since": "2017 से",
-    "trust.gst": "जीएसटी इनवॉइस",
-    "trust.indiamart": "इंडियामार्ट सेलर",
+    "trust.gst": "GST invoice",
+    "trust.indiamart": "IndiaMART सेलर",
     "trust.hours": "24x7 खुला",
     "cart.title": "आपकी ऑर्डर लिस्ट",
     "cart.empty": "लिस्ट अभी खाली है।",
@@ -122,7 +122,7 @@ export const dictionary = {
       "लिस्टेड-रेट वाला उत्पाद जोड़ें और अनुमानित total देखें, या बल्क सामान का रेट पूछें।",
     "cart.estimated": "अनुमानित total",
     "cart.note":
-      "अनुमानित total सिर्फ़ लिस्टेड-रेट वाले सामान का है। फ़ाइनल जीएसटी इनवॉइस कन्फ़र्म होने पर भेजा जाएगा।",
+      "अनुमानित total सिर्फ़ लिस्टेड-रेट वाले सामान का है। फ़ाइनल GST invoice कन्फ़र्म होने पर भेजा जाएगा।",
     "cart.checkout": "ऑर्डर आगे बढ़ाएँ",
     "cart.clear": "लिस्ट खाली करें",
     "cart.quoteLine": "रेट पूछना होगा",
@@ -131,7 +131,7 @@ export const dictionary = {
     "filters.category": "श्रेणी",
     "filters.priceType": "रेट का प्रकार",
     "filters.search": "उत्पाद खोजें",
-    "filters.searchPlaceholder": "गुरमाला, सीएमसी, दाना…",
+    "filters.searchPlaceholder": "gurmala, CMC, दाना…",
     "filters.clear": "सब हटाएँ",
     "filters.mobile": "फ़िल्टर खोलें",
     "filters.results": "उत्पाद",
@@ -141,20 +141,20 @@ export const dictionary = {
     "filters.active": "चालू फ़िल्टर",
     "bulk.title": "डीलर / ठेकेदार रेट उपलब्ध",
     "bulk.body":
-      "साइट या दुकान के लिए ऑर्डर करनी है? मात्रा भेजें, बल्क रेट व्हाट्सएप पर कन्फ़र्म होगा।",
+      "साइट या दुकान के लिए ऑर्डर करनी है? मात्रा भेजें, बल्क रेट WhatsApp पर कन्फ़र्म होगा।",
     "bulk.cta": "बल्क रेट पूछें",
     "checkout.title": "ऑर्डर पूरा करें",
     "checkout.body":
-      "यहाँ कोई payment नहीं लिया जाता। फ़ाइनल इनवॉइस कैसे कन्फ़र्म करना है, वह चुनें।",
-    "checkout.indiamart": "इंडियामार्ट से ख़रीदें",
+      "यहाँ कोई payment नहीं लिया जाता। फ़ाइनल invoice कैसे कन्फ़र्म करना है, वह चुनें।",
+    "checkout.indiamart": "IndiaMART से ख़रीदें",
     "checkout.indiamartBody":
       "मार्केटप्लेस listing नए tab में खोलें और सेलर के साथ आगे बढ़ें।",
-    "checkout.whatsapp": "व्हाट्सएप से तुरंत ऑर्डर",
+    "checkout.whatsapp": "WhatsApp से तुरंत ऑर्डर",
     "checkout.whatsappBody":
-      "आपकी item लिस्ट व्हाट्सएप मैसेज में पहले से भरी है। ऑर्डर शुरू करने के लिए send करें।",
+      "आपकी item लिस्ट WhatsApp मैसेज में पहले से भरी है। ऑर्डर शुरू करने के लिए send करें।",
     "footer.rights": "सर्वाधिकार सुरक्षित।",
     "footer.addressPending":
-      "सड़क का पता और map कन्फ़र्म हो रहा है। रास्ता जानने के लिए call या व्हाट्सएप करें।",
+      "सड़क का पता और map कन्फ़र्म हो रहा है। रास्ता जानने के लिए call या WhatsApp करें।",
     "order.thanks": "ऑर्डर की पूछताछ शुरू हुई",
   },
 } as const;

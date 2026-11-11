@@ -17,18 +17,18 @@ export function CtaBand() {
         <div className="relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/60">
-              <Localized en="आज ही रेट चाहिए?" hi="आज ही रेट चाहिए?" />
+              <Localized en="Need a rate today?" hi="आज ही रेट चाहिए?" />
             </p>
             <h2 id="cta-heading" className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
               <Localized
                 en="Build the list. We will confirm the invoice."
-                hi="लिस्ट बनाएँ। इनवॉइस हम कन्फ़र्म करेंगे।"
+                hi="लिस्ट बनाएँ। invoice हम कन्फ़र्म करेंगे।"
               />
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-white/70">
               <Localized
                 en="Priced items can be added to the order list. Quote-only items go straight to WhatsApp for pack sizes and bulk rates."
-                hi="लिस्टेड-रेट वाले items ऑर्डर लिस्ट में जोड़ें। रेट-पूछने वाले items व्हाट्सएप पर pack size और बल्क रेट के लिए भेजें।"
+                hi="लिस्टेड-रेट वाले items ऑर्डर लिस्ट में जोड़ें। रेट-पूछने वाले items WhatsApp पर pack size और बल्क रेट के लिए भेजें।"
               />
             </p>
           </div>
@@ -41,7 +41,7 @@ export function CtaBand() {
                 "h-12 rounded-full bg-white px-6 text-base font-bold text-[#101A2E] hover:bg-white/90",
               )}
             >
-              <Localized en="उत्पाद देखें" hi="उत्पाद देखें" />
+              <Localized en="Shop products" hi="उत्पाद देखें" />
               <ArrowRightIcon className="size-4" aria-hidden />
             </Link>
             <TrackedLink
@@ -51,7 +51,7 @@ export function CtaBand() {
               className="dana-texture inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/30 px-6 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               <PhoneIcon className="size-4" aria-hidden />
-              <Localized en="दुकान पर call करें" hi="दुकान पर call करें" />
+              <Localized en="Call the shop" hi="दुकान पर call करें" />
             </TrackedLink>
           </div>
         </div>

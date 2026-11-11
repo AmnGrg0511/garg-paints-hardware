@@ -58,17 +58,17 @@ export function ShadeStrip() {
     >
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="eyebrow">शेड कार्ड</p>
+          <p className="eyebrow"><Localized en="Shade card" hi="शेड कार्ड" /></p>
           <h2 id="shades-heading" className="display-lg mt-2">
             <Localized
-              en="शेड चुनें। बैग के हिसाब से ऑर्डर करें।"
+              en="Pick a shade. Order it by the bag."
               hi="शेड चुनें। बैग के हिसाब से ऑर्डर करें।"
             />
           </h2>
           <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="हमारे पास मौजूद पाँच मदरासी दाना शेड, लिस्टेड बैग रेट के साथ। ग्रीन और ब्लैक का रेट पूछने पर मिलेगा — पक्का रेट जानने के लिए अपनी मात्रा व्हाट्सएप पर भेजें।"
-              hi="हमारे पास मौजूद पाँच मदरासी दाना शेड, लिस्टेड बैग रेट के साथ। ग्रीन और ब्लैक का रेट पूछने पर मिलेगा — पक्का रेट जानने के लिए अपनी मात्रा व्हाट्सएप पर भेजें।"
+              en="The five Madrasi dana shades we stock, with listed bag rates. Green and black are quoted on request — share your quantity on WhatsApp for a firm price."
+              hi="हमारे पास मौजूद पाँच Madrasi dana शेड, लिस्टेड बैग रेट के साथ। ग्रीन और ब्लैक का रेट पूछने पर मिलेगा — पक्का रेट जानने के लिए अपनी मात्रा WhatsApp पर भेजें।"
             />
           </p>
         </div>
@@ -76,7 +76,7 @@ export function ShadeStrip() {
           href="/products/madrasi-dana-wall-texture"
           className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-sm font-bold transition-colors hover:bg-secondary"
         >
-          <Localized en="टेक्सचर की जानकारी देखें" hi="टेक्सचर की जानकारी देखें" />
+          <Localized en="View texture details" hi="टेक्सचर की जानकारी देखें" />
           <ArrowRightIcon className="size-4" aria-hidden />
         </Link>
       </div>
