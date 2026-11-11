@@ -11,6 +11,7 @@ import {
   SparkleFlake,
   useChamki,
 } from "@/components/sections/chamki-shared";
+import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
 
 const CYCLE_MS = 3000;
@@ -263,9 +264,10 @@ export function ColourVisualizer({ className }: { className?: string }) {
           mode={chamki.mode}
           onChange={chamki.setMode}
         />
+        <OrderKitButton className="mt-4" chamkiMode={chamki.mode} />
         <Link
           href="/products/madrasi-dana-wall-texture"
-          className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"
+          className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"
         >
           Shop Madrasi dana textures
           <ArrowRightIcon className="size-4" aria-hidden />

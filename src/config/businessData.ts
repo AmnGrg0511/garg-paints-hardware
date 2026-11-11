@@ -560,6 +560,24 @@ export const productCategories = Array.from(
 // chamki. The gurmala is a tool, not a top seller — it stays out of this row.
 export const featuredProductIds = ["gph-01", "gph-02", "gph-04", "gph-05"];
 
+/**
+ * Starter-kit order behind the "Order this setup" button on the visualizers.
+ * One of each pack so the buyer always has a complete, coherent basket; the
+ * shop confirms exact amounts, and every quantity stays adjustable in the
+ * order list.
+ *
+ * TODO owner: confirm the standard project quantities (bags per shade,
+ * binder drums per bag, kg of CMC/chamki per bag) so the kit can become an
+ * area-based estimate instead of a fixed starter set.
+ */
+export const starterKit = {
+  danaBags: 1,
+  pidicrylDrums: 1,
+  cmcKg: 5,
+  chamkiKg: 1,
+  gurmalaPieces: 1,
+} as const;
+
 export const frequentlyBoughtTogether: Record<string, readonly string[]> = {
   "gph-01": ["gph-02", "gph-04"],
   "gph-02": ["gph-03", "gph-05"],

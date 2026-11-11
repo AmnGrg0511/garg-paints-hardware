@@ -5,6 +5,7 @@ export type AnalyticsEventName =
   | "click_indiamart"
   | "click_call"
   | "generate_lead"
+  | "order_kit"
   | "order_quote_request";
 
 export type AnalyticsParams = Record<string, string | number | boolean | null>;

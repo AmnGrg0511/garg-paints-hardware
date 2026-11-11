@@ -17,9 +17,16 @@ function normalizeIndianMobile(raw: string): string | null {
 }
 
 /**
- * Lead capture without OTP: the visitor submits a mobile number, the server
- * stores it for the business, and the visitor is handed to WhatsApp with the
- * callback request pre-filled to the shop's number.
+ * Lead capture without OTP:
+ *  1. The visitor submits a mobile number.
+ *  2. The server stores it durably when the filesystem allows (self-hosted)
+ *     and logs it (visible in Vercel logs on serverless).
+ *  3. If LEAD_WEBHOOK_URL is configured, the lead is forwarded there so the
+ *     owner gets it on their phone/inbox without any visitor action.
+ *     Supported setups (see README): Telegram bot sendMessage or a Google
+ *     Apps Script sheet-appender URL.
+ *  4. The visitor is still handed to WhatsApp with the callback request
+ *     pre-filled to the shop's number.
  */
 export async function POST(request: Request) {
   let body: { phone?: unknown; source?: unknown } | null = null;
@@ -44,10 +51,11 @@ export async function POST(request: Request) {
     phone: `+91${local10}`,
     source,
     at: new Date().toISOString(),
+    ua: request.headers.get("user-agent")?.slice(0, 120) ?? undefined,
   };
 
-  // Best-effort durable log for the business; the enquiry still proceeds
-  // when the filesystem is read-only on exotic hosts.
+  // Durable file log (self-hosted). Serverless filesystems are read-only,
+  // so failures here are non-fatal.
   let stored = false;
   try {
     await mkdir("data", { recursive: true });
@@ -61,5 +69,31 @@ export async function POST(request: Request) {
     stored = false;
   }
 
-  return Response.json({ ok: true, stored });
+  // Always visible in the platform logs, whatever the filesystem says.
+  console.log(`[lead] ${JSON.stringify(record)} stored=${stored}`);
+
+  // Optional push channel: forward the lead to the configured webhook so the
+  // owner receives it without the visitor doing anything else.
+  let forwarded = false;
+  const webhookUrl = process.env.LEAD_WEBHOOK_URL;
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          phone: record.phone,
+          source: record.source,
+          at: record.at,
+          text: `New website enquiry from ${source}\nMobile: ${record.phone}\nTime: ${record.at}`,
+        }),
+        signal: AbortSignal.timeout(5000),
+      });
+      forwarded = response.ok;
+    } catch {
+      forwarded = false;
+    }
+  }
+
+  return Response.json({ ok: true, stored, forwarded });
 }

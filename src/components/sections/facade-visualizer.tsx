@@ -8,6 +8,7 @@ import {
   SparkleFlake,
   useChamki,
 } from "@/components/sections/chamki-shared";
+import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
 
 const CYCLE_MS = 3000;
@@ -296,9 +297,12 @@ export function FacadeVisualizer({ className }: { className?: string }) {
             mode={chamki.mode}
             onChange={chamki.setMode}
           />
+          <OrderKitButton className="mt-4" chamkiMode={chamki.mode} />
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            Shades cycle automatically; tap one to lock it. Pick a chamki
-            finish — golden, silver or off — and it stays.
+            Shades cycle automatically; tap one to lock it. “Order this
+            setup” adds the picked shade bag plus a starter binder, CMC,
+            chamki and gurmala — every quantity stays adjustable in your
+            order list.
           </p>
         </div>
       </div>
