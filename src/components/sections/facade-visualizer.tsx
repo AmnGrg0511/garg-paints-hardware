@@ -7,6 +7,7 @@ import {
   ChamkiFinishPicker,
   SparkleFlake,
   useChamki,
+  type ChamkiMode,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
@@ -73,6 +74,8 @@ const darken = (hex: string, a: number) => mixHex(hex, "#0B0F14", a);
  */
 export function FacadeVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
+  const [cycleCount, setCycleCount] = useState(0);
+  const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
   const [locked, setLocked] = useState(false);
   const [paused, setPaused] = useState(false);
 
@@ -83,11 +86,12 @@ export function FacadeVisualizer({ className }: { className?: string }) {
     if (locked || paused || !inView) return;
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % WALL_SHADES.length);
+      setCycleCount((count) => count + 1);
     }, CYCLE_MS);
     return () => window.clearInterval(timer);
   }, [locked, paused, inView]);
 
-  const chamki = useChamki({ enabled: inView });
+  const chamki = useChamki({ cycleCount, pinned: chamkiPinned });
   const chamkiVisible = chamki.visible;
   const chamkiColour = chamki.colour;
 
@@ -294,10 +298,10 @@ export function FacadeVisualizer({ className }: { className?: string }) {
             </div>
           </fieldset>
           <ChamkiFinishPicker
-            mode={chamki.mode}
-            onChange={chamki.setMode}
+            mode={chamkiPinned ?? chamki.colour}
+            onChange={setChamkiPinned}
           />
-          <OrderKitButton className="mt-4" chamkiMode={chamki.mode} />
+          <OrderKitButton className="mt-4" chamkiMode={chamki.colour ?? "off"} />
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             Shades cycle automatically; tap one to lock it. “Order this
             setup” adds the picked shade bag plus a starter binder, CMC,

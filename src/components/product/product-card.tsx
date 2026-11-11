@@ -272,7 +272,7 @@ export function ProductCard({
               href={quoteWhatsappUrl(product.name, selectedVariant?.label)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 max-w-[9.5rem] items-center justify-center rounded-full bg-[#0d7a5f] px-3 text-center text-xs font-bold leading-tight text-white transition-transform hover:brightness-110 active:scale-[0.98]"
+              className="dana-texture inline-flex min-h-11 max-w-[9.5rem] items-center justify-center rounded-full bg-[#0d7a5f] px-3 text-center text-xs font-bold leading-tight text-white transition-transform hover:brightness-110 active:scale-[0.98]"
             >
               <Localized en="Request quote" hi="Rate poochein" />
             </TrackedLink>
@@ -281,7 +281,7 @@ export function ProductCard({
               ref={buttonRef}
               type="button"
               onClick={handleAdd}
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-primary px-4 text-sm font-bold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"
+              className="dana-texture inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full bg-primary px-4 text-sm font-bold text-primary-foreground transition-all hover:brightness-110 active:scale-[0.98]"
               aria-label={`${t("common.addToCart")}: ${product.name}${selectedVariant ? `, ${selectedVariant.label}` : ""}`}
             >
               <PlusIcon className="size-4" aria-hidden />

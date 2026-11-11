@@ -154,7 +154,7 @@ export function CallBackForm({
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#0d7a5f] px-5 text-sm font-bold text-white transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
+              className="dana-texture inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#0d7a5f] px-5 text-sm font-bold text-white transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
             >
               <WhatsAppGlyph className="size-4.5" />
               <Localized

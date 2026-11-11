@@ -43,7 +43,7 @@ export function SectionHeading({
       {href && linkLabel && (
         <Link
           href={href}
-          className="group inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-border bg-card/60 px-4 text-sm font-semibold transition-colors hover:bg-secondary"
+          className="dana-texture group inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold transition-colors hover:bg-secondary"
         >
           {linkLabel}
           <ArrowRightIcon

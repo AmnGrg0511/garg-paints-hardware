@@ -132,15 +132,6 @@ export function CartDrawer() {
                     </div>
 
                     <div className="mt-3 flex items-center justify-between gap-2">
-                      <QuantityStepper
-                        value={line.qty}
-                        onChange={(next) => setQty(line.key, next)}
-                        steps={getQuantityConfig(line.productId).steps}
-                        max={getQuantityConfig(line.productId).max}
-                        min={0}
-                        size="sm"
-                        label={`Quantity for ${line.name}`}
-                      />
                       <div className="text-right text-sm">
                         {line.amount !== null ? (
                           <>
@@ -161,6 +152,17 @@ export function CartDrawer() {
                           </span>
                         )}
                       </div>
+                    </div>
+                    <div className="mt-2.5 flex justify-center">
+                      <QuantityStepper
+                        value={line.qty}
+                        onChange={(next) => setQty(line.key, next)}
+                        steps={getQuantityConfig(line.productId).steps}
+                        max={getQuantityConfig(line.productId).max}
+                        min={0}
+                        size="sm"
+                        label={`Quantity for ${line.name}`}
+                      />
                     </div>
                   </div>
                 </li>

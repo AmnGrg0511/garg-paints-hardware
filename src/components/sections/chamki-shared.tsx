@@ -1,27 +1,28 @@
 "use client";
 
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type ChamkiMode = "gold" | "silver" | "off";
 
 /**
- * Chamki is a three-way finish picker: golden, silver or off. The chosen
- * finish stays until changed — no auto-cycling.
+ * Chamki glitter state:
+ *  - `pinned === null` → the colour cycles (gold ↔ silver) with each wall
+ *    colour change (cycleCount drives the alternation).
+ *  - `pinned === "gold" | "silver"` → the finish sticks to that colour.
+ *  - `pinned === "off"` → no glitter.
  */
 export function useChamki({
-  enabled,
+  cycleCount,
+  pinned,
 }: {
-  enabled: boolean;
-}): {
-  visible: boolean;
-  colour: "gold" | "silver" | null;
-  mode: ChamkiMode;
-  setMode: (mode: ChamkiMode) => void;
-} {
-  const [mode, setMode] = useState<ChamkiMode>("gold");
-  const colour: "gold" | "silver" | null = mode === "off" ? null : mode;
-  return { visible: enabled && mode !== "off", colour, mode, setMode };
+  cycleCount: number;
+  pinned: ChamkiMode | null;
+}): { visible: boolean; colour: "gold" | "silver" | null } {
+  const colour: "gold" | "silver" | null =
+    pinned === "off"
+      ? null
+      : (pinned ?? (cycleCount % 2 === 0 ? "gold" : "silver"));
+  return { visible: colour !== null, colour };
 }
 
 /** Four-point glitter flake, drawn around (0,0) then translated. */
@@ -52,15 +53,16 @@ export function SparkleFlake({
 
 /**
  * Three finish chips styled exactly like the shade row: colour dot + label.
- * Golden, Silver, Off.
+ * Golden, Silver, Off. Tapping the active chip again returns to the cycling
+ * shimmer.
  */
 export function ChamkiFinishPicker({
   mode,
   onChange,
   className,
 }: {
-  mode: ChamkiMode;
-  onChange: (mode: ChamkiMode) => void;
+  mode: ChamkiMode | null;
+  onChange: (mode: ChamkiMode | null) => void;
   className?: string;
 }) {
   const options = [
@@ -81,7 +83,7 @@ export function ChamkiFinishPicker({
             type="button"
             role="radio"
             aria-checked={mode === option.key}
-            onClick={() => onChange(option.key)}
+            onClick={() => onChange(mode === option.key ? null : option.key)}
             className={cn(
               "dana-texture inline-flex min-h-11 items-center gap-2 rounded-full border py-1 pl-1 pr-3 text-xs font-semibold transition-all",
               mode === option.key

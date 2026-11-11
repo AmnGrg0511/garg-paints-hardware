@@ -10,6 +10,7 @@ import {
   ChamkiFinishPicker,
   SparkleFlake,
   useChamki,
+  type ChamkiMode,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
@@ -63,13 +64,15 @@ const HERO_GLITTER_DOTS = seededDots(44, 8, 472, 10, 288, 0x9e3779b9);
  */
 export function ColourVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
+  const [cycleCount, setCycleCount] = useState(0);
+  const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
   const locked = useWallShade((state) => state.locked);
   const setIndex = useWallShade((state) => state.setIndex);
   const lock = useWallShade((state) => state.lock);
   const [paused, setPaused] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>();
 
-  const chamki = useChamki({ enabled: inView });
+  const chamki = useChamki({ cycleCount, pinned: chamkiPinned });
 
   const shade = WALL_SHADES[active] ?? WALL_SHADES[0];
 
@@ -81,6 +84,7 @@ export function ColourVisualizer({ className }: { className?: string }) {
     }
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % WALL_SHADES.length);
+      setCycleCount((count) => count + 1);
     }, CYCLE_MS);
     return () => window.clearInterval(timer);
   }, [locked, paused]);
@@ -261,10 +265,10 @@ export function ColourVisualizer({ className }: { className?: string }) {
           </div>
         </fieldset>
         <ChamkiFinishPicker
-          mode={chamki.mode}
-          onChange={chamki.setMode}
+          mode={chamkiPinned ?? chamki.colour}
+          onChange={setChamkiPinned}
         />
-        <OrderKitButton className="mt-4" chamkiMode={chamki.mode} />
+        <OrderKitButton className="mt-4" chamkiMode={chamki.colour ?? "off"} />
         <Link
           href="/products/madrasi-dana-wall-texture"
           className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"

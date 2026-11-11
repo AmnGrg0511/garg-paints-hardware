@@ -30,17 +30,17 @@ export function QuantityStepper({
   const ordered = [...steps].sort((a, b) => a - b);
   const btnBase =
     size === "sm"
-      ? "min-h-9 min-w-9 px-1.5 text-[0.7rem]"
-      : "min-h-10 min-w-10 px-2 text-xs";
+      ? "min-h-8 min-w-8 px-1 text-[0.66rem]"
+      : "min-h-9 min-w-9 px-1.5 text-[0.7rem]";
   const btn =
-    "grid place-items-center rounded-full border border-border bg-card font-bold text-foreground transition-colors hover:bg-secondary active:scale-95 disabled:opacity-40";
+    "grid place-items-center rounded-full border border-border bg-card font-bold text-foreground transition-colors hover:bg-secondary active:scale-95 disabled:opacity-40 disabled:pointer-events-none";
 
   const clamp = (next: number) => Math.max(min, Math.min(max, next));
 
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border border-border bg-background/80 p-1",
+        "inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-2xl border border-border bg-background/80 p-1",
         className,
       )}
       role="group"
@@ -64,7 +64,7 @@ export function QuantityStepper({
       <span
         aria-live="polite"
         className={cn(
-          "min-w-11 text-center font-extrabold tabular-nums",
+          "min-w-10 text-center font-extrabold tabular-nums",
           size === "sm" ? "text-sm" : "text-base",
         )}
       >

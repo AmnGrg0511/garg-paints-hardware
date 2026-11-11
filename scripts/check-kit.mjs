@@ -15,6 +15,7 @@ await page.evaluate(() => {
   [...f.querySelectorAll("button[role='radio']")].find((b) => b.textContent?.includes("Red"))?.click();
 });
 await new Promise((r) => setTimeout(r, 400));
+await page.evaluate(() => localStorage.removeItem("gph-cart"));
 await page.evaluate(() => {
   [...document.querySelectorAll("button")]
     .find((b) => b.textContent?.includes("Order this setup"))?.click();

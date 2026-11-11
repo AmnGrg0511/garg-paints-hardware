@@ -36,7 +36,7 @@ export function BulkCallout() {
               href={generalEnquiryUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-bold text-primary transition-transform hover:scale-[1.02]"
+              className="dana-texture inline-flex min-h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-bold text-primary transition-transform hover:scale-[1.02]"
             >
               <Localized en="Ask for bulk rates" hi="Bulk rate poochein" />
             </TrackedLink>
@@ -44,7 +44,7 @@ export function BulkCallout() {
               event="click_call"
               params={{ source: "bulk_callout" }}
               href={callUrl}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              className="dana-texture inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               <PhoneIcon className="size-4" aria-hidden />
               <Localized en="Call the shop" hi="Dukaan par call" />

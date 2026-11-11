@@ -11,6 +11,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
+      /* Keep toasts clear of the sticky header (64px) on mobile and desktop
+         so they never block the cart button or navigation. */
+      offset={76}
+      mobileOffset={{ top: 76 }}
       icons={{
         success: (
           <CircleCheckIcon className="size-4" />

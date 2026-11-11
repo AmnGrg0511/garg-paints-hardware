@@ -214,7 +214,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
               event="click_call"
               params={{ source: "product_detail", item: product.name }}
               href={callUrl}
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-3 text-xs font-semibold transition-colors hover:bg-secondary"
+              className="inline-flex min-h-11 items-center justify-center dana-texture rounded-full border border-border bg-card px-3 text-xs font-semibold transition-colors hover:bg-secondary"
             >
               {t("common.call")}
             </TrackedLink>
@@ -224,7 +224,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
               href={indiaMartUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-3 text-xs font-semibold transition-colors hover:bg-secondary"
+              className="inline-flex min-h-11 items-center justify-center dana-texture rounded-full border border-border bg-card px-3 text-xs font-semibold transition-colors hover:bg-secondary"
             >
               IndiaMART
             </TrackedLink>

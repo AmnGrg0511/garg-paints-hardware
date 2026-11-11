@@ -48,7 +48,7 @@ export function CtaBand() {
               event="click_call"
               params={{ source: "cta_band" }}
               href={callUrl}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/30 px-6 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              className="dana-texture inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/30 px-6 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               <PhoneIcon className="size-4" aria-hidden />
               <Localized en="Call the shop" hi="Dukaan par call" />
