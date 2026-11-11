@@ -84,6 +84,7 @@ export function QuantityStepper({
           type="text"
           inputMode="numeric"
           value={text}
+          onFocus={(event) => event.currentTarget.select()}
           onChange={(event) => {
             setText(event.target.value);
             commitInput(event.target.value);

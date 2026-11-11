@@ -43,13 +43,27 @@ await page.evaluate(() => {
 await new Promise((r) => setTimeout(r, 300));
 const input = await page.waitForSelector("[role='group'][aria-label='Quantity in drums'] input", { timeout: 20000 });
 await input.click({ clickCount: 3 });
-await page.type(input, "5");
+await input.type("5");
 await new Promise((r) => setTimeout(r, 500));
-const price = await page.evaluate(() => {
-  const group = document.querySelector("[role='group'][aria-label*='Quantity']");
-  const line = group?.closest("div.rounded-2xl");
-  return (line?.innerText || "").match(/₹\s?([\d,]+)/)?.[1];
+const typedValue = await page.evaluate(() => {
+  const group = document.querySelector("[role='group'][aria-label='Quantity in drums']");
+  return group?.querySelector("input")?.value;
 });
-ok("live typing: 5 drums → ₹32,500", price === "32,500", price);
+ok("live typing: input shows 5", typedValue === "5", typedValue);
+const kitLinePre = await page.evaluate(() => {
+  const stored = JSON.parse(localStorage.getItem("gph-cart") || "{}");
+  return (stored?.state?.lines || []).filter((l) => l.productId === "gph-01").length;
+});
+console.log("pidicryl lines already in cart:", kitLinePre);
+await page.evaluate(() => {
+  [...document.querySelectorAll("button")]
+    .find((b) => b.textContent?.trim().includes("Add to cart"))?.click();
+});
+await new Promise((r) => setTimeout(r, 600));
+const kitLine = await page.evaluate(() => {
+  const stored = JSON.parse(localStorage.getItem("gph-cart") || "{}");
+  return (stored?.state?.lines || []).find((l) => l.productId === "gph-01");
+});
+ok("typed 5 → cart line 5 drums @ ₹32,500", kitLine?.qty === 5 && kitLine?.amount === 6500, JSON.stringify({ qty: kitLine?.qty, amount: kitLine?.amount }));
 
 await browser.close();
