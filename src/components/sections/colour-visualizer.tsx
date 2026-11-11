@@ -69,7 +69,6 @@ export function ColourVisualizer({ className }: { className?: string }) {
   // colours never stop for good.
   const [hold, setHold] = useState(false);
   const holdTimer = useRef<number | null>(null);
-  const locked = useWallShade((state) => state.locked);
   const setIndex = useWallShade((state) => state.setIndex);
   const lock = useWallShade((state) => state.lock);
   const [paused, setPaused] = useState(false);

@@ -15,6 +15,7 @@ export type ConsentState = "granted" | "denied";
 
 type DataLayerWindow = Window & {
   dataLayer?: Record<string, unknown>[];
+  gtag?: (...args: unknown[]) => void;
 };
 
 export function getConsent(): ConsentState | null {
@@ -25,6 +26,32 @@ export function getConsent(): ConsentState | null {
   } catch {
     return null;
   }
+}
+
+/** Google consent mode must agree with the banner before any GA cookie use. */
+export function applyGtagConsent(state: ConsentState): void {
+  const target = window as DataLayerWindow;
+  if (!target.gtag) return;
+  target.gtag("consent", "update", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    ad_personalization_signals: undefined,
+    analytics_storage: state === "granted" ? "granted" : "denied",
+  });
+}
+
+export function listenForConsentChanges(): () => void {
+  const handler = () => {
+    const state = getConsent();
+    if (state) applyGtagConsent(state);
+  };
+  window.addEventListener("gph:consent", handler);
+  window.addEventListener("storage", handler);
+  return () => {
+    window.removeEventListener("gph:consent", handler);
+    window.removeEventListener("storage", handler);
+  };
 }
 
 export function setConsent(state: ConsentState): void {
@@ -39,8 +66,8 @@ export function setConsent(state: ConsentState): void {
 
 /**
  * Consent-friendly analytics hook. Nothing is pushed until the visitor grants
- * consent. The app ships with no third-party tags; a dataLayer consumer can be
- * added later without touching call sites.
+ * consent. When Google Analytics is configured (NEXT_PUBLIC_GA_ID), events go
+ * to GA4; they always land in the local dataLayer as a first-party mirror.
  */
 export function trackEvent(
   name: AnalyticsEventName,
@@ -52,4 +79,11 @@ export function trackEvent(
   const target = window as DataLayerWindow;
   target.dataLayer = target.dataLayer ?? [];
   target.dataLayer.push({ event: name, ...params });
+
+  if (typeof target.gtag === "function") {
+    target.gtag("event", name, {
+      ...params,
+      send_to: process.env.NEXT_PUBLIC_GA_ID,
+    });
+  }
 }

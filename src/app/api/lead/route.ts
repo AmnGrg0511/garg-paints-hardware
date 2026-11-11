@@ -1,5 +1,6 @@
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { put } from "@vercel/blob";
 
 export const runtime = "nodejs";
 
@@ -69,6 +70,27 @@ export async function POST(request: Request) {
     stored = false;
   }
 
+  // Durable cloud store: each lead becomes a browsable object in the
+  // project's Vercel Blob store (dashboard → Storage). Works when
+  // BLOB_READ_WRITE_TOKEN is configured.
+  let cloudStored = false;
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      await put(
+        `leads/${Date.now()}-${local10}.json`,
+        JSON.stringify(record),
+        {
+          access: "public",
+          addRandomSuffix: false,
+          contentType: "application/json",
+        },
+      );
+      cloudStored = true;
+    } catch {
+      cloudStored = false;
+    }
+  }
+
   // Always visible in the platform logs, whatever the filesystem says.
   console.log(`[lead] ${JSON.stringify(record)} stored=${stored}`);
 
@@ -95,5 +117,5 @@ export async function POST(request: Request) {
     }
   }
 
-  return Response.json({ ok: true, stored, forwarded });
+  return Response.json({ ok: true, stored, cloudStored, forwarded });
 }
