@@ -5,21 +5,24 @@ const browser = await puppeteer.launch({
   args: ["--no-sandbox", "--disable-dev-shm-usage"],
 });
 const page = await browser.newPage();
+const errs = [];
 await page.setViewport({ width: 1280, height: 900 });
 const ok = (n, p, d = "") => console.log(`${p ? "PASS" : "FAIL"}  ${n}${d ? " — " + d : ""}`);
 
 // 1. Pick Red shade on the hero visualizer, then "Order this setup".
 await page.goto("http://localhost:3100/", { waitUntil: "networkidle0", timeout: 90000 });
+await page.evaluate(() => localStorage.removeItem("gph-cart"));
 await page.evaluate(() => {
   const f = [...document.querySelectorAll("fieldset")].find((x) => x.textContent?.includes("repaint the wall"));
   [...f.querySelectorAll("button[role='radio']")].find((b) => b.textContent?.includes("Red"))?.click();
 });
 await new Promise((r) => setTimeout(r, 400));
-await page.evaluate(() => localStorage.removeItem("gph-cart"));
 await page.evaluate(() => {
   [...document.querySelectorAll("button")]
     .find((b) => b.textContent?.includes("Order this setup"))?.click();
 });
+await new Promise((r) => setTimeout(r, 900));
+
 await new Promise((r) => setTimeout(r, 900));
 
 // 2. Cart opens with the 5-line kit.
