@@ -6,8 +6,7 @@ import { useInView } from "@/lib/use-in-view";
 import {
   ChamkiFinishPicker,
   SparkleFlake,
-  useChamki,
-  type ChamkiMode,
+  chamkiColourFor,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
@@ -74,7 +73,6 @@ const darken = (hex: string, a: number) => mixHex(hex, "#0B0F14", a);
  */
 export function FacadeVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
-  const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
   const [hold, setHold] = useState(false);
   const holdTimer = useRef<number | null>(null);
   const [paused, setPaused] = useState(false);
@@ -90,9 +88,8 @@ export function FacadeVisualizer({ className }: { className?: string }) {
     return () => window.clearInterval(timer);
   }, [hold, paused, inView]);
 
-  const chamki = useChamki({ pinned: chamkiPinned, enabled: inView });
-  const chamkiVisible = chamki.visible;
-  const chamkiColour = chamki.colour;
+  const [chamkiHold, setChamkiHold] = useState<"gold" | "silver" | null>(null);
+  const chamkiColour = chamkiHold ?? chamkiColourFor(active);
 
   // Derived palette: the whole house responds to the selected shade.
   const wallMain = lighten(shade.hex, 0.88);
@@ -178,8 +175,7 @@ export function FacadeVisualizer({ className }: { className?: string }) {
               <circle cx="178" cy="238" r="6" fill="#FFFFFF" opacity="0.18" />
             </g>
             {/* Tiny twinkling glitter dots across the render */}
-            {chamkiVisible && (
-              <g aria-hidden="true">
+            <g aria-hidden="true">
                 {FACADE_GLITTER_DOTS.map(([cx, cy, r, delay], i) => (
                   <circle
                     key={`dot-${i}`}
@@ -201,8 +197,7 @@ export function FacadeVisualizer({ className }: { className?: string }) {
                     delay={delay}
                   />
                 ))}
-              </g>
-            )}
+          </g>
           </g>
 
           {/* Upper glazing band */}
@@ -302,10 +297,18 @@ export function FacadeVisualizer({ className }: { className?: string }) {
             </div>
           </fieldset>
           <ChamkiFinishPicker
-            mode={chamkiPinned ?? chamki.colour}
-            onChange={setChamkiPinned}
+            colour={chamkiColour}
+            onPick={(colour) => {
+              setChamkiHold(colour);
+              setHold(true);
+              if (holdTimer.current) window.clearTimeout(holdTimer.current);
+              holdTimer.current = window.setTimeout(() => {
+                setHold(false);
+                setChamkiHold(null);
+              }, 9000);
+            }}
           />
-          <OrderKitButton className="mt-4" chamkiMode={chamki.colour ?? "off"} />
+          <OrderKitButton className="mt-4" chamkiColour={chamkiColour} />
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             Shades cycle automatically; tap one to lock it. “Order this
             setup” adds the picked shade bag plus a starter binder, CMC,

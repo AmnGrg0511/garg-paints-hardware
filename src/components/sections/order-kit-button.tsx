@@ -18,11 +18,11 @@ type Tone = "terracotta" | "peach" | "slate" | "gold" | "cream";
  */
 export function OrderKitButton({
   className,
-  chamkiMode = "gold",
+  chamkiColour = "gold",
 }: {
   className?: string;
-  /** The visitor's chamki finish from the picker beside this button. */
-  chamkiMode?: "gold" | "silver" | "off";
+  /** The chamki finish currently shown by the visualizer. */
+  chamkiColour?: "gold" | "silver";
 }) {
   const open = useCartStore((state) => state.open);
   const addItem = useCartStore((state) => state.addItem);
@@ -30,7 +30,7 @@ export function OrderKitButton({
 
   const orderKit = () => {
     const shadeIndexSafe = Number.isFinite(shadeIndex) ? shadeIndex : 0;
-    const { lines } = buildStarterKitLines(shadeIndexSafe, chamkiMode);
+    const { lines } = buildStarterKitLines(shadeIndexSafe, chamkiColour);
     for (const line of lines) {
       addItem({
         productId: line.productId,

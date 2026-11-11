@@ -9,8 +9,7 @@ import { VisualizerGlow } from "@/components/sections/hero-backdrop";
 import {
   ChamkiFinishPicker,
   SparkleFlake,
-  useChamki,
-  type ChamkiMode,
+  chamkiColourFor,
 } from "@/components/sections/chamki-shared";
 import { OrderKitButton } from "@/components/sections/order-kit-button";
 import { cn } from "@/lib/utils";
@@ -64,7 +63,6 @@ const HERO_GLITTER_DOTS = seededDots(44, 8, 472, 10, 288, 0x9e3779b9);
  */
 export function ColourVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
-  const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
   // Picking a shade shows it for a moment, then cycling resumes — the
   // colours never stop for good.
   const [hold, setHold] = useState(false);
@@ -74,7 +72,8 @@ export function ColourVisualizer({ className }: { className?: string }) {
   const [paused, setPaused] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>();
 
-  const chamki = useChamki({ pinned: chamkiPinned, enabled: inView });
+  const [chamkiHold, setChamkiHold] = useState<"gold" | "silver" | null>(null);
+  const chamkiColour = chamkiHold ?? chamkiColourFor(active);
 
   const shade = WALL_SHADES[active] ?? WALL_SHADES[0];
 
@@ -142,14 +141,13 @@ export function ColourVisualizer({ className }: { className?: string }) {
             <circle cx="30" cy="150" r="6" fill="#FFFFFF" opacity="0.18" />
           </g>
           {/* Shimmer wash + a field of tiny twinkling glitter dots */}
-          {chamki.visible && (
-            <g aria-hidden="true">
+          <g aria-hidden="true">
               <rect
                 x="0"
                 y="0"
                 width="480"
                 height="300"
-                fill={chamki.colour === "gold" ? "#F2C14E" : "#C9D6E4"}
+                fill={chamkiColour === "gold" ? "#F2C14E" : "#C9D6E4"}
                 opacity="0.07"
                 style={{ transition: "fill 420ms ease" }}
               />
@@ -160,7 +158,7 @@ export function ColourVisualizer({ className }: { className?: string }) {
                   cx={cx}
                   cy={cy}
                   r={r}
-                  fill={chamki.colour === "gold" ? "#FFE9A8" : "#F0F6FC"}
+                  fill={chamkiColour === "gold" ? "#FFE9A8" : "#F0F6FC"}
                   style={{ animationDelay: `${delay}s` }}
                 />
               ))}
@@ -170,12 +168,11 @@ export function ColourVisualizer({ className }: { className?: string }) {
                   cx={cx}
                   cy={cy}
                   size={size}
-                  colourId={chamki.colour === "gold" ? "vis-gold" : "vis-silver"}
+                  colourId={chamkiColour === "gold" ? "vis-gold" : "vis-silver"}
                   delay={delay}
                 />
               ))}
-            </g>
-          )}
+          </g>
           {/* Skirting */}
           <rect x="0" y="286" width="480" height="14" fill="#FFFFFF" opacity="0.55" />
           {/* Window with light */}
@@ -270,10 +267,18 @@ export function ColourVisualizer({ className }: { className?: string }) {
           </div>
         </fieldset>
         <ChamkiFinishPicker
-          mode={chamkiPinned ?? chamki.colour}
-          onChange={setChamkiPinned}
+          colour={chamkiColour}
+          onPick={(colour) => {
+            setChamkiHold(colour);
+            setHold(true);
+            if (holdTimer.current) window.clearTimeout(holdTimer.current);
+            holdTimer.current = window.setTimeout(() => {
+              setHold(false);
+              setChamkiHold(null);
+            }, 9000);
+          }}
         />
-        <OrderKitButton className="mt-4" chamkiMode={chamki.colour ?? "off"} />
+        <OrderKitButton className="mt-4" chamkiColour={chamkiColour} />
         <Link
           href="/products/madrasi-dana-wall-texture"
           className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary hover:underline"

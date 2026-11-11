@@ -66,7 +66,7 @@ function lineFor(
  */
 export function buildStarterKitLines(
   shadeIndex: number,
-  chamkiMode: "gold" | "silver" | "off",
+  chamkiColour: "gold" | "silver",
 ): { lines: KitLine[]; skipped: string[] } {
   const lines: KitLine[] = [];
   const skipped: string[] = [];
@@ -102,17 +102,15 @@ export function buildStarterKitLines(
     if (line) lines.push(line);
   }
 
-  if (chamki && chamkiMode !== "off") {
+  if (chamki) {
     const label =
       chamki.kind === "variant"
         ? chamki.variants.find((variant) =>
-            variant.label.toLowerCase().startsWith(chamkiMode),
+            variant.label.toLowerCase().startsWith(chamkiColour),
           )?.label ?? null
         : null;
     const line = lineFor(chamki, label, starterKit.chamkiKg);
     if (line) lines.push(line);
-  } else if (chamki) {
-    skipped.push("Chamki");
   }
 
   if (gurmala) {
