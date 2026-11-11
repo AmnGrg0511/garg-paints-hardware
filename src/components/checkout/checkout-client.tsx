@@ -121,6 +121,22 @@ export function CheckoutClient() {
             <Localized en="How ordering works" hi="Ordering kaise hoti hai" />
           </Link>
         </div>
+
+        <div className="mx-auto mt-8 w-full max-w-md">
+          <p className="text-center text-sm font-semibold text-foreground">
+            <Localized
+              en="Not ready to browse yet?"
+              hi="Abhi browse nahi karna?"
+            />
+          </p>
+          <p className="mx-auto mt-1 max-w-sm text-center text-xs leading-relaxed text-muted-foreground">
+            <Localized
+              en="Leave your number — the shop calls you back with prices and availability."
+              hi="Number chhod dein — dukaan rate aur availability ke saath call karegi."
+            />
+          </p>
+          <CallBackForm source="checkout-empty" className="mt-4" />
+        </div>
       </div>
     );
   }
