@@ -8,7 +8,11 @@ import { getQuantityConfig, parsePrice, getUnitLabel } from "@/lib/pricing";
 import { QuantityStepper } from "@/components/product/quantity-stepper";
 import { quoteWhatsappUrl, callUrl, indiaMartUrl } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
-import { dispatchFlyToCart, prefersReducedMotion } from "@/lib/ui-events";
+import {
+  dispatchCartGlow,
+  dispatchFlyToCart,
+  prefersReducedMotion,
+} from "@/lib/ui-events";
 import { useCartStore } from "@/store/cart";
 import { useVariantSelection } from "@/store/variant-selection";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -78,7 +82,10 @@ export function ProductDetailActions({ product }: { product: Product }) {
       });
     }
 
+    dispatchCartGlow();
+
     toast.success(t("common.added"), {
+      duration: 2200,
       description: `${selectedVariant ? `${selectedVariant.label} × ` : ""}${qty}`,
     });
   };

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "lucide-react";
 import { useInView } from "@/lib/use-in-view";
 import { WALL_SHADES, useWallShade } from "@/store/wall-shade";
@@ -64,30 +64,32 @@ const HERO_GLITTER_DOTS = seededDots(44, 8, 472, 10, 288, 0x9e3779b9);
  */
 export function ColourVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
-  const [cycleCount, setCycleCount] = useState(0);
   const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
+  // Picking a shade shows it for a moment, then cycling resumes — the
+  // colours never stop for good.
+  const [hold, setHold] = useState(false);
+  const holdTimer = useRef<number | null>(null);
   const locked = useWallShade((state) => state.locked);
   const setIndex = useWallShade((state) => state.setIndex);
   const lock = useWallShade((state) => state.lock);
   const [paused, setPaused] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>();
 
-  const chamki = useChamki({ cycleCount, pinned: chamkiPinned });
+  const chamki = useChamki({ pinned: chamkiPinned, enabled: inView });
 
   const shade = WALL_SHADES[active] ?? WALL_SHADES[0];
 
   // Auto-cycle until the visitor picks a shade; pauses on hover/focus.
   useEffect(() => {
-    if (locked || paused) return;
+    if (hold || paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % WALL_SHADES.length);
-      setCycleCount((count) => count + 1);
     }, CYCLE_MS);
     return () => window.clearInterval(timer);
-  }, [locked, paused]);
+  }, [hold, paused]);
 
   // Publish the shade to the hero backdrop AFTER commit, never mid-render
   // (prevents the zustand set-state-in-render warning).
@@ -98,6 +100,10 @@ export function ColourVisualizer({ className }: { className?: string }) {
   const pick = (i: number) => {
     setActive(i);
     lock(i);
+    setHold(true);
+    if (holdTimer.current) window.clearTimeout(holdTimer.current);
+    // The colours resume after a look at the picked shade.
+    holdTimer.current = window.setTimeout(() => setHold(false), 9000);
   };
 
   return (

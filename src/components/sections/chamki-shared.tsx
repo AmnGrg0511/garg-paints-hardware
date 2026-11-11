@@ -1,27 +1,44 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export type ChamkiMode = "gold" | "silver" | "off";
 
+const CHAMKI_CYCLE_MS = 3000;
+
 /**
- * Chamki glitter state:
- *  - `pinned === null` → the colour cycles (gold ↔ silver) with each wall
- *    colour change (cycleCount drives the alternation).
+ * Chamki glitter state with its own rhythm so it never stalls:
+ *  - `pinned === null` → the colour alternates (gold ↔ silver) on its own
+ *    timer, independent of the wall shades.
  *  - `pinned === "gold" | "silver"` → the finish sticks to that colour.
  *  - `pinned === "off"` → no glitter.
  */
 export function useChamki({
-  cycleCount,
   pinned,
+  enabled,
 }: {
-  cycleCount: number;
   pinned: ChamkiMode | null;
+  enabled: boolean;
 }): { visible: boolean; colour: "gold" | "silver" | null } {
+  const [tick, setTick] = useState(0);
+
+  const off = pinned === "off";
+  useEffect(() => {
+    if (!enabled || off) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    const timer = window.setInterval(() => {
+      setTick((value) => value + 1);
+    }, CHAMKI_CYCLE_MS);
+    return () => window.clearInterval(timer);
+  }, [enabled, off]);
+
   const colour: "gold" | "silver" | null =
     pinned === "off"
       ? null
-      : (pinned ?? (cycleCount % 2 === 0 ? "gold" : "silver"));
+      : (pinned ?? (tick % 2 === 0 ? "gold" : "silver"));
   return { visible: colour !== null, colour };
 }
 

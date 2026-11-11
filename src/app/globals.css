@@ -251,6 +251,35 @@
     animation: gph-icon-in 0.2s ease-out both;
   }
 
+  /* Cart button attention cue after an item lands: shake + glow ring. */
+  @keyframes gph-cart-glow {
+    0% {
+      transform: translateX(0);
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 55%, transparent);
+    }
+    15% {
+      transform: translateX(-3px);
+    }
+    30% {
+      transform: translateX(3px);
+    }
+    45% {
+      transform: translateX(-2px);
+      box-shadow: 0 0 0 9px color-mix(in oklab, var(--primary) 22%, transparent);
+    }
+    60% {
+      transform: translateX(2px);
+    }
+    100% {
+      transform: translateX(0);
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 0%, transparent);
+    }
+  }
+
+  .gph-cart-glow {
+    animation: gph-cart-glow 0.95s ease-in-out;
+  }
+
   @keyframes gph-twinkle {
     0%,
     100% {
@@ -289,7 +318,8 @@
   @media (prefers-reduced-motion: reduce) {
     .gph-badge-pop,
     .gph-icon-in,
-    .gph-sparkle {
+    .gph-sparkle,
+    .gph-cart-glow {
       animation: none;
     }
   }

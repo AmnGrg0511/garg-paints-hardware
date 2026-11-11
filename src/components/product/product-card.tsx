@@ -8,7 +8,11 @@ import { toast } from "sonner";
 import { parsePrice, getUnitLabel } from "@/lib/pricing";
 import { quoteWhatsappUrl } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
-import { dispatchFlyToCart, prefersReducedMotion } from "@/lib/ui-events";
+import {
+  dispatchCartGlow,
+  dispatchFlyToCart,
+  prefersReducedMotion,
+} from "@/lib/ui-events";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart";
 import { useVariantSelection } from "@/store/variant-selection";
@@ -126,15 +130,17 @@ export function ProductCard({
     });
 
     const rect = buttonRef.current?.getBoundingClientRect();
-    if (rect) {
+    if (rect && !prefersReducedMotion()) {
       dispatchFlyToCart({
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2,
         tone: product.tone,
       });
     }
+    dispatchCartGlow();
 
     toast.success(t("common.added"), {
+      duration: 2200,
       description: selectedVariant
         ? `${product.name} — ${selectedVariant.label}`
         : product.name,
@@ -245,12 +251,12 @@ export function ProductCard({
           </div>
         )}
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-4">
+        <div className="mt-auto flex flex-col gap-3 pt-4">
           <div aria-live="polite">
             <p className="text-[0.62rem] font-bold uppercase tracking-[0.12em] text-muted-foreground">
               {price.onRequest ? t("common.quoteOnly") : "Listed price"}
             </p>
-            <p className="mt-0.5 text-xl font-extrabold tracking-tight sm:text-2xl">
+            <p className="mt-0.5 whitespace-nowrap text-xl font-extrabold tracking-tight sm:text-2xl">
               {price.onRequest ? (
                 <span className="text-base font-bold">{t("common.priceOnRequest")}</span>
               ) : (
@@ -265,6 +271,7 @@ export function ProductCard({
             </p>
           </div>
 
+          <div className="flex justify-end">
           {price.onRequest ? (
             <TrackedLink
               event="click_whatsapp"
@@ -288,6 +295,7 @@ export function ProductCard({
               <Localized en="Add to cart" hi="Cart mein daalein" />
             </button>
           )}
+          </div>
         </div>
       </div>
     </article>

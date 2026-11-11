@@ -1,12 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Bulk-aware quantity stepper: renders the product's real ordering steps
- * (bags: ±1/±10/±100 · kg: ±1/±5/±25 · drums: ±1/±10 · pieces: ±1) so a
- * 100-bag order is three taps, not one hundred.
+ * Quantity control built for real trade ordering:
+ *  - Row 1: − / typed value / + (any weight, e.g. 7 kg or 13 kg)
+ *  - Row 2: bulk chips (+10, +100, +5, +25 …) matching the product's
+ *    ordering steps.
+ * Wraps gracefully instead of overflowing narrow rows.
  */
 export function QuantityStepper({
   value,
@@ -28,63 +31,94 @@ export function QuantityStepper({
   className?: string;
 }) {
   const ordered = [...steps].sort((a, b) => a - b);
-  const btnBase =
-    size === "sm"
-      ? "min-h-8 min-w-8 px-1 text-[0.66rem]"
-      : "min-h-9 min-w-9 px-1.5 text-[0.7rem]";
-  const btn =
-    "grid place-items-center rounded-full border border-border bg-card font-bold text-foreground transition-colors hover:bg-secondary active:scale-95 disabled:opacity-40 disabled:pointer-events-none";
+  const bulk = ordered.filter((step) => step > 1);
+  const [text, setText] = useState(String(value));
 
   const clamp = (next: number) => Math.max(min, Math.min(max, next));
+  const bump = (next: number) => {
+    const clamped = clamp(next);
+    setText(String(clamped));
+    onChange(clamped);
+  };
+  const commitInput = () => {
+    const digits = text.replace(/\D/g, "");
+    const parsed = digits === "" ? value : Number(digits);
+    if (!Number.isFinite(parsed) || clamp(parsed) === value) {
+      setText(String(value));
+      return;
+    }
+    bump(parsed);
+  };
+
+  const btnBase =
+    size === "sm"
+      ? "min-h-8 min-w-8 text-xs"
+      : "min-h-9 min-w-9 text-sm";
+  const btn =
+    "grid place-items-center rounded-full border border-border bg-card font-bold text-foreground transition-colors hover:bg-secondary active:scale-95 disabled:opacity-40 disabled:pointer-events-none";
+  const chipBase =
+    size === "sm"
+      ? "min-h-7 px-2 text-[0.66rem]"
+      : "min-h-8 px-2.5 text-xs";
+  const chip =
+    "rounded-full border border-border bg-card font-bold text-foreground transition-colors hover:bg-secondary hover:border-primary/40 active:scale-95";
 
   return (
-    <div
-      className={cn(
-        "inline-flex max-w-full flex-wrap items-center justify-center gap-1 rounded-2xl border border-border bg-background/80 p-1",
-        className,
+    <div className={cn("max-w-full", className)}>
+      <div className="inline-flex items-center gap-1 rounded-full border border-border bg-background/80 p-1">
+        <button
+          type="button"
+          className={cn(btn, btnBase)}
+          onClick={() => bump(value - 1)}
+          disabled={value - 1 < min}
+          aria-label={`Decrease by one`}
+        >
+          <MinusIcon className="size-3.5" aria-hidden />
+        </button>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+          onBlur={commitInput}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              commitInput();
+            }
+          }}
+          aria-label={`${label} — type a value`}
+          className={cn(
+            "w-14 border-0 bg-transparent p-0 text-center font-extrabold tabular-nums focus:outline-none",
+            size === "sm" ? "text-sm" : "text-base",
+          )}
+        />
+        <button
+          type="button"
+          className={cn(btn, btnBase)}
+          onClick={() => bump(value + 1)}
+          disabled={value + 1 > max}
+          aria-label={`Increase by one`}
+        >
+          <PlusIcon className="size-3.5" aria-hidden />
+        </button>
+      </div>
+      {bulk.length > 0 && (
+        <div className="mt-1.5 flex flex-wrap items-center gap-1.5" role="group" aria-label={`${label} — bulk steps`}>
+          {bulk.map((step) => (
+            <button
+              key={`bulk-${step}`}
+              type="button"
+              className={cn(chip, chipBase)}
+              onClick={() => bump(value + step)}
+              disabled={value + step > max}
+              aria-label={`Add ${step}`}
+            >
+              +{step}
+            </button>
+          ))}
+        </div>
       )}
-      role="group"
-      aria-label={label}
-    >
-      {[...ordered].reverse().map((step) => (
-        <button
-          key={`dec-${step}`}
-          type="button"
-          className={cn(btn, btnBase)}
-          onClick={() => onChange(clamp(value - step))}
-          disabled={value - step < min}
-          aria-label={`Decrease by ${step}`}
-        >
-          <span className="inline-flex items-center gap-0.5">
-            <MinusIcon className="size-3" aria-hidden />
-            {step}
-          </span>
-        </button>
-      ))}
-      <span
-        aria-live="polite"
-        className={cn(
-          "min-w-10 text-center font-extrabold tabular-nums",
-          size === "sm" ? "text-sm" : "text-base",
-        )}
-      >
-        {value}
-      </span>
-      {ordered.map((step) => (
-        <button
-          key={`inc-${step}`}
-          type="button"
-          className={cn(btn, btnBase)}
-          onClick={() => onChange(clamp(value + step))}
-          disabled={value + step > max}
-          aria-label={`Increase by ${step}`}
-        >
-          <span className="inline-flex items-center gap-0.5">
-            <PlusIcon className="size-3" aria-hidden />
-            {step}
-          </span>
-        </button>
-      ))}
     </div>
   );
 }

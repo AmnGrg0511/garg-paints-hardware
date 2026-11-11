@@ -11,6 +11,14 @@ export function dispatchFlyToCart(detail: FlyToCartDetail): void {
   window.dispatchEvent(new CustomEvent<FlyToCartDetail>(FLY_EVENT, { detail }));
 }
 
+export const CART_GLOW_EVENT = "gph:cart-glow";
+
+/** Points the eye at the cart button right after an item lands there. */
+export function dispatchCartGlow(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(CART_GLOW_EVENT));
+}
+
 export function prefersReducedMotion(): boolean {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;

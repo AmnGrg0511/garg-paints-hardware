@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WALL_SHADES } from "@/store/wall-shade";
 import { useInView } from "@/lib/use-in-view";
 import {
@@ -74,24 +74,23 @@ const darken = (hex: string, a: number) => mixHex(hex, "#0B0F14", a);
  */
 export function FacadeVisualizer({ className }: { className?: string }) {
   const [active, setActive] = useState(0);
-  const [cycleCount, setCycleCount] = useState(0);
   const [chamkiPinned, setChamkiPinned] = useState<ChamkiMode | null>(null);
-  const [locked, setLocked] = useState(false);
+  const [hold, setHold] = useState(false);
+  const holdTimer = useRef<number | null>(null);
   const [paused, setPaused] = useState(false);
 
   const { ref, inView } = useInView<HTMLDivElement>();
   const shade = WALL_SHADES[active] ?? WALL_SHADES[0];
 
   useEffect(() => {
-    if (locked || paused || !inView) return;
+    if (hold || paused || !inView) return;
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % WALL_SHADES.length);
-      setCycleCount((count) => count + 1);
     }, CYCLE_MS);
     return () => window.clearInterval(timer);
-  }, [locked, paused, inView]);
+  }, [hold, paused, inView]);
 
-  const chamki = useChamki({ cycleCount, pinned: chamkiPinned });
+  const chamki = useChamki({ pinned: chamkiPinned, enabled: inView });
   const chamkiVisible = chamki.visible;
   const chamkiColour = chamki.colour;
 
@@ -277,7 +276,12 @@ export function FacadeVisualizer({ className }: { className?: string }) {
                   aria-checked={i === active}
                   onClick={() => {
                     setActive(i);
-                    setLocked(true);
+                    setHold(true);
+                    if (holdTimer.current) window.clearTimeout(holdTimer.current);
+                    holdTimer.current = window.setTimeout(
+                      () => setHold(false),
+                      9000,
+                    );
                   }}
                   className={cn(
                     "dana-texture inline-flex min-h-11 items-center gap-2 rounded-full border py-1 pl-1 pr-3 text-xs font-semibold transition-all",
