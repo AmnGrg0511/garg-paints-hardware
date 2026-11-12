@@ -185,7 +185,7 @@ export default function AboutPage() {
                 </p>
                 <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
                   <li>No review scores or ratings are published.</li>
-                  <li>No fixed delivery timelines are published — quick delivery is the owner's standing service promise.</li>
+                  <li>No fixed delivery timelines are published — quick delivery is the owner&rsquo;s standing service promise.</li>
                   <li>Listed rates are starting points; final rates are negotiated per order, never published as fixed.</li>
                   <li>No street address, map or pincode is shown until the owner confirms it.</li>
                 </ul>

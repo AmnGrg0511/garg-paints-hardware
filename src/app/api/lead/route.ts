@@ -1,4 +1,5 @@
 import { appendFile, mkdir } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { put } from "@vercel/blob";
 
@@ -18,17 +19,16 @@ function normalizeIndianMobile(raw: string): string | null {
 }
 
 /**
- * Lead capture without OTP:
+ * Privacy-first lead storage:
  *  1. The visitor submits a mobile number.
- *  2. The server stores it durably when the filesystem allows (self-hosted)
- *     and logs it (visible in Vercel logs on serverless).
- *  3. If LEAD_WEBHOOK_URL is configured, the lead is forwarded there so the
- *     owner gets it on their phone/inbox without any visitor action.
- *     Supported setups (see README): Telegram bot sendMessage or a Google
- *     Apps Script sheet-appender URL.
- *  4. Submission alone is enough — the visitor sees a confirmation and the
- *     shop calls back. WhatsApp remains an optional channel with a plain
- *     "Hello Mahesh" greeting; a chat there reveals the number anyway.
+ *  2. The server stores it durably, but as **private** data:
+ *     - On Vercel: a private Blob object (dashboard-only visibility).
+ *     - Self-hosted: `data/leads.jsonl` (git-ignored, owner-controlled).
+ *  3. No raw phone numbers or user agents in application logs. Only a
+ *     coarse event line with the source and whether storage succeeded.
+ *  4. If `LEAD_WEBHOOK_URL` is configured, the lead is forwarded to the
+ *     owner over HTTPS, optionally with a bearer token when
+ *     `LEAD_WEBHOOK_TOKEN` is set. The visitor never needs WhatsApp.
  */
 export async function POST(request: Request) {
   let body: { phone?: unknown; source?: unknown } | null = null;
@@ -41,10 +41,7 @@ export async function POST(request: Request) {
   const raw = typeof body?.phone === "string" ? body.phone : "";
   const local10 = normalizeIndianMobile(raw);
   if (!local10) {
-    return Response.json(
-      { ok: false, error: "invalid_number" },
-      { status: 400 },
-    );
+    return Response.json({ ok: false, error: "invalid_number" }, { status: 400 });
   }
 
   const source =
@@ -53,11 +50,11 @@ export async function POST(request: Request) {
     phone: `+91${local10}`,
     source,
     at: new Date().toISOString(),
-    ua: request.headers.get("user-agent")?.slice(0, 120) ?? undefined,
   };
 
-  // Durable file log (self-hosted). Serverless filesystems are read-only,
-  // so failures here are non-fatal.
+  // Durable file log (self-hosted only). Serverless filesystems are
+  // read-only, so failures here are non-fatal. The file is git-ignored and
+  // accessible only to the owner running the process.
   let stored = false;
   try {
     await mkdir("data", { recursive: true });
@@ -71,18 +68,18 @@ export async function POST(request: Request) {
     stored = false;
   }
 
-  // Durable cloud store: each lead becomes a browsable object in the
-  // project's Vercel Blob store (dashboard → Storage). Works when
-  // BLOB_READ_WRITE_TOKEN is configured.
+  // Private cloud store: each lead becomes a private object in the
+  // project's Vercel Blob store. Access requires the project's own
+  // credentials; the object path includes a random suffix so it cannot be
+  // guessed from the timestamp/phone pattern.
   let cloudStored = false;
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     try {
       await put(
-        `leads/${Date.now()}-${local10}.json`,
+        `leads/${Date.now()}-${randomUUID().slice(0, 8)}-${local10.slice(-4)}.json`,
         JSON.stringify(record),
         {
-          access: "public",
-          addRandomSuffix: false,
+          access: "private",
           contentType: "application/json",
         },
       );
@@ -92,29 +89,48 @@ export async function POST(request: Request) {
     }
   }
 
-  // Always visible in the platform logs, whatever the filesystem says.
-  console.log(`[lead] ${JSON.stringify(record)} stored=${stored}`);
+  // Do not log the full phone number. A coarse event line is enough to
+  // confirm submission and routing without exposing PII in platform logs.
+  console.log(
+    `[lead] source=${source} stored=${stored} cloud=${cloudStored} tail=${local10.slice(-4)}`,
+  );
 
-  // Optional push channel: forward the lead to the configured webhook so the
-  // owner receives it without the visitor doing anything else.
+  // Optional push channel: forward the lead to the configured webhook so
+  // the owner receives it without any visitor action. The webhook must be
+  // HTTPS and may include a bearer token when LEAD_WEBHOOK_TOKEN is set.
   let forwarded = false;
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
   if (webhookUrl) {
+    let target: URL | null = null;
     try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          phone: record.phone,
-          source: record.source,
-          at: record.at,
-          text: `New website enquiry from ${source}\nMobile: ${record.phone}\nTime: ${record.at}`,
-        }),
-        signal: AbortSignal.timeout(5000),
-      });
-      forwarded = response.ok;
+      target = new URL(webhookUrl);
     } catch {
-      forwarded = false;
+      target = null;
+    }
+    if (target && target.protocol === "https:") {
+      const headers: Record<string, string> = {
+        "content-type": "application/json",
+      };
+      const webhookToken = process.env.LEAD_WEBHOOK_TOKEN;
+      if (webhookToken) {
+        headers.authorization = `Bearer ${webhookToken}`;
+      }
+      try {
+        const response = await fetch(target, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({
+            phone: record.phone,
+            source: record.source,
+            at: record.at,
+            text: `New website enquiry from ${source}\nMobile: ${record.phone}\nTime: ${record.at}`,
+          }),
+          signal: AbortSignal.timeout(5000),
+        });
+        forwarded = response.ok;
+      } catch {
+        forwarded = false;
+      }
     }
   }
 

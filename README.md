@@ -129,11 +129,13 @@ at that chat's number anyway.
    - **Vercel Blob** (recommended on Vercel): create a Blob store
      (Vercel → Storage → Blob) and connect it to the project — the
      `BLOB_READ_WRITE_TOKEN` env var is injected automatically. Each lead
-     is stored as `leads/<timestamp>-<phone>.json`, browsable in the
-     dashboard.
+     is stored as a **private** object, so it is only browsable from the
+     dashboard with your own project access.
    - **File log** (self-hosted): `data/leads.jsonl` (git-ignored).
    - **Webhook push**: set `LEAD_WEBHOOK_URL` to have every lead pushed to
      you instantly:
+     - The URL must be `https://` and may include an auth token if
+       `LEAD_WEBHOOK_TOKEN` is set (sent as a Bearer header).
      - **Telegram**: create a bot with @BotFather, then point the webhook
        at `https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>`
        — the number arrives on your phone the moment it is submitted.
