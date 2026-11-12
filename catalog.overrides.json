@@ -1,15 +1,32 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-12T08:02:03.945Z",
+  "updatedAt": "2026-11-12T08:39:55.057Z",
   "rates": {
     "gph-03": {
-      "price": "₹ 75/Piece"
+      "price": "₹ 100/Piece"
     },
     "gph-02": {
       "variants": {
-        "White Madrasi Dana": "₹ 150/Bag",
-        "Red Madrasi Dana": "₹ 200/Bag",
-        "Yellow Madrasi Dana": "₹ 280/Bag"
+        "White Madrasi Dana": "₹ 180/Bag",
+        "Red Madrasi Dana": "₹ 260/Bag",
+        "Yellow Madrasi Dana": "₹ 360/Bag",
+        "Green Madrasi Dana": "₹ 280/Bag",
+        "Black Madrasi Dana": "₹ 300/Bag"
+      }
+    },
+    "gph-01": {
+      "price": "₹ 8,500/Drum"
+    },
+    "gph-04": {
+      "variants": {
+        "White CMC Powder": "₹ 500/Kg",
+        "Yellow CMC Powder": "₹ 350/Kg"
+      }
+    },
+    "gph-05": {
+      "variants": {
+        "Golden Chamki Powder": "₹ 400/Kg",
+        "Silver Chamki Powder": "₹ 400/Kg"
       }
     }
   }
