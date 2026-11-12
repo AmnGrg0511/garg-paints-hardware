@@ -45,10 +45,11 @@ export default function ProductsPage() {
             wall textures, CMC powder, chamki glitter additive and stainless
             steel plastering trowels in {business.locality}, {business.city}.
             Priced items can be ordered from the list; quote-only items open a
-            WhatsApp enquiry. All orders are confirmed with a GST invoice.
+            WhatsApp enquiry. All orders are confirmed directly by the
+            business — with your best rate negotiated on every order.
           </p>
           <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            <span>GST invoice on confirmed orders</span>
+            <span>Better rates on every order</span>
             <span aria-hidden>·</span>
             <span>{business.hours.label}</span>
             <span aria-hidden>·</span>

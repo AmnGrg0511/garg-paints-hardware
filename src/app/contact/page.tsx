@@ -30,7 +30,7 @@ import { buttonVariants } from "@/components/ui/button";
 export const metadata = buildPageMetadata({
   title: "Contact Garg Paints & Hardware, Ballabgarh",
   description:
-    "Call +91 98992 84391 or WhatsApp Garg Paints & Hardware in Ballabgarh, Faridabad. Open 24x7 for order enquiries. GST invoice on confirmed orders. Street address and map pending owner confirmation.",
+    "Call +91 98992 84391 or WhatsApp Garg Paints & Hardware in Ballabgarh, Faridabad. Open 24x7 for order enquiries. Better rates on every order — negotiable by quantity. Street address and map pending owner confirmation.",
   path: "/contact",
 });
 
@@ -92,8 +92,8 @@ export default function ContactPage() {
           </h1>
           <p className="mt-4 text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
             <Localized
-              en="Order enquiries are accepted 24x7 on call and WhatsApp. For a price, a pack size or directions, use the channel that suits you — the team confirms availability and the final GST invoice directly."
-              hi="call और WhatsApp पर 24x7 ऑर्डर संपर्क। रेट, pack size या रास्ता जानने के लिए जो तरीका सही लगे वह चुनें — टीम उपलब्धता और फ़ाइनल GST invoice सीधे कन्फ़र्म करेगी।"
+              en="Order enquiries are accepted 24x7 on call and WhatsApp. For a price, a pack size or directions, use the channel that suits you — the team confirms availability and your best final rate directly."
+              hi="call और WhatsApp पर 24x7 ऑर्डर संपर्क। रेट, pack size या रास्ता जानने के लिए जो तरीका सही लगे वह चुनें — टीम उपलब्धता और आपका बेस्ट रेट सीधे कन्फ़र्म करेगी।"
             />
           </p>
         </header>
@@ -253,10 +253,10 @@ export default function ContactPage() {
                   className="mt-0.5 size-4 shrink-0 text-primary"
                   aria-hidden
                 />
-                GST invoice
+                Best rates
               </dt>
               <dd className="mt-0.5 text-muted-foreground">
-                Shared on order confirmation. No GST rate is stated on this site.
+                Negotiated per order — quantity and repeat customers get better prices.
               </dd>
             </div>
 

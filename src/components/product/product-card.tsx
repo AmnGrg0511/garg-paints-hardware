@@ -254,7 +254,7 @@ export function ProductCard({
         <div className="mt-auto flex flex-col gap-3 pt-4">
           <div aria-live="polite">
             <p className="text-[0.62rem] font-bold uppercase tracking-[0.12em] text-muted-foreground">
-              {price.onRequest ? t("common.quoteOnly") : "Listed price"}
+              {price.onRequest ? t("common.quoteOnly") : "Starting rate"}
             </p>
             <p className="mt-0.5 whitespace-nowrap text-xl font-extrabold tracking-tight sm:text-2xl">
               {price.onRequest ? (

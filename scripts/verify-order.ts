@@ -31,7 +31,7 @@ check("cart message matches the owner-approved template", () => {
 
   assert.equal(
     message,
-    "Hello Mahesh,\n\nI want to purchase:\n• Pidicryl 126 M by Pidilite × 2 drums\n• Madrasi Dana Premium Wall Textures – White Madrasi Dana × 3 bags\n\nPlease confirm availability and share the final GST invoice.",
+    "Hello Mahesh,\n\nI want to purchase:\n• Pidicryl 126 M by Pidilite × 2 drums\n• Madrasi Dana Premium Wall Textures – White Madrasi Dana × 3 bags\n\nPlease confirm availability and share your best rate for this order.",
   );
 });
 

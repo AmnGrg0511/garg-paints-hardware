@@ -24,8 +24,8 @@ export function BulkCallout() {
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/85 sm:text-[0.95rem]">
               <Localized
-                en="Ordering for a site, a shop or a full crew? Share the material, variant and quantity. We will confirm bulk rates and the final GST invoice on call or WhatsApp."
-                hi="साइट, दुकान या पूरी टीम के लिए ऑर्डर? मटेरियल, वेरिएंट और मात्रा भेजें। बल्क रेट और फ़ाइनल GST invoice call या WhatsApp पर कन्फ़र्म होगा।"
+                en="Ordering for a site, a shop or a full crew? Share the material, variant and quantity. We will confirm bulk rates and your best deal on call or WhatsApp."
+                hi="साइट, दुकान या पूरी टीम के लिए ऑर्डर? मटेरियल, वेरिएंट और मात्रा भेजें। बल्क रेट और आपका बेस्ट डील call या WhatsApp पर कन्फ़र्म होगा।"
               />
             </p>
           </div>
@@ -68,8 +68,8 @@ export function BulkCallout() {
           </span>
           <span>
             <Localized
-              en="GST invoice on confirmation"
-              hi="कन्फ़र्म होने पर GST invoice"
+              en="Quick delivery on confirmed orders"
+              hi="कन्फ़र्म ऑर्डर पर तेज़ delivery"
             />
           </span>
         </div>

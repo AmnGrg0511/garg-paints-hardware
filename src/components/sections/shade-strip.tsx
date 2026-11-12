@@ -54,8 +54,8 @@ export function ShadeStrip() {
           </h2>
           <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="The five Madrasi dana shades we stock, with the current rates from the catalogue. Shades marked price on request are quoted on WhatsApp."
-              hi="हमारे पास मौजूद पाँच Madrasi dana शेड, कैटलॉग के मौजूदा रेट के साथ। जिन पर Price on request दिखे, उनका रेट WhatsApp पर पूछें।"
+              en="The five Madrasi dana shades we stock, with current catalogue rates. Listed rates are starting points — call or WhatsApp for your best deal."
+              hi="हमारे पास मौजूद पाँच Madrasi dana शेड, कैटलॉग के मौजूदा रेट। लिस्टेड रेट शुरुआती हैं — अपना बेस्ट डील call या WhatsApp पर पूछें।"
             />
           </p>
         </div>

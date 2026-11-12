@@ -73,7 +73,7 @@ const message = await page.evaluate(() => {
   return pre ? pre.textContent : details.textContent;
 });
 const expected =
-  "Hello Mahesh,\n\nI want to purchase:\n• Madrasi Dana Premium Wall Textures – White Madrasi Dana × 1 bag\n\nPlease confirm availability and share the final GST invoice.";
+  "Hello Mahesh,\n\nI want to purchase:\n• Madrasi Dana Premium Wall Textures – White Madrasi Dana × 1 bag\n\nPlease confirm availability and share your best rate for this order.";
 
 ok("WhatsApp message matches the owner template", message === expected, message || "missing");
 

@@ -41,7 +41,16 @@ const form = await page.$("#lead-phone-hero");
 ok("hero lead form present", Boolean(form));
 if (form) {
   await form.type("12345");
-  await page.click("#lead-phone-hero ~ button, button[type='submit']");
+  // Instant-scroll + real mouse click — puppeteer's elementHandle.click()
+  // races the smooth scroll and can land on the hero's WhatsApp CTA.
+  const point = await page.evaluate(() => {
+    const btn = document.querySelector("form button[type='submit']");
+    if (!btn) return null;
+    btn.scrollIntoView({ block: "center", behavior: "instant" });
+    const r = btn.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  });
+  if (point) await page.mouse.click(point.x, point.y);
   await new Promise((r) => setTimeout(r, 500));
   const errorVisible = await page.evaluate(() =>
     Boolean(document.querySelector("#lead-error-hero")),

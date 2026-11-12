@@ -181,7 +181,7 @@ export const products: readonly Product[] = [
     description:
       "Fine particle size styrene acrylic copolymer emulsion used as a binder for interior and exterior emulsion paints, distempers and texture finishes.",
     summary:
-      "Pidicryl 126 M is a fine-particle styrene acrylic copolymer emulsion from Pidilite, used as a binder in interior and exterior emulsions, distempers and texture finishes. Garg Paints & Hardware supplies it by the kilogram in Ballabgarh, Faridabad, with a GST invoice and 24x7 call or WhatsApp ordering.",
+      "Pidicryl 126 M is a fine-particle styrene acrylic copolymer emulsion from Pidilite, used as a binder in interior and exterior emulsions, distempers and texture finishes. Garg Paints & Hardware supplies it by the kilogram in Ballabgarh, Faridabad — rates are negotiable on quantity, with 24x7 call or WhatsApp ordering.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/pidicryl-126-m.webp?v=8",
     imageAlt:
@@ -213,14 +213,14 @@ export const products: readonly Product[] = [
           "It is a styrene acrylic copolymer emulsion used as a binder in interior and exterior emulsion paints, distempers and texture finishes. It is suitable for formulators and painters working with water-based architectural coatings.",
       },
       {
-        question: "Can I get a GST invoice for this binder?",
+        question: "Can I get a better rate for bulk quantities?",
         answer:
-          "Yes. Every confirmed order receives a final GST invoice. The site does not state a GST rate.",
+          "Yes. Rates are negotiated per order — larger quantities and repeat customers get better prices. Share your quantity on WhatsApp or call for your best rate.",
       },
       {
         question: "Is the listed price final?",
         answer:
-          "The listed figure is the per-kilogram product rate shown by the business. Confirm quantity, packing and the current rate on call or WhatsApp; the final GST invoice is shared on confirmation.",
+          "The listed figure is a starting point, not a final price. Your rate depends on your quantity — repeat customers get better prices. Confirm yours on call or WhatsApp.",
       },
       {
         question: "How do I confirm pack size and minimum quantity?",
@@ -279,7 +279,7 @@ export const products: readonly Product[] = [
     description:
       "Decorative granule wall texture (madrasi dana) for exterior facades and plaster-finish wall texturing, available in white, red, yellow, green and black.",
     summary:
-      "Madrasi dana is a decorative granule wall texture for exterior facades and plaster-finish wall texturing. Garg Paints & Hardware stocks five shades — white, red, yellow, green and black — in Ballabgarh, Faridabad. Shades with a listed rate can be ordered by the bag; shades shown as contact-for-price are quoted on WhatsApp. Order by call or WhatsApp, with a GST invoice on confirmation.",
+      "Madrasi dana is a decorative granule wall texture for exterior facades and plaster-finish wall texturing. Garg Paints & Hardware stocks five shades — white, red, yellow, green and black — in Ballabgarh, Faridabad. Shades with a listed rate can be ordered by the bag; shades shown as contact-for-price are quoted on WhatsApp. Order by call or WhatsApp — your best rate is negotiated on every order.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/madrasi-dana.webp?v=8",
     imageAlt:
@@ -325,9 +325,9 @@ export const products: readonly Product[] = [
           "Yes. Select a shade, add it to the order list, then repeat for the other colours. Your WhatsApp order message will list every item, shade and quantity together.",
       },
       {
-        question: "Do the listed prices include GST?",
+        question: "Are the listed bag rates final?",
         answer:
-          "The site shows listed product rates only and does not state any GST rate. The final GST invoice is shared on order confirmation.",
+          "The listed rates are starting points. The final rate depends on your quantity and your relationship with the shop — regular customers get better deals. Confirm yours on call or WhatsApp.",
       },
     ],
   },
@@ -344,7 +344,7 @@ export const products: readonly Product[] = [
     description:
       "Heavy-duty ergonomic stainless steel gurmala for texture application, cement flattening and wall scraping.",
     summary:
-      "The Gurmala is a heavy-duty stainless steel plastering trowel for texture application, cement flattening and wall scraping. Garg Paints & Hardware supplies it per piece in Ballabgarh, Faridabad. Call or WhatsApp to order; a GST invoice is shared on confirmation. Dealer and contractor pricing is available on request.",
+      "The Gurmala is a heavy-duty stainless steel plastering trowel for texture application, cement flattening and wall scraping. Garg Paints & Hardware supplies it per piece in Ballabgarh, Faridabad. Call or WhatsApp to order — rates are negotiable, and dealer and contractor pricing is available on request.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/plastering-trowel.webp?v=8",
     imageAlt:
@@ -383,7 +383,7 @@ export const products: readonly Product[] = [
       {
         question: "What is the price of the trowel?",
         answer:
-          "The listed price is shown on the product page. The final GST invoice is shared on order confirmation, and the site does not state a GST rate.",
+          "The listed price is shown on the product page — a starting point, negotiated on call or WhatsApp for your quantity.",
       },
       {
         question: "Can I order trowels in bulk for a contractor crew?",
@@ -444,10 +444,9 @@ export const products: readonly Product[] = [
     ],
     faqs: [
       {
-        question:
-          "Where to buy bulk white CMC powder in Ballabgarh, Faridabad with a GST invoice?",
+        question: "Where can I buy bulk white CMC powder in Ballabgarh, Faridabad?",
         answer:
-          "Garg Paints & Hardware supplies white CMC powder in Ballabgarh, Faridabad with a GST invoice on confirmation. Send your required quantity on WhatsApp at +91 98992 84391 to confirm the current rate and place the order.",
+          "Garg Paints & Hardware supplies white CMC powder in Ballabgarh, Faridabad — rates negotiable on quantity. Send your required quantity on WhatsApp at +91 98992 84391 to get your best rate and place the order.",
       },
       {
         question: "What is the difference between white and yellow CMC powder?",
@@ -465,9 +464,9 @@ export const products: readonly Product[] = [
           "Grades without a published rate are quoted because pack size and quantity affect the rate. The site does not attach an estimated price to those grades; request a quote on WhatsApp or IndiaMART.",
       },
       {
-        question: "Can I get a GST invoice on CMC powder?",
+        question: "Can I get a better rate on large CMC quantities?",
         answer:
-          "Yes. Every confirmed order receives a final GST invoice. No GST rate is stated on this site.",
+          "Yes — CMC rates are negotiated per order. Larger quantities and repeat orders get better prices. Share your requirement on WhatsApp or IndiaMART.",
       },
       {
         question: "Which CMC grade should I choose for my application?",

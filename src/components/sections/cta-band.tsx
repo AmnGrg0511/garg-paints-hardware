@@ -21,8 +21,8 @@ export function CtaBand() {
             </p>
             <h2 id="cta-heading" className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
               <Localized
-                en="Build the list. We will confirm the invoice."
-                hi="लिस्ट बनाएँ। invoice हम कन्फ़र्म करेंगे।"
+                en="Build the list. We will confirm your best rate."
+                hi="लिस्ट बनाएँ। आपका बेस्ट रेट हम कन्फ़र्म करेंगे।"
               />
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-white/70">

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import {
   BadgeCheckIcon,
-  ClockIcon,
+  BadgePercentIcon,
+  CalendarDaysIcon,
   PhoneCallIcon,
-  ShieldCheckIcon,
-  StoreIcon,
+  TruckIcon,
 } from "lucide-react";
 import { business } from "@/config/businessData";
 import { generalEnquiryUrl, callUrl } from "@/lib/whatsapp";
@@ -17,33 +17,32 @@ import { HeroShadeFx } from "@/components/sections/hero-backdrop";
 import { CallBackForm } from "@/components/lead/call-back-form";
 
 const tickerItems = [
-  "GST invoice on every order",
-  "Open 24x7",
+  "Better rates than anywhere",
+  "Genuine quality, guaranteed",
+  "Quick delivery",
   "Dealer & contractor pricing",
   "IndiaMART seller",
-  "Ballabgarh, Faridabad",
-  "Serving since 2017",
+  "Open 24x7",
 ];
 
 const trustBadges = [
   {
-    icon: ShieldCheckIcon,
-    label: "GST invoice",
-    hi: "GST invoice",
-  },
-  {
-    icon: ClockIcon,
-    label: "Open 24x7",
-    hi: "24x7 खुला",
-  },
-  {
-    icon: StoreIcon,
-    label: "IndiaMART seller",
-    hi: "IndiaMART seller",
-    href: business.marketplaceUrl,
+    icon: BadgePercentIcon,
+    label: "Better rates than anywhere",
+    hi: "कहीं से बेहतर रेट",
   },
   {
     icon: BadgeCheckIcon,
+    label: "Genuine quality, guaranteed",
+    hi: "असली माल, quality की गारंटी",
+  },
+  {
+    icon: TruckIcon,
+    label: "Quick delivery",
+    hi: "तेज़ delivery",
+  },
+  {
+    icon: CalendarDaysIcon,
     label: "Since 2017",
     hi: "2017 से",
   },
@@ -76,8 +75,8 @@ export function Hero() {
 
           <p className="mt-4 max-w-xl text-[1rem] leading-relaxed text-muted-foreground sm:text-[1.05rem]">
             <Localized
-              en="Madrasi dana wall textures, Pidicryl binders, CMC, chamki and stainless steel trowels — at listed rates, with a GST invoice on every confirmed order."
-              hi="Madrasi dana वॉल टेक्सचर, Pidicryl binder, CMC, chamki और स्टेनलेस स्टील gurmala — लिस्टेड रेट पर, हर कन्फ़र्म ऑर्डर के साथ GST invoice।"
+              en="Madrasi dana wall textures, Pidicryl binders, CMC, chamki and stainless steel trowels — at rates negotiated for you, with genuine quality and quick delivery."
+              hi="Madrasi dana वॉल टेक्सचर, Pidicryl binder, CMC, chamki और स्टेनलेस स्टील gurmala — आपके लिए negotiate किए गए रेट पर, असली quality और तेज़ delivery के साथ।"
             />
           </p>
 
@@ -130,22 +129,9 @@ export function Hero() {
               );
               return (
                 <li key={badge.label}>
-                  {badge.href ? (
-                    <TrackedLink
-                      event="click_indiamart"
-                      params={{ source: "hero_badge" }}
-                      href={badge.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {content}
-                    </TrackedLink>
-                  ) : (
-                    <span className="flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs font-semibold text-muted-foreground">
-                      {content}
-                    </span>
-                  )}
+                  <span className="flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs font-semibold text-muted-foreground">
+                    {content}
+                  </span>
                 </li>
               );
             })}
@@ -157,8 +143,8 @@ export function Hero() {
               aria-hidden
             />
             <Localized
-              en="No payment on this website. Availability and the final GST invoice are confirmed by the team on call or WhatsApp."
-              hi="इस वेबसाइट पर payment नहीं। उपलब्धता और फ़ाइनल GST invoice टीम call या WhatsApp पर कन्फ़र्म करेगी।"
+              en="No payment on this website. Availability and your best rate are confirmed by the team on call or WhatsApp."
+              hi="इस website पर payment नहीं। उपलब्धता और आपका बेस्ट रेट टीम call या WhatsApp पर कन्फ़र्म करेगी।"
             />
           </p>
 

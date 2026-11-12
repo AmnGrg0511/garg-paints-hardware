@@ -142,7 +142,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
         <div className="flex items-end justify-between gap-3" aria-live="polite">
           <div>
             <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-              {price.onRequest ? t("common.quoteOnly") : "Listed price"}
+              {price.onRequest ? t("common.quoteOnly") : "Starting rate"}
             </p>
             <p className="font-display text-3xl tracking-tight">
               {price.onRequest ? (
@@ -240,8 +240,8 @@ export function ProductDetailActions({ product }: { product: Product }) {
 
         <p className="mt-3 text-center text-[0.68rem] leading-relaxed text-muted-foreground">
           <Localized
-            en="Estimated total shown in the order list. Final GST invoice is shared on confirmation."
-            hi="ऑर्डर लिस्ट में अनुमानित total दिखेगा। फ़ाइनल GST invoice कन्फ़र्म होने पर भेजा जाएगा।"
+            en="Estimated total shown in the order list. Your best final rate is confirmed on WhatsApp."
+            hi="ऑर्डर लिस्ट में अनुमानित total दिखेगा। आपका बेस्ट फ़ाइनल रेट WhatsApp पर कन्फ़र्म होगा।"
           />
         </p>
       </div>

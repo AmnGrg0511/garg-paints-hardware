@@ -24,8 +24,8 @@ export function SiteFooter() {
           </p>
           <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
             <Localized
-              en="Prices shown are listed product rates. Availability and the final GST invoice are confirmed on call or WhatsApp. No GST rate is stated on this site."
-              hi="यहाँ दिखे रेट listed product rates हैं। उपलब्धता और फ़ाइनल GST invoice call या WhatsApp पर कन्फ़र्म होता है। इस site पर GST रेट नहीं बताया गया।"
+              en="Prices shown are listed starting rates — your best rate is negotiated on call or WhatsApp, based on your quantity. Regular customers get better deals."
+              hi="यहाँ दिखे रेट शुरुआती हैं — आपका बेस्ट रेट call या WhatsApp पर आपकी मात्रा के हिसाब से तय होता है। नियमित ग्राहकों को बेहतर रेट मिलते हैं।"
             />
           </p>
         </div>

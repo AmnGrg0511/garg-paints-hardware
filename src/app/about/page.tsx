@@ -24,7 +24,7 @@ import { generalEnquiryUrl } from "@/lib/whatsapp";
 export const metadata = buildPageMetadata({
   title: "About Garg Paints & Hardware, Ballabgarh",
   description:
-    "Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Established 2017. GST invoice on confirmed orders.",
+    "Garg Paints & Hardware is a wholesaler and retailer of paint additives, binders, wall textures and plastering tools in Ballabgarh, Faridabad. Established 2017. Better rates on every order — negotiable by quantity.",
   path: "/about",
 });
 
@@ -125,8 +125,8 @@ export default function AboutPage() {
             },
             {
               icon: ShieldCheckIcon,
-              title: "GST-registered",
-              body: "Every confirmed order receives a final GST invoice. No GST rate is stated on this site."
+              title: "Better rates, negotiated",
+              body: "Listed rates are starting points — your final rate depends on your quantity and your relationship with the shop. Regular customers get better deals."
             },
             {
               icon: ClockIcon,
@@ -185,8 +185,8 @@ export default function AboutPage() {
                 </p>
                 <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
                   <li>No review scores or ratings are published.</li>
-                  <li>No delivery time, dispatch speed or certification is claimed.</li>
-                  <li>No GST rate is stated, because public rates conflict.</li>
+                  <li>No fixed delivery timelines are published — quick delivery is the owner's standing service promise.</li>
+                  <li>Listed rates are starting points; final rates are negotiated per order, never published as fixed.</li>
                   <li>No street address, map or pincode is shown until the owner confirms it.</li>
                 </ul>
               </div>
@@ -220,8 +220,8 @@ export default function AboutPage() {
           <SectionHeading
             id="approach-heading"
             eyebrow={{ en: "How we work", hi: "हम कैसे काम करते हैं" }}
-            title={{ en: "Plain answers, confirmed invoices.", hi: "सीधे जवाब, कन्फ़र्म invoice।" }}
-            body={{ en: "This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before the final GST invoice is issued.", hi: "यह website ऑर्डर-पूछताछ का माध्यम है, payment gateway नहीं। हर ऑर्डर business द्वारा कन्फ़र्म होने के बाद ही फ़ाइनल GST invoice जारी होता है।" }}
+            title={{ en: "Plain answers, confirmed orders.", hi: "सीधे जवाब, कन्फ़र्म ऑर्डर।" }}
+            body={{ en: "This website is an order-enquiry layer, not a payment gateway. Every order is confirmed by the business before it moves ahead.", hi: "यह website ऑर्डर-पूछताछ का माध्यम है, payment gateway नहीं। हर ऑर्डर business द्वारा कन्फ़र्म होकर ही आगे बढ़ता है।" }}
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
@@ -234,8 +234,8 @@ export default function AboutPage() {
                 body: "Contractors, painters and dealers can order by the kilogram, bag or piece, and ask for dealer pricing on a project quantity.",
               },
               {
-                title: "GST invoice on confirmation",
-                body: "Every confirmed order is invoiced with GST. The final invoice is shared directly by the business; no GST rate is stated on this site.",
+                title: "Best rates, negotiated per order",
+                body: "Listed rates are starting points. The business confirms your best rate directly — quantity and repeat customers get better prices.",
               },
             ].map((item) => (
               <div key={item.title} className="surface-card rounded-2xl p-6">

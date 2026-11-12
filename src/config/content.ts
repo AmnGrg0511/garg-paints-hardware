@@ -7,9 +7,9 @@ export const trustPoints = [
     detail: `Serving ${business.locality} and ${business.city}`,
   },
   {
-    key: "gst",
-    label: "GST invoice",
-    detail: "On confirmed orders",
+    key: "rates",
+    label: "Better rates than anywhere",
+    detail: "Negotiated on every order",
   },
   {
     key: "indiamart",
@@ -35,9 +35,9 @@ export const globalFaqs = [
       "Add priced items to the order list, then choose “Purchase via IndiaMART” or “Fast Order via WhatsApp” at checkout. For quote-only items, request a price on WhatsApp or through the IndiaMART listing.",
   },
   {
-    question: "Can I get a GST invoice?",
+    question: "Can I get a better rate than the listed price?",
     answer:
-      "Yes. Every confirmed order receives a final GST invoice. This website does not state any GST rate.",
+      "Yes. Listed rates are starting points — your final rate is negotiated on call or WhatsApp based on your quantity and your relationship with the shop. Regular customers get better deals.",
   },
   {
     question: "Do you sell wholesale to dealers and contractors?",
@@ -47,12 +47,12 @@ export const globalFaqs = [
   {
     question: "Are the prices on the website final?",
     answer:
-      "Listed rates are the product prices shown by the business. Quantity, packing and the current rate are confirmed on call or WhatsApp, and the final GST invoice is shared on confirmation.",
+      "No — listed rates are starting points. Quantity, packing and your repeat business decide the final rate, confirmed on call or WhatsApp.",
   },
   {
     question: "Why do some products say “Contact for Price”?",
     answer:
-      "For bulk-quoted products and pack-size enquiries, the owner has not published a fixed price. Those items show a WhatsApp quote button instead of an estimated cart price, so no fake amount is added.",
+      "Items without a published rate show a WhatsApp quote button instead of an estimated cart price — no fake amount is added, and the team quotes the best rate for your quantity.",
   },
   {
     question: "What are your opening hours?",
@@ -83,7 +83,7 @@ export const orderSteps = [
     body: "Continue on IndiaMART, or send the pre-filled WhatsApp message with every item and quantity.",
   },
   {
-    title: "Confirm the invoice",
-    body: "The team confirms availability and shares the final GST invoice. No payment is taken on this website.",
+    title: "Confirm your rate",
+    body: "The team confirms availability and works out your best final rate. No payment is taken on this website.",
   },
 ] as const;

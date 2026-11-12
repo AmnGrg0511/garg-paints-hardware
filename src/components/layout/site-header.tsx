@@ -43,7 +43,7 @@ export function SiteHeader() {
       <div className="hidden border-b border-border/60 bg-secondary/60 md:block">
         <div className="container-page flex min-h-8 items-center justify-between gap-4 text-[0.7rem] font-medium text-muted-foreground">
           <p className="flex items-center gap-3">
-            <span>GST invoice on confirmed orders</span>
+            <span>Better rates on every order</span>
             <span aria-hidden className="text-border">
               |
             </span>
@@ -208,8 +208,8 @@ export function SiteHeader() {
             </TrackedLink>
             <p className="text-xs leading-relaxed text-muted-foreground">
               <Localized
-                en="GST invoice on every confirmed order. No payment is taken on this website."
-                hi="Confirm order par GST invoice. इस वेबसाइट पर payment नहीं लिया जाता."
+                en="Your best rate is confirmed on call or WhatsApp. No payment is taken on this website."
+                hi="आपका बेस्ट रेट call या WhatsApp पर कन्फ़र्म होगा। इस website पर payment नहीं लिया जाता."
               />
             </p>
             <button

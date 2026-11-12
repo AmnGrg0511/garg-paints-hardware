@@ -40,7 +40,7 @@ export function buildCartOrderMessage(lines: readonly OrderMessageLine[]): strin
     })
     .join("\n");
 
-  return `${greeting},\n\nI want to purchase:\n${items}\n\nPlease confirm availability and share the final GST invoice.`;
+  return `${greeting},\n\nI want to purchase:\n${items}\n\nPlease confirm availability and share your best rate for this order.`;
 }
 
 /** Enquiry message for quote-only products and bulk pricing. */
@@ -54,7 +54,7 @@ export function buildQuoteMessage(
     : productName;
   const quantity = qty && qty > 0 ? `\nQuantity: ${qty}.` : "";
 
-  return `${greeting},\n\nI want a quote for ${item}.${quantity}\n\nPlease share available pack sizes and the final GST invoice.`;
+  return `${greeting},\n\nI want a quote for ${item}.${quantity}\n\nPlease share available pack sizes and your best rate.`;
 }
 
 /**
@@ -85,6 +85,6 @@ export const indiaMartUrl = business.marketplaceUrl;
 
 export function generalEnquiryUrl(): string {
   return whatsappUrl(
-    `${greeting},\n\nI want to enquire about your paint materials.\n\nPlease share prices and the final GST invoice.`,
+    `${greeting},\n\nI want to enquire about your paint materials.\n\nPlease share your best rates.`,
   );
 }

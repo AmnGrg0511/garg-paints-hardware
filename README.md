@@ -191,6 +191,11 @@ offers, bulk chips, the starter kit and the cart.
   invoicing.
 - No delivery times, certifications, ratings or prices may be invented —
   anything not provided by the owner renders as "Contact for Price".
+  Owner-provided marketing claims (better rates than anywhere, genuine
+  quality guarantee, quick delivery, rates negotiable by quantity and
+  relationship) are stated by the owner and kept as given.
+- Listed rates are always framed as starting points, never final prices —
+  the final rate is negotiated per order.
 - The WhatsApp message template and per-unit quantities are owner-approved;
   `npm run verify` enforces them.
 - Starter-kit quantities (`starterKit` in `src/config/businessData.ts`) are

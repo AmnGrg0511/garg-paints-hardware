@@ -19,7 +19,7 @@ import { Localized } from "@/i18n/Localized";
 export const metadata = buildPageMetadata({
   title: "Paint Additives, Madrasi Dana & Plastering Tools in Ballabgarh",
   description:
-    "Buy Pidicryl 126 M binder, madrasi dana wall texture, CMC powder, chamki glitter and stainless steel plastering trowels in Ballabgarh, Faridabad. GST invoice, dealer pricing, enquiries 24x7.",
+    "Buy Pidicryl 126 M binder, madrasi dana wall texture, CMC powder, chamki glitter and stainless steel plastering trowels in Ballabgarh, Faridabad. Better rates on every order, dealer pricing, enquiries 24x7.",
   path: "/",
 });
 
@@ -93,8 +93,8 @@ export default function HomePage() {
           </h2>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
             <Localized
-              en="Ordering, GST invoices and quote-only items — the details contractors ask about most."
-              hi="ऑर्डरिंग, GST invoice और रेट-पूछने वाले items — ठेकेदारों के आम सवाल।"
+              en="Ordering, rates and quote-only items — the details contractors ask about most."
+              hi="ऑर्डरिंग, रेट और quote-only items — ठेकेदारों के आम सवाल।"
             />
           </p>
           <Link

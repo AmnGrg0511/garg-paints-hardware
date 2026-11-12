@@ -299,8 +299,8 @@ export function CheckoutClient() {
             </div>
             <p className="max-w-[15rem] text-right text-[0.68rem] leading-relaxed text-muted-foreground">
               <Localized
-                en="Estimate covers listed-priced items only. The final GST invoice is shared on confirmation."
-                hi="अनुमानित total सिर्फ़ लिस्टेड-रेट वाले items का है। फ़ाइनल GST invoice कन्फ़र्म होने पर भेजा जाएगा।"
+                en="Estimate covers listed-priced items only. Listed rates are starting points — the shop confirms your best final rate on WhatsApp."
+                hi="अनुमानित total सिर्फ़ लिस्टेड-रेट वाले items का है। लिस्टेड रेट शुरुआती हैं — फ़ाइनल बेस्ट रेट दुकान WhatsApp पर कन्फ़र्म करेगी।"
               />
             </p>
           </div>
@@ -418,8 +418,8 @@ export function CheckoutClient() {
             </p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               <Localized
-                en="Leave your number — our team calls you back with the invoice and availability."
-                hi="नंबर छोड़ें — टीम invoice और उपलब्धता के साथ call back करेगी।"
+                en="Leave your number — our team calls you back with your best rate and availability."
+                hi="नंबर छोड़ें — टीम आपका बेस्ट रेट और उपलब्धता के साथ call back करेगी।"
               />
             </p>
             <CallBackForm source="checkout" className="mt-3 border-0 bg-transparent p-0 sm:p-0" />
@@ -438,7 +438,7 @@ export function CheckoutClient() {
                 rate.
               </li>
               <li>
-                2. The final GST invoice is shared after confirmation.
+                2. Your best final rate is confirmed on WhatsApp.
               </li>
               <li>
                 3. Any next steps are agreed directly with the business.

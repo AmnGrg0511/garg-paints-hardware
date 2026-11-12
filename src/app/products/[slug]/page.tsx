@@ -115,7 +115,7 @@ export async function generateMetadata({
 
   return buildPageMetadata({
     title: `${product.name} in Ballabgarh, Faridabad`,
-    description: `${product.description} Buy from Garg Paints & Hardware in ${business.locality}, ${business.city} with a GST invoice and dealer pricing on request.`,
+    description: `${product.description} Buy from Garg Paints & Hardware in ${business.locality}, ${business.city} with negotiable rates and dealer pricing on request.`,
     path: `/products/${product.slug}`,
     image: product.image,
   });
@@ -168,8 +168,8 @@ export default async function ProductPage({
                 <dd className="mt-0.5 font-semibold">{product.packaging}</dd>
               </div>
               <div className="rounded-xl border border-border bg-card p-3">
-                <dt className="text-muted-foreground">GST invoice</dt>
-                <dd className="mt-0.5 font-semibold">Yes, on confirmation</dd>
+                <dt className="text-muted-foreground">Best rate</dt>
+                <dd className="mt-0.5 font-semibold">Negotiated per order</dd>
               </div>
               <div className="rounded-xl border border-border bg-card p-3">
                 <dt className="text-muted-foreground">HSN code</dt>
@@ -201,8 +201,8 @@ export default async function ProductPage({
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
                 <CheckCircle2Icon className="size-3 text-primary" aria-hidden />
                 <Localized
-                  en="GST-registered seller"
-                  hi="GST-registered seller"
+                  en="Better rates on quantity"
+                  hi="मात्रा पर बेहतर रेट"
                 />
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
@@ -243,7 +243,7 @@ export default async function ProductPage({
                   ["Use cases", product.useCases.join(", ")],
                   ["HSN code", `${product.hsnCode} (as provided by the owner)`],
                   ["Price type", priceType],
-                  ["GST invoice", "Yes · shared on confirmation"],
+                  ["Best rate", "Negotiated per order — quantity and repeat customers get better prices"],
                 ].map(([label, value], index) => (
                   <tr
                     key={label}
@@ -268,8 +268,8 @@ export default async function ProductPage({
           </div>
           <p className="mt-2 text-[0.7rem] leading-relaxed text-muted-foreground">
             HSN codes are shown as provided by the owner and still need CA
-            confirmation. No GST rate is stated on this site; the final
-            classification and invoice are shared on confirmation.
+            confirmation. The final tax classification is confirmed
+            directly by the business.
           </p>
         </section>
 
@@ -284,7 +284,7 @@ export default async function ProductPage({
                   ? "Send the variant and quantity on WhatsApp for a bulk quote."
                   : "Choose a variant if applicable, set the quantity and add it to the order list.",
                 "Continue to IndiaMART or send the pre-filled WhatsApp message.",
-                "The team confirms availability and shares the final GST invoice.",
+                "The team confirms availability and your best final rate.",
               ].map((step, index) => (
                 <li key={step} className="flex gap-3">
                   <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary/10 font-display text-sm font-semibold text-primary">
@@ -313,8 +313,8 @@ export default async function ProductPage({
             </p>
             <p className="mt-1">
               <Localized
-                en="Share the project quantity for a contractor rate. The final GST invoice is confirmed directly by the business."
-                hi="प्रोजेक्ट की मात्रा भेजें — contractor रेट के लिए। फ़ाइनल GST invoice सीधे business कन्फ़र्म करेगा।"
+                en="Share the project quantity for a contractor rate — the business confirms your best rate directly."
+                hi="प्रोजेक्ट की मात्रा भेजें — contractor रेट के लिए। आपका बेस्ट रेट सीधे business कन्फ़र्म करेगा।"
               />
             </p>
           </div>

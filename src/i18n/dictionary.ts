@@ -32,11 +32,11 @@ export const dictionary = {
     "hero.eyebrow": "Ballabgarh · Faridabad · Since 2017",
     "hero.title": "The right material makes the finish.",
     "hero.body":
-      "Binders, madrasi dana, CMC, chamki and plastering tools for contractors, painters and dealers. Listed rates, GST invoice, enquiries 24x7.",
+      "Binders, madrasi dana, CMC, chamki and plastering tools for contractors, painters and dealers. Listed starting rates, negotiated deals, enquiries 24x7.",
     "hero.primary": "Order Now",
     "hero.secondary": "Ask on WhatsApp",
     "trust.since": "Since 2017",
-    "trust.gst": "GST invoice",
+    "trust.gst": "Better rates",
     "trust.indiamart": "IndiaMART seller",
     "trust.hours": "Open 24x7",
     "cart.title": "Your order list",
@@ -45,7 +45,7 @@ export const dictionary = {
       "Add a priced product to see an estimated total, or request a quote for bulk items.",
     "cart.estimated": "Estimated total",
     "cart.note":
-      "Estimate covers listed-priced items only. The final GST invoice is shared on confirmation.",
+      "Estimate covers listed-priced items only. Listed rates are starting points — the shop confirms your best final rate on WhatsApp.",
     "cart.checkout": "Proceed to order",
     "cart.clear": "Clear list",
     "cart.quoteLine": "Quote on request",
@@ -68,7 +68,7 @@ export const dictionary = {
     "bulk.cta": "Ask for bulk rates",
     "checkout.title": "Finish your order",
     "checkout.body":
-      "No payment is taken here. Choose where you want the final invoice sent and confirmed.",
+      "No payment is taken here. Your best final rate is confirmed on call or WhatsApp.",
     "checkout.indiamart": "Purchase via IndiaMART",
     "checkout.indiamartBody":
       "Open our marketplace listing in a new tab and continue with the seller.",
@@ -109,11 +109,11 @@ export const dictionary = {
     "hero.eyebrow": "बल्लभगढ़ · फ़रीदाबाद · 2017 से",
     "hero.title": "सही मटेरियल से बनता है बेहतरीन फ़िनिश।",
     "hero.body":
-      "ठेकेदारों, पेंटरों और डीलरों के लिए binder, Madrasi dana, CMC, chamki और प्लास्टरिंग टूल्स। लिस्टेड रेट, GST invoice, 24x7 संपर्क।",
+      "ठेकेदारों, पेंटरों और डीलरों के लिए binder, Madrasi dana, CMC, chamki और प्लास्टरिंग टूल्स। शुरुआती रेट, negotiate किए गए डील, 24x7 संपर्क।",
     "hero.primary": "अभी ऑर्डर करें",
     "hero.secondary": "WhatsApp पर पूछें",
     "trust.since": "2017 से",
-    "trust.gst": "GST invoice",
+    "trust.gst": "बेहतर रेट",
     "trust.indiamart": "IndiaMART सेलर",
     "trust.hours": "24x7 खुला",
     "cart.title": "आपकी ऑर्डर लिस्ट",
@@ -122,7 +122,7 @@ export const dictionary = {
       "लिस्टेड-रेट वाला उत्पाद जोड़ें और अनुमानित total देखें, या बल्क सामान का रेट पूछें।",
     "cart.estimated": "अनुमानित total",
     "cart.note":
-      "अनुमानित total सिर्फ़ लिस्टेड-रेट वाले सामान का है। फ़ाइनल GST invoice कन्फ़र्म होने पर भेजा जाएगा।",
+      "अनुमानित total सिर्फ़ लिस्टेड-रेट वाले सामान का है। लिस्टेड रेट शुरुआती हैं — फ़ाइनल बेस्ट रेट दुकान WhatsApp पर कन्फ़र्म करेगी।",
     "cart.checkout": "ऑर्डर आगे बढ़ाएँ",
     "cart.clear": "लिस्ट खाली करें",
     "cart.quoteLine": "रेट पूछना होगा",
@@ -145,7 +145,7 @@ export const dictionary = {
     "bulk.cta": "बल्क रेट पूछें",
     "checkout.title": "ऑर्डर पूरा करें",
     "checkout.body":
-      "यहाँ कोई payment नहीं लिया जाता। फ़ाइनल invoice कैसे कन्फ़र्म करना है, वह चुनें।",
+      "यहाँ कोई payment नहीं लिया जाता। आपका बेस्ट रेट call या WhatsApp पर कन्फ़र्म होगा।",
     "checkout.indiamart": "IndiaMART से ख़रीदें",
     "checkout.indiamartBody":
       "मार्केटप्लेस listing नए tab में खोलें और सेलर के साथ आगे बढ़ें।",

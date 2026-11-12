@@ -11,9 +11,9 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { Localized } from "@/i18n/Localized";
 
 export const metadata = buildPageMetadata({
-  title: "FAQ — Ordering, GST Invoice and Products",
+  title: "FAQ — Ordering, Rates and Products",
   description:
-    "Answers about ordering on WhatsApp or IndiaMART, GST invoices, quote-only products, wholesale pricing and visiting Garg Paints & Hardware in Ballabgarh, Faridabad.",
+    "Answers about ordering on WhatsApp or IndiaMART, best-rate deals, quote-only products, wholesale pricing and visiting Garg Paints & Hardware in Ballabgarh, Faridabad.",
   path: "/faq",
 });
 
@@ -55,9 +55,9 @@ export default function FaqPage() {
           <p className="mt-4 text-[1rem] leading-relaxed text-muted-foreground sm:text-lg">
             Garg Paints &amp; Hardware accepts order enquiries 24x7 on call and
             WhatsApp at +91 98992 84391, and through the IndiaMART listing.
-            Listed prices appear on product cards; quote-only items never carry
-            a guessed price. Every confirmed order receives a GST invoice under
-            GST invoice on confirmed orders. This page does not state any GST rate.
+            Listed rates appear on product cards as starting points; your best
+            rate is negotiated on call or WhatsApp based on your quantity.
+            Quote-only items never carry a guessed price.
           </p>
         </header>
 
@@ -68,7 +68,7 @@ export default function FaqPage() {
               <ul className="mt-3 space-y-2 text-sm">
                 <li>
                   <a href="#ordering" className="text-muted-foreground hover:text-foreground">
-                    Ordering &amp; GST
+                    Ordering &amp; rates
                   </a>
                 </li>
                 <li>
@@ -102,8 +102,8 @@ export default function FaqPage() {
             <section id="ordering" aria-labelledby="ordering-heading">
               <h2 id="ordering-heading" className="font-display text-2xl sm:text-3xl">
                 <Localized
-                  en="Ordering, pricing and GST"
-                  hi="ऑर्डरिंग, रेट और GST"
+                  en="Ordering, rates and deals"
+                  hi="ऑर्डरिंग, रेट और डील"
                 />
               </h2>
               <FaqAccordion faqs={globalFaqs} className="mt-4" />
