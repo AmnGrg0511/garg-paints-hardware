@@ -118,4 +118,45 @@ ok("/reset empties rates", resetObj.version === 1 && resetObj.updatedAt === null
 const chat = await post(update("kya haal hai"));
 ok("owner non-command gets a hint", /\/rates/.test(chat.json?.reply ?? ""));
 
+// 13. Batch: several commands in one message → one commit, one deploy.
+const batch = await post(update(
+  "/price madrasi white 165\n/price madrasi red 210\n/price pidicryl 6800",
+));
+const batchRates = JSON.parse(batch.json?.dryRun ?? "{}").rates ?? {};
+ok("batch applies every line once", (batch.json?.reply ?? "").includes("3 updates"));
+ok("batch content has all three rates",
+  batchRates["gph-02"]?.variants?.["White Madrasi Dana"] === "₹ 165/Bag" &&
+  batchRates["gph-02"]?.variants?.["Red Madrasi Dana"] === "₹ 210/Bag" &&
+  batchRates["gph-01"]?.price === "₹ 6,800/Drum");
+
+// 14. Batch is all-or-nothing: one bad line holds back everything.
+const badBatch = await post(update(
+  "/price trowel 80\n/price madrsi white 165",
+));
+ok("bad line aborts the whole batch",
+  badBatch.json?.status === "error" && !badBatch.json?.dryRun && /Nothing committed/.test(badBatch.json?.reply ?? ""));
+
+// 15. Paste-friendly shorthand without the slash, with the dash.
+const paste = await post(update(
+  "/price trowel 82\nmadrasi yellow - 300",
+));
+const pasteRates = JSON.parse(paste.json?.dryRun ?? "{}").rates ?? {};
+ok("paste-style lines parse and apply",
+  pasteRates["gph-03"]?.price === "₹ 82/Piece" &&
+  pasteRates["gph-02"]?.variants?.["Yellow Madrasi Dana"] === "₹ 300/Bag",
+  paste.json?.reply?.split("\n").slice(0, 3).join(" | "));
+
+// 16. /reset followed by /price: order respected inside one message.
+const resetThen = await post(update(
+  "/reset\n/price cmc white 45",
+));
+const resetRates = JSON.parse(resetThen.json?.dryRun ?? "{}").rates ?? {};
+ok("reset + rate in one message respects order",
+  Object.keys(resetRates).length === 1 && resetRates["gph-04"]?.variants?.["White CMC Powder"] === "₹ 45/Kg");
+
+// 17. /rates inside a batch is skipped, not dumped.
+const withRates = await post(update("/rates\n/price trowel 77"));
+ok("info command inside batch is skipped with a note",
+  /skipped \/rates/.test(withRates.json?.reply ?? "") && (withRates.json?.reply ?? "").includes("trowel"));
+
 await browser.close();

@@ -1,4 +1,4 @@
-import { handleBotCommand, type OverridesFile } from "@/lib/bot";
+import { handleBotMessage, type OverridesFile } from "@/lib/bot";
 
 export const runtime = "nodejs";
 
@@ -163,7 +163,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const outcome = handleBotCommand(text);
+  const outcome = handleBotMessage(text);
   let committed = false;
   let dryRun: string | null = null;
 
@@ -171,10 +171,9 @@ export async function POST(request: Request) {
     const file = await fetchOverridesFile();
     if (!file) {
       // No GitHub token yet: report the computed change without committing.
-      outcome.reply =
-        "⚠️ Rate change computed but not committed — GITHUB_TOKEN is not configured on the server yet.\n\n" +
-        outcome.change.summary;
       dryRun = outcome.change.content;
+      outcome.reply +=
+        "\n\n⚠️ Not committed — GITHUB_TOKEN is not configured on the server yet.";
     } else {
       let current: OverridesFile;
       try {
@@ -188,7 +187,7 @@ export async function POST(request: Request) {
             "⚠️ catalog.overrides.json on GitHub is not valid JSON — fix it in the repo, then retry.",
         });
       }
-      const fresh = handleBotCommand(text, current);
+      const fresh = handleBotMessage(text, current);
       if (!fresh.change) {
         // The fresh file already reflects this command — nothing to commit.
         await sendTelegram(chatIdString, fresh.reply);
@@ -205,7 +204,7 @@ export async function POST(request: Request) {
         file.sha,
       );
       outcome.reply = committed
-        ? fresh.reply
+        ? `${fresh.reply}\nCommitted — live on the site in about a minute.`
         : `⚠️ ${fresh.change.summary}\nGitHub rejected the commit — check the token's expiry and scope (needs Contents: read + write).`;
     }
   }
@@ -215,6 +214,7 @@ export async function POST(request: Request) {
     ok: true,
     admin: true,
     committed,
+    ...(outcome.status ? { status: outcome.status } : {}),
     ...(dryRun ? { dryRun } : {}),
     reply: outcome.reply,
   });

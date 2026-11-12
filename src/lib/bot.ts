@@ -46,6 +46,8 @@ export type RateChange = {
 export type BotOutcome = {
   reply: string;
   change?: RateChange;
+  /** Set when the command could not be executed (bad product, rate, shade). */
+  status?: "error";
 };
 
 /** Short chat keys per product — what the owner types and sees. */
@@ -200,6 +202,7 @@ export function handleBotCommand(
     if (!product) {
       return {
         reply: `No product matches "${args[0]}". Known products: ${PRODUCT_KEYS.map((p) => p.key).join(", ")}.`,
+        status: "error",
       };
     }
 
@@ -232,7 +235,7 @@ export function handleBotCommand(
         }
         const file = withRate(current, product, variant.label, quotePrice);
         return {
-          reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${quotePrice}\nCommitting to the repo — live on the site in about a minute.`,
+          reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${quotePrice}`,
           change: {
             message: `Rate via bot: ${variant.label} → quote-only (${quotePrice})`,
             summary: `${productKey(product.id)} ${variantKey(variant.label)}: ${variant.price} → ${quotePrice}`,
@@ -240,7 +243,7 @@ export function handleBotCommand(
           },
         };
       }
-      return { reply: `${product.name} has a single rate — mark it quote-only by removing the price in the repo, or use /price ${args[0]} <rate>.` };
+      return { reply: `${product.name} has a single rate — mark it quote-only by removing the price in the repo, or use /price ${args[0]} <rate>.`, status: "error" };
     }
 
     // /price <product> [variant] <rate>
@@ -249,6 +252,7 @@ export function handleBotCommand(
     if (amount === null) {
       return {
         reply: `"${last}" is not a rate. Use a number, e.g. /price madrasi white 165.`,
+        status: "error",
       };
     }
 
@@ -259,7 +263,7 @@ export function handleBotCommand(
       const price = formatRate(amount, product.quantity.unit);
       const file = withRate(current, product, null, price);
       return {
-        reply: `✅ ${productKey(product.id)}\n${product.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
+        reply: `✅ ${productKey(product.id)}\n${product.price} → ${price}`,
         change: {
           message: `Rate via bot: ${product.name} → ${price}`,
           summary: `${productKey(product.id)}: ${product.price} → ${price}`,
@@ -272,18 +276,20 @@ export function handleBotCommand(
     if (!variantToken) {
       return {
         reply: `${productKey(product.id)} shades: ${variantKeys(product)}\nWhich one? Example: /price madrasi white 165`,
+        status: "error",
       };
     }
     const variant = findVariant(product, variantToken);
     if (!variant) {
       return {
         reply: `No shade "${variantToken}" on ${productKey(product.id)}. Shades: ${variantKeys(product)}`,
+        status: "error",
       };
     }
     const price = formatRate(amount, product.quantity.unit);
     const file = withRate(current, product, variant.label, price);
     return {
-      reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
+      reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${price}`,
       change: {
         message: `Rate via bot: ${variant.label} → ${price}`,
         summary: `${productKey(product.id)} ${variantKey(variant.label)}: ${variant.price} → ${price}`,
@@ -306,5 +312,95 @@ export function handleBotCommand(
 
   return {
     reply: `Use /rates, /price, /quote, /reset or /help.\n\n${HELP}`,
+  };
+}
+
+const SKIPPED_COMMANDS = new Set(["/rates", "/help", "/start"]);
+
+/**
+ * Paste-friendly normalization: a line without a leading slash is treated
+ * as a /price shorthand when it ends in a rate — "madrasi white - 165"
+ * becomes "/price madrasi white 165". Anything else passes through
+ * unchanged (and is skipped with a note when it is not a command).
+ */
+function normalizeLine(line: string): string {
+  if (line.startsWith("/")) return line;
+  const dashed = line.replace(/\s+[-–—]\s+/, " ").trim();
+  const tokens = dashed.split(/\s+/);
+  const last = tokens[tokens.length - 1] ?? "";
+  if (tokens.length >= 2 && parseRate(last) !== null) {
+    return `/price ${dashed}`;
+  }
+  return line;
+}
+
+/**
+ * One message may carry several commands — one per line — so a market-day
+ * rate sheet lands as a single commit and a single deploy. Lines apply in
+ * order (a /reset followed by /price lines works as written). Validation
+ * is all-or-nothing: if any line is wrong, nothing is committed.
+ */
+export function handleBotMessage(
+  text: string,
+  current: OverridesFile = { version: 1, updatedAt: null, rates: {} },
+): BotOutcome {
+  const lines = text
+    .trim()
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (lines.length <= 1) return handleBotCommand(text, current);
+
+  let file = current;
+  const summaries: string[] = [];
+  const problems: string[] = [];
+  const notes: string[] = [];
+
+  for (const rawLine of lines) {
+    const line = normalizeLine(rawLine);
+    const head = line.toLowerCase().split(/\s+/)[0];
+    if (SKIPPED_COMMANDS.has(head)) {
+      notes.push(`(skipped ${head} — send it on its own to see the list)`);
+      continue;
+    }
+    const outcome = handleBotCommand(line, file);
+    if (outcome.status === "error") {
+      problems.push(outcome.reply);
+      continue;
+    }
+    if (outcome.change) {
+      if (summaries.includes(outcome.change.summary)) continue;
+      file = JSON.parse(outcome.change.content) as OverridesFile;
+      summaries.push(outcome.change.summary);
+    } else {
+      notes.push(outcome.reply);
+    }
+  }
+
+  if (problems.length > 0) {
+    return {
+      reply:
+        `❌ Nothing committed — fix these lines and resend:\n\n${problems.map((p) => `• ${p}`).join("\n\n")}` +
+        (summaries.length > 0
+          ? "\n\n(The valid lines are held back too, so everything lands together.)"
+          : ""),
+      status: "error",
+    };
+  }
+
+  if (summaries.length === 0) {
+    return { reply: notes.join("\n\n") || HELP };
+  }
+
+  const bullet = summaries.length === 1 ? "1 update" : `${summaries.length} updates`;
+  return {
+    reply:
+      `✅ ${bullet}:\n${summaries.join("\n")}` +
+      (notes.length > 0 ? `\n\n${notes.join("\n")}` : ""),
+    change: {
+      message: `Rate via bot: ${summaries.join("; ")}`,
+      summary: summaries.join("; "),
+      content: serialize(file),
+    },
   };
 }
