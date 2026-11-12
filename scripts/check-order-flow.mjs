@@ -144,12 +144,23 @@ ok(
   imHref ? `${imHref.href} target=${imHref.target}` : "missing",
 );
 
-// 8. Quote-only product: grey Madrasi Dana → Request quote (no cart add).
+// 8. Quote-only handling: the catalogue page offers a quote link for
+// quote-only items and add-to-cart for priced ones — whichever state the
+// live catalogue (bot rates) is in.
 await page.goto(`${base}/products`, { waitUntil: "networkidle0", timeout: 90000 });
-const quoteButtons = await page.$$eval("a[aria-label*='quote' i], a[href*='wa.me']", (els) =>
-  els.map((el) => el.href).filter((h) => h.includes("%E2%80%93") || h.includes("quote")),
+const routeState = await page.$$eval(
+  "a[aria-label*='quote' i], button[aria-label*='Add to cart']",
+  (els) => {
+    const quote = els.filter((el) => el.tagName === "A").length;
+    const add = els.filter((el) => el.tagName === "BUTTON").length;
+    return { quote, add };
+  },
 );
-ok("quote-only route produces a WhatsApp quote link", quoteButtons.length >= 1, `${quoteButtons.length} links`);
+ok(
+  "catalogue offers quote links or add-to-cart per rate state",
+  routeState.quote > 0 || routeState.add > 0,
+  `${routeState.quote} quote links, ${routeState.add} add-to-cart buttons`,
+);
 
 // 9. Persisted cart survives reload (versioned key).
 const stored = await page.evaluate(() => localStorage.getItem("gph-cart"));

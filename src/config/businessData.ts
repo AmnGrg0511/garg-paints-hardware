@@ -188,7 +188,7 @@ export const products: readonly Product[] = [
       "White industrial drum of Pidicryl 126 M styrene acrylic emulsion with a blue product label",
     tone: "cream",
     grade: "Pidicryl 126 M — manufacturer grade",
-    packaging: "50 L / 50 kg drums · billed at ₹130/Kg",
+    packaging: "50 L / 50 kg drums · billed per kilogram",
     quantity: {
       unit: "Drum",
       steps: [1, 10],
@@ -218,7 +218,7 @@ export const products: readonly Product[] = [
           "Yes. Every confirmed order receives a final GST invoice. The site does not state a GST rate.",
       },
       {
-        question: "Is the listed ₹130/Kg price final?",
+        question: "Is the listed price final?",
         answer:
           "The listed figure is the per-kilogram product rate shown by the business. Confirm quantity, packing and the current rate on call or WhatsApp; the final GST invoice is shared on confirmation.",
       },
@@ -279,7 +279,7 @@ export const products: readonly Product[] = [
     description:
       "Decorative granule wall texture (madrasi dana) for exterior facades and plaster-finish wall texturing, available in white, red, yellow, green and black.",
     summary:
-      "Madrasi dana is a decorative granule wall texture for exterior facades and plaster-finish wall texturing. Garg Paints & Hardware stocks five shades — white, red, yellow, green and black — in Ballabgarh, Faridabad. White, red and yellow bags carry listed prices; green and black are quoted on request. Order by call or WhatsApp, with a GST invoice on confirmation.",
+      "Madrasi dana is a decorative granule wall texture for exterior facades and plaster-finish wall texturing. Garg Paints & Hardware stocks five shades — white, red, yellow, green and black — in Ballabgarh, Faridabad. Shades with a listed rate can be ordered by the bag; shades shown as contact-for-price are quoted on WhatsApp. Order by call or WhatsApp, with a GST invoice on confirmation.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/madrasi-dana.webp?v=8",
     imageAlt:
@@ -302,7 +302,7 @@ export const products: readonly Product[] = [
       {
         question: "Which madrasi dana colour is best for exterior texture?",
         answer:
-          "There is no single best shade. White, red and yellow carry listed bag rates, while green and black are quoted on request. Share a reference photo on WhatsApp if you want help matching an existing finish.",
+          "There is no single best shade. The shade list shows the current status for each shade — a listed bag rate or a quote-on-request tag. Share a reference photo on WhatsApp if you want help matching an existing finish.",
       },
       {
         question: "What is madrasi dana?",
@@ -315,9 +315,9 @@ export const products: readonly Product[] = [
           "Garg Paints & Hardware supplies madrasi dana in Ballabgarh, Faridabad. Add the shades you need to the order list, or call and WhatsApp +91 98992 84391 to confirm availability.",
       },
       {
-        question: "Why do green and black madrasi dana show “Contact for Price”?",
+        question: "Why do some shades show “Contact for Price”?",
         answer:
-          "The owner has not published rates for the green and black shades yet. Use the “Request Quote” button to ask for the current rate on WhatsApp. They cannot be added to the cart at an estimated price.",
+          "Shades without a published rate are quoted on request — the shade card and the product page always show the current status. Use the “Request Quote” button to ask for the current rate on WhatsApp; quote-only shades cannot be added to the cart at an estimated price.",
       },
       {
         question: "Can I order multiple colours together?",
@@ -344,7 +344,7 @@ export const products: readonly Product[] = [
     description:
       "Heavy-duty ergonomic stainless steel gurmala for texture application, cement flattening and wall scraping.",
     summary:
-      "The Gurmala is a heavy-duty stainless steel plastering trowel for texture application, cement flattening and wall scraping. Garg Paints & Hardware supplies it per piece in Ballabgarh, Faridabad, at a listed price of ₹75. Call or WhatsApp to order; a GST invoice is shared on confirmation. Dealer and contractor pricing is available on request.",
+      "The Gurmala is a heavy-duty stainless steel plastering trowel for texture application, cement flattening and wall scraping. Garg Paints & Hardware supplies it per piece in Ballabgarh, Faridabad. Call or WhatsApp to order; a GST invoice is shared on confirmation. Dealer and contractor pricing is available on request.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/plastering-trowel.webp?v=8",
     imageAlt:
@@ -383,7 +383,7 @@ export const products: readonly Product[] = [
       {
         question: "What is the price of the trowel?",
         answer:
-          "The listed price is ₹75 per piece. The final GST invoice is shared on order confirmation, and the site does not state a GST rate.",
+          "The listed price is shown on the product page. The final GST invoice is shared on order confirmation, and the site does not state a GST rate.",
       },
       {
         question: "Can I order trowels in bulk for a contractor crew?",
@@ -422,7 +422,7 @@ export const products: readonly Product[] = [
     description:
       "Carboxymethyl Cellulose (CMC), a thickening and film-forming agent used in wall putty, distempers and architectural coatings.",
     summary:
-      "CMC (carboxymethyl cellulose) is a water-soluble thickening and film-forming agent used in wall putty, distempers and architectural coatings. Garg Paints & Hardware offers white CMC for putty and smooth textures, and yellow CMC for technical viscosity control, in Ballabgarh, Faridabad. Both variants are bulk-quote items: share your quantity on WhatsApp.",
+      "CMC (carboxymethyl cellulose) is a water-soluble thickening and film-forming agent used in wall putty, distempers and architectural coatings. Garg Paints & Hardware offers white CMC for putty and smooth textures, and yellow CMC for technical viscosity control, in Ballabgarh, Faridabad. Grades with a listed rate can be ordered by weight; others are quoted on WhatsApp.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/cmc-powder.webp?v=8",
     imageAlt:
@@ -447,7 +447,7 @@ export const products: readonly Product[] = [
         question:
           "Where to buy bulk white CMC powder in Ballabgarh, Faridabad with a GST invoice?",
         answer:
-          "Garg Paints & Hardware supplies white CMC powder in Ballabgarh, Faridabad with a GST invoice on confirmation. Send your required quantity on WhatsApp at +91 98992 84391 for a bulk quote.",
+          "Garg Paints & Hardware supplies white CMC powder in Ballabgarh, Faridabad with a GST invoice on confirmation. Send your required quantity on WhatsApp at +91 98992 84391 to confirm the current rate and place the order.",
       },
       {
         question: "What is the difference between white and yellow CMC powder?",
@@ -460,9 +460,9 @@ export const products: readonly Product[] = [
           "CMC acts as a thickening and film-forming agent in wall putty and architectural coatings. It helps control the working consistency of the mix. Confirm the dosage for your specific formulation with your technical supervisor.",
       },
       {
-        question: "Why is CMC powder priced on request?",
+        question: "Why do some CMC grades show “Contact for Bulk Quote”?",
         answer:
-          "Both CMC variants are bulk-quote items because pack size and quantity affect the rate. The site does not attach an estimated price; request a quote on WhatsApp or IndiaMART.",
+          "Grades without a published rate are quoted because pack size and quantity affect the rate. The site does not attach an estimated price to those grades; request a quote on WhatsApp or IndiaMART.",
       },
       {
         question: "Can I get a GST invoice on CMC powder?",
@@ -502,7 +502,7 @@ export const products: readonly Product[] = [
     description:
       "Glitter and metallic flake additive mixed into wall textures, roof coatings and designer emulsions for a sparkle finish, available in golden and silver.",
     summary:
-      "Chamki powder is a glitter and metallic-flake additive for wall textures, roof coatings and designer emulsions, in golden and silver finishes. It adds a sparkle when mixed into the coating. Garg Paints & Hardware supplies both finishes in Ballabgarh, Faridabad, with pack sizes quoted on request. Send your required quantity on WhatsApp for current pack options and pricing.",
+      "Chamki powder is a glitter and metallic-flake additive for wall textures, roof coatings and designer emulsions, in golden and silver finishes. It adds a sparkle when mixed into the coating. Garg Paints & Hardware supplies both finishes in Ballabgarh, Faridabad — the rate for each finish is shown in the shade list. Share your required quantity on WhatsApp to confirm current pack options.",
     cta: "Buy on IndiaMART / WhatsApp Enquiry",
     image: "/products/chamki-powder.webp?v=8",
     imageAlt:
@@ -536,7 +536,7 @@ export const products: readonly Product[] = [
       {
         question: "What pack sizes are available?",
         answer:
-          "Pack sizes are quoted on request. Share the quantity you need on WhatsApp and the team will confirm the available pack options for your order.",
+          "Pack options are confirmed on enquiry. Share the quantity you need on WhatsApp and the team will confirm the available pack options for your order.",
       },
       {
         question: "Does chamki powder work in roof coatings?",
@@ -546,7 +546,7 @@ export const products: readonly Product[] = [
       {
         question: "How do I order chamki powder?",
         answer:
-          "Use the “Request Quote on WhatsApp” button, or open the IndiaMART listing. Because pack sizes are quoted on request, the item cannot be added to the cart at an estimated price.",
+          "Add the finish to the order list on the product page, or open the IndiaMART listing. Finishes without a listed rate are quoted on WhatsApp instead of an estimated cart price.",
       },
     ],
   },

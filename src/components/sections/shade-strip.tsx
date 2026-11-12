@@ -2,53 +2,40 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { Localized } from "@/i18n/Localized";
 import { cn } from "@/lib/utils";
+import { products } from "@/config/effective-catalog";
+import { parsePrice } from "@/lib/pricing";
 
-const shades = [
-  {
-    name: "White Madrasi Dana",
-    short: "White",
-    hex: "#F2ECDD",
-    label: "#3F3A2A",
-    price: "₹150/Bag",
-    slug: "madrasi-dana-wall-texture",
-  },
-  {
-    name: "Red Madrasi Dana",
-    short: "Red",
-    hex: "#A84328",
-    label: "#FFFFFF",
-    price: "₹200/Bag",
-    slug: "madrasi-dana-wall-texture",
-  },
-  {
-    name: "Yellow Madrasi Dana",
-    short: "Yellow",
-    hex: "#F0A868",
-    label: "#4A2C10",
-    price: "₹280/Bag",
-    slug: "madrasi-dana-wall-texture",
-  },
-  {
-    name: "Green Madrasi Dana",
-    short: "Green",
-    hex: "#3D6B41",
-    label: "#FFFFFF",
-    price: null,
-    slug: "madrasi-dana-wall-texture",
-  },
-  {
-    name: "Black Madrasi Dana",
-    short: "Black",
-    hex: "#2B2B2E",
-    label: "#FFFFFF",
-    price: null,
-    slug: "madrasi-dana-wall-texture",
-  },
-] as const;
+/**
+ * Visual-only metadata per Madrasi dana shade. Rates never live here —
+ * they come from the catalogue (and its bot-committed overrides), so a
+ * rate update from Telegram shows up on this card with the next deploy.
+ */
+const shadeVisuals: Record<string, { short: string; hex: string; label: string }> = {
+  "White Madrasi Dana": { short: "White", hex: "#F2ECDD", label: "#3F3A2A" },
+  "Red Madrasi Dana": { short: "Red", hex: "#A84328", label: "#FFFFFF" },
+  "Yellow Madrasi Dana": { short: "Yellow", hex: "#F0A868", label: "#4A2C10" },
+  "Green Madrasi Dana": { short: "Green", hex: "#3D6B41", label: "#FFFFFF" },
+  "Black Madrasi Dana": { short: "Black", hex: "#2B2B2E", label: "#FFFFFF" },
+};
+
+const dana = products.find((product) => product.id === "gph-02");
+
+const shades = (
+  dana?.kind === "variant" ? dana.variants : []
+).map((variant) => ({
+  name: variant.label,
+  slug: dana?.slug ?? "madrasi-dana-wall-texture",
+  info: parsePrice(variant.price),
+  ...(shadeVisuals[variant.label] ?? {
+    short: variant.label.split(/\s+/)[0],
+    hex: "#CCCCCC",
+    label: "#333333",
+  }),
+}));
 
 /**
  * Shade-card strip — the colour-first pattern every paint retailer leads
- * with. Shows the four real Madrasi dana shades with their listed rates.
+ * with. Shows the Madrasi dana shades with their live rates.
  */
 export function ShadeStrip() {
   return (
@@ -67,8 +54,8 @@ export function ShadeStrip() {
           </h2>
           <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="The five Madrasi dana shades we stock, with listed bag rates. Green and black are quoted on request — share your quantity on WhatsApp for a firm price."
-              hi="हमारे पास मौजूद पाँच Madrasi dana शेड, लिस्टेड बैग रेट के साथ। ग्रीन और ब्लैक का रेट पूछने पर मिलेगा — पक्का रेट जानने के लिए अपनी मात्रा WhatsApp पर भेजें।"
+              en="The five Madrasi dana shades we stock, with the current rates from the catalogue. Shades marked price on request are quoted on WhatsApp."
+              hi="हमारे पास मौजूद पाँच Madrasi dana शेड, कैटलॉग के मौजूदा रेट के साथ। जिन पर Price on request दिखे, उनका रेट WhatsApp पर पूछें।"
             />
           </p>
         </div>
@@ -107,16 +94,19 @@ export function ShadeStrip() {
                   {shade.name}
                 </span>
                 <span className="mt-1 block text-sm font-extrabold">
-                  {shade.price ? (
-                    <>
-                      <span className="rupee">₹</span>
-                      {shade.price.replace("₹", "")}
-                    </>
-                  ) : (
+                  {shade.info.onRequest ? (
                     <Localized
                       en="Price on request"
                       hi="रेट पूछना होगा"
                     />
+                  ) : (
+                    <>
+                      <span className="rupee">₹</span>
+                      {new Intl.NumberFormat("en-IN").format(shade.info.amount ?? 0)}
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        /{shade.info.unit}
+                      </span>
+                    </>
                   )}
                 </span>
               </span>
