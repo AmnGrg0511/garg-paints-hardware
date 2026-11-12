@@ -107,6 +107,14 @@ The language toggle switches every UI string between English and proper
 loads on demand. Brand/product names (Pidicryl, Madrasi Dana, CMC, Chamki)
 stay in Latin script inside the Hindi copy, as they appear on the labels.
 
+#### Messaging rules (owner-approved)
+
+The site sells the deal, not paperwork: no GST/invoice talk in customer
+copy — the value props are better rates than anywhere, genuine quality
+guarantee, quick delivery, and rates negotiated per order. Listed rates
+are always presented as starting points; the final rate depends on
+quantity and the customer's relationship with the shop.
+
 #### Capturing numbers without WhatsApp
 
 The one-field form sends itself the moment a complete 10-digit number
