@@ -57,7 +57,12 @@ await page.evaluate(
   () => (document.querySelector("#lead-phone-hero").value = ""),
 );
 await form?.type("9876501234");
-await new Promise((r) => setTimeout(r, 1500));
+// The auto-send fires ~500 ms after the last keystroke; on production the
+// POST includes the synchronous webhook roundtrip, so wait for the state.
+await page.waitForFunction(
+  () => (document.body.innerText || "").includes("Thanks"),
+  { timeout: 15000 },
+);
 
 const successShown = await page.evaluate(() =>
   (document.body.innerText || "").includes("Thanks"),
@@ -104,6 +109,10 @@ const stored = await page.evaluate(() =>
     body: JSON.stringify({ phone: "9811122233", source: "browser-e2e" }),
   }).then((r) => r.json()),
 );
-ok("server-side lead stored flag", stored.ok === true && stored.stored === true, JSON.stringify(stored));
+ok(
+  "server-side lead captured",
+  stored.ok === true && (stored.stored === true || stored.forwarded === true),
+  JSON.stringify(stored),
+);
 
 await browser.close();

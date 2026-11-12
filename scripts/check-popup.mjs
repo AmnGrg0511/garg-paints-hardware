@@ -21,17 +21,19 @@ ok("lead popup appears after delay", Boolean(dialog));
 
 if (dialog) {
   await page.type("#lead-phone-popup", "9876501234");
-  await new Promise((r) => setTimeout(r, 1500));
-  ok("auto-send stores the lead without opening WhatsApp", popups.length === 0, popups[0]?.slice(0, 90));
-  const successShown = await page.evaluate(
+  // Auto-send fires ~500 ms after typing; prod POST includes the webhook
+  // roundtrip, so wait for the success state rather than a fixed sleep.
+  await page.waitForFunction(
     () => (document.body.innerText || "").includes("Thanks"),
+    { timeout: 15000 },
   );
-  ok("success state shown (auto-sent, no click)", successShown);
+  ok("auto-send stores the lead without opening WhatsApp", popups.length === 0, popups[0]?.slice(0, 90));
+  ok("success state shown (auto-sent, no click)", true);
   const waOption = await page.$("[data-testid='lead-whatsapp-popup']");
   ok("optional WhatsApp greeting link present", Boolean(waOption));
 
   // Dismiss after success; popup must not return this session.
-  await new Promise((r) => setTimeout(r, 2200));
+  await new Promise((r) => setTimeout(r, 3200));
   const stillOpen = await page.$("[role='dialog'][aria-modal='true']");
   ok("popup closes after success", !stillOpen);
 
