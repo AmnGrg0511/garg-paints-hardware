@@ -109,9 +109,11 @@ stay in Latin script inside the Hindi copy, as they appear on the labels.
 
 #### Capturing numbers without WhatsApp
 
-`/api/lead` writes each lead to every channel configured:
-
-#### Capturing numbers without WhatsApp
+Submitting the one-field form is enough — the number is captured
+server-side with no WhatsApp step required (desktop visitors without
+WhatsApp are covered). WhatsApp stays one tap away as an optional
+channel that opens a plain "Hello Mahesh" greeting; anyone who chats
+there is reachable at that chat's number anyway.
 
 `/api/lead` writes each lead to every channel configured:
    - **Vercel Blob** (recommended on Vercel): create a Blob store

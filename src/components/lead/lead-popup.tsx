@@ -15,7 +15,8 @@ const DONE_KEY = "gph-lead-submitted";
  * A one-time-per-session modal asking for a callback number. Appears after
  * a short delay or when the visitor scrolls a third of the page — whichever
  * comes first.
- * No OTP; the submitted number is stored server-side and handed to WhatsApp.
+ * No OTP; the submitted number is stored server-side and the shop calls
+ * back — WhatsApp stays available as an optional channel.
  */
 export function LeadPopup() {
   const pathname = usePathname();
@@ -127,7 +128,7 @@ export function LeadPopup() {
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                   <Localized
                     en="Leave your mobile number — the shop sees it instantly and calls you back. No OTP, no spam."
-                    hi="मोबाइल नंबर छोड़ें — दुकान को तुरंत दिखेगा और call back आएगा। Na OTP, na spam."
+                    hi="मोबाइल नंबर छोड़ें — दुकान को तुरंत दिखेगा और call back आएगा। ना OTP, ना स्पैम।"
                   />
                 </p>
               </div>

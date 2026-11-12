@@ -26,8 +26,9 @@ function normalizeIndianMobile(raw: string): string | null {
  *     owner gets it on their phone/inbox without any visitor action.
  *     Supported setups (see README): Telegram bot sendMessage or a Google
  *     Apps Script sheet-appender URL.
- *  4. The visitor is still handed to WhatsApp with the callback request
- *     pre-filled to the shop's number.
+ *  4. Submission alone is enough — the visitor sees a confirmation and the
+ *     shop calls back. WhatsApp remains an optional channel with a plain
+ *     "Hello Mahesh" greeting; a chat there reveals the number anyway.
  */
 export async function POST(request: Request) {
   let body: { phone?: unknown; source?: unknown } | null = null;

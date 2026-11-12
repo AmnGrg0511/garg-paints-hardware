@@ -57,9 +57,13 @@ export function buildQuoteMessage(
   return `${greeting},\n\nI want a quote for ${item}.${quantity}\n\nPlease share available pack sizes and the final GST invoice.`;
 }
 
-/** Message that reports a website visitor's callback request to the shop. */
-export function buildCallbackMessage(phoneE164: string): string {
-  return `${greeting},\n\nNew enquiry from the website.\nMobile: ${phoneE164}.\n\nPlease call back or share prices on WhatsApp.`;
+/**
+ * A bare greeting — "Hello Mahesh". Visitors who prefer WhatsApp skip the
+ * form entirely; the shop reads their number straight from the chat, so the
+ * message never needs to repeat it.
+ */
+export function greetingWhatsAppUrl(): string {
+  return whatsappUrl(greeting);
 }
 
 export function whatsappUrl(message: string): string {

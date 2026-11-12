@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { ArrowRightIcon, CheckCircle2Icon, PhoneIcon } from "lucide-react";
-import { buildCallbackMessage, whatsappUrl } from "@/lib/whatsapp";
+import { greetingWhatsAppUrl } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
 import { Localized } from "@/i18n/Localized";
-import { WhatsAppGlyph } from "@/components/icons/brand";
 import { cn } from "@/lib/utils";
 
 type Status = "idle" | "sending" | "done" | "error";
@@ -19,8 +18,10 @@ function normalizeIndianMobile(value: string): string {
 
 /**
  * One-field lead capture, deliberately without OTP: the visitor enters a
- * mobile number, the server records it for the business, and WhatsApp opens
- * to the shop's chat with the callback request pre-filled — one tap to send.
+ * mobile number, the server records it for the business, and the visit ends
+ * there — nothing is opened, nothing has to be sent. WhatsApp stays one tap
+ * away as an optional channel with a plain "Hello Mahesh" greeting; anyone
+ * who chats there is reachable at that chat's number anyway.
  */
 export function CallBackForm({
   source,
@@ -29,12 +30,11 @@ export function CallBackForm({
 }: {
   source: string;
   className?: string;
-  /** Fires once the lead is stored and WhatsApp has been opened. */
+  /** Fires once the lead is stored server-side. */
   onDone?: () => void;
 }) {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<Status>("idle");
-  const [manualHref, setManualHref] = useState<string | null>(null);
 
   const local10 = normalizeIndianMobile(phone);
   const valid = /^([6-9]\d{9})$/.test(local10);
@@ -60,14 +60,16 @@ export function CallBackForm({
     }
 
     trackEvent("generate_lead", { source, stored });
-
-    const e164 = `+91${local10}`;
-    const href = whatsappUrl(buildCallbackMessage(e164));
-    setManualHref(href);
-    window.open(href, "_blank", "noopener,noreferrer");
     setStatus("done");
     onDone?.();
   };
+
+  const whatsappLabel = (
+    <Localized
+      en="Message the shop directly"
+      hi="दुकान को सीधे message करें"
+    />
+  );
 
   return (
     <div
@@ -85,25 +87,33 @@ export function CallBackForm({
           <div>
             <p className="text-sm font-bold">
               <Localized
-                en="Thanks — WhatsApp is opening with your number."
-                hi="शुक्रिया — WhatsApp आपका नंबर लेकर खुल रहा है।"
+                en="Thanks — your number is with the shop."
+                hi="शुक्रिया — आपका नंबर दुकान तक पहुँच गया।"
               />
             </p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               <Localized
-                en="Press send so the shop gets your request for a call back. Didn't open?"
-                hi="दुकान को call-back request मिलने के लिए send दबाएँ। नहीं खुला?"
+                en="Expect a call back with rates and availability."
+                hi="रेट और उपलब्धता के साथ call back आएगा।"
+              />
+            </p>
+            <p className="mt-2 text-[0.66rem] leading-relaxed text-muted-foreground">
+              <Localized
+                en="Want to chat instead?"
+                hi="बातचीत WhatsApp पर करनी हो?"
               />{" "}
-              {manualHref && (
-                <a
-                  href={manualHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-primary underline underline-offset-4"
-                >
-                  <Localized en="Open WhatsApp" hi="WhatsApp खोलें" />
-                </a>
-              )}
+              <a
+                href={greetingWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid={`lead-whatsapp-${source}`}
+                onClick={() =>
+                  trackEvent("click_whatsapp", { source: `${source}-lead` })
+                }
+                className="font-semibold text-primary underline underline-offset-4"
+              >
+                {whatsappLabel}
+              </a>
             </p>
           </div>
         </div>
@@ -156,10 +166,10 @@ export function CallBackForm({
               disabled={status === "sending"}
               className="dana-texture inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#0d7a5f] px-5 text-sm font-bold text-white transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
             >
-              <WhatsAppGlyph className="size-4.5" />
+              <PhoneIcon className="size-4.5" aria-hidden />
               <Localized
-                en={status === "sending" ? "Sending…" : "Send to shop"}
-                hi={status === "sending" ? "भेज रहे हैं…" : "दुकान को भेजें"}
+                en={status === "sending" ? "Sending…" : "Send number"}
+                hi={status === "sending" ? "भेज रहे हैं…" : "नंबर भेजें"}
               />
               <ArrowRightIcon className="size-4" aria-hidden />
             </button>
@@ -178,9 +188,27 @@ export function CallBackForm({
           )}
           <p className="mt-2 text-[0.66rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="Your number is used only to call back about your enquiry. It opens a WhatsApp chat with the shop; press send to complete it."
-              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। दुकान के साथ WhatsApp चैट खुलेगी; पूरा करने के लिए send दबाएँ।"
+              en="Your number is used only to call back about your enquiry. Submitting is enough — the shop calls you."
+              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। भेजना काफ़ी है — call दुकान की तरफ़ से आएगा।"
             />
+          </p>
+          <p className="mt-1.5 text-[0.66rem] leading-relaxed text-muted-foreground">
+            <Localized
+              en="Prefer WhatsApp?"
+              hi="WhatsApp पसंद है?"
+            />{" "}
+            <a
+              href={greetingWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid={`lead-whatsapp-${source}`}
+              onClick={() =>
+                trackEvent("click_whatsapp", { source: `${source}-lead` })
+              }
+              className="font-semibold text-primary underline underline-offset-4"
+            >
+              {whatsappLabel}
+            </a>
           </p>
         </form>
       )}

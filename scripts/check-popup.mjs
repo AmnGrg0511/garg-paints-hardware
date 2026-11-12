@@ -23,9 +23,13 @@ if (dialog) {
   await page.type("#lead-phone-popup", "9876501234");
   await page.click("[role='dialog'] form button[type='submit']");
   await new Promise((r) => setTimeout(r, 1500));
-  ok("popup flow opens WhatsApp to the shop", popups.some((u) => u.includes("wa.me") || u.includes("api.whatsapp.com")), popups[0]?.slice(0, 90));
-  const text = popups[0] ? decodeURIComponent((popups[0].split("text=")[1] || "").split("&")[0].replace(/\+/g, " ")).replace(/\s*\n\s*/g, " ") : "";
-  ok("popup message carries visitor number", text.includes("Mobile: +919876501234"), text.slice(0, 90));
+  ok("submit stores the lead without opening WhatsApp", popups.length === 0, popups[0]?.slice(0, 90));
+  const successShown = await page.evaluate(
+    () => (document.body.innerText || "").includes("Thanks"),
+  );
+  ok("success state shown", successShown);
+  const waOption = await page.$("[data-testid='lead-whatsapp-popup']");
+  ok("optional WhatsApp greeting link present", Boolean(waOption));
 
   // Dismiss after success; popup must not return this session.
   await new Promise((r) => setTimeout(r, 2200));
@@ -38,9 +42,16 @@ if (dialog) {
   ok("popup stays closed after submission", !reappeared);
 }
 
-// Escape/backdrop dismissal path: fresh session.
+// Escape/backdrop dismissal path: fresh session. Clear storage first — the
+// submission above set localStorage, which would suppress the popup here.
 const page2 = await browser.newPage();
 await page2.setViewport({ width: 1280, height: 900 });
+await page2.evaluateOnNewDocument(() => {
+  try {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+  } catch {}
+});
 await page2.goto(`${base}/contact`, { waitUntil: "networkidle0", timeout: 90000 });
 await page2.evaluate(() => {
   window.scrollTo(0, document.body.scrollHeight * 0.9);

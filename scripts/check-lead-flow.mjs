@@ -10,8 +10,27 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 await page.setViewport({ width: 412, height: 915, deviceScaleFactor: 1.75 });
 
-const popups = [];
-page.on("popup", (target) => popups.push(target.url()));
+const popupTargets = [];
+page.on("popup", (target) => popupTargets.push(target));
+
+// target="_blank" tabs start at about:blank; wait until the real URL lands.
+async function waitForTarget(targets, timeoutMs = 8000) {
+  const start = Date.now();
+  while (targets.length === 0 && Date.now() - start < timeoutMs) {
+    await new Promise((r) => setTimeout(r, 200));
+  }
+  return targets[targets.length - 1] ?? null;
+}
+
+async function targetUrl(target) {
+  if (!target) return null;
+  let url = target.url();
+  for (let i = 0; i < 25 && (!url || url === "about:blank"); i++) {
+    await new Promise((r) => setTimeout(r, 200));
+    url = target.url();
+  }
+  return url;
+}
 
 const ok = (name, pass, detail = "") =>
   console.log(`${pass ? "PASS" : "FAIL"}  ${name}${detail ? " — " + detail : ""}`);
@@ -28,10 +47,11 @@ if (form) {
     Boolean(document.querySelector("#lead-error-hero")),
   );
   ok("invalid number shows inline error", errorVisible);
-  ok("no popup on invalid input", popups.length === 0);
+  ok("no popup on invalid input", popupTargets.length === 0);
 }
 
-// 2. Valid number: POST stored + WhatsApp popup with the visitor number.
+// 2. Valid number: POST stored; success state; nothing opens. WhatsApp is
+//    an optional link with a plain "Hello Mahesh" greeting.
 await page.evaluate(() => document.querySelector("#lead-phone-hero")?.focus());
 await page.evaluate(
   () => (document.querySelector("#lead-phone-hero").value = ""),
@@ -39,25 +59,43 @@ await page.evaluate(
 await form?.type("9876501234");
 await page.click("form button[type='submit']");
 await new Promise((r) => setTimeout(r, 2000));
-const popup = popups.length ? { url: () => popups[0] } : null;
 
 const successShown = await page.evaluate(() =>
   (document.body.innerText || "").includes("Thanks"),
 );
 ok("success state shown", successShown);
-ok("WhatsApp popup opened to the shop", Boolean(popup), (popup?.url() || "none").slice(0, 100));
-if (popup) {
-  const url = popup.url();
-  const text = decodeURIComponent(
-    (url.split("text=")[1] || "").split("&")[0].replace(/\+/g, " "),
-  )
-    .replace(/\s*\n\s*/g, " ");
+ok("no tab opened on submit — capture is form-only", popupTargets.length === 0);
+
+const waOption = await page.evaluate(() => {
+  const el = document.querySelector("[data-testid='lead-whatsapp-hero']");
+  if (!el) return null;
+  return {
+    href: el.getAttribute("href"),
+    text: (el.textContent || "").trim(),
+  };
+});
+ok("optional WhatsApp link offered", Boolean(waOption));
+if (waOption) {
   ok(
-    "popup message carries the visitor number for the shop",
-    text.includes("New enquiry from the website. Mobile: +919876501234"),
-    text.slice(0, 110),
+    "WhatsApp option is a plain Hello Mahesh greeting",
+    waOption.href ===
+      `https://wa.me/919899284391?text=${encodeURIComponent("Hello Mahesh")}`,
+    waOption.href.slice(0, 80),
   );
-  ok("message greets Mahesh", text.startsWith("Hello Mahesh,"), text.slice(0, 40));
+  await page.click("[data-testid='lead-whatsapp-hero']");
+  const target = await waitForTarget(popupTargets);
+  const url = await targetUrl(target);
+  const greeted = Boolean(
+    url &&
+      url.includes("919899284391") &&
+      (url.includes("text=Hello+Mahesh") ||
+        url.includes(`text=${encodeURIComponent("Hello Mahesh")}`)),
+  );
+  ok(
+    "clicking the option opens the WhatsApp greeting",
+    greeted,
+    (url || "none").slice(0, 90),
+  );
 }
 
 const stored = await page.evaluate(() =>
