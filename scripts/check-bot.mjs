@@ -57,22 +57,38 @@ const stranger = await post(update("hello?", 9911223344));
 ok("stranger gets a shop redirect", stranger.status === 200 && stranger.json?.admin === false);
 ok("stranger reply points to WhatsApp", /wa\.me\/919899284391/.test(stranger.json?.reply ?? ""));
 
-// 3. Owner /rates lists live rates in the same short keys the commands use.
+// 3. Owner /rates is a copy-edit-resend sheet in command form.
 const rates = await post(update("/rates"));
 const ratesText = rates.json?.reply ?? "";
-ok("/rates lists pidicryl in short key", ratesText.includes("pidicryl - ₹ 6,500/Drum"));
-ok("/rates lists madrasi white in short key", ratesText.includes("madrasi white - ₹ 150/Bag"));
-ok("/rates marks quote-only shades", ratesText.includes("madrasi green - Contact for Price"));
-ok("/rates lists cmc + chamki short keys",
-  ratesText.includes("cmc white - Contact for Bulk Quote") &&
-  ratesText.includes("chamki golden - Contact for Pack Sizes"));
+ok("/rates sheet has priced lines", ratesText.includes("/price pidicryl 6500") && ratesText.includes("/price madrasi white 150"));
+ok("/rates sheet has quote lines", ratesText.includes("/quote madrasi green") && ratesText.includes("/quote chamki silver"));
+ok("/rates sheet lists every rate line", (ratesText.match(/^\/(price|quote) /gm) ?? []).length === 11, `${(ratesText.match(/^\/(price|quote) /gm) ?? []).length} lines`);
+
+// 3b. Round-trip: pasting the untouched sheet back changes nothing.
+const roundTrip = await post(update(ratesText));
+ok("untouched sheet round-trips to no change",
+  roundTrip.json?.status === "unchanged" && !roundTrip.json?.dryRun && /No changes/.test(roundTrip.json?.reply ?? ""),
+  (roundTrip.json?.reply ?? "").slice(0, 60));
+
+// 3c. Round-trip with one edit: only that line commits.
+const editedSheet = ratesText.replace("madrasi white 150", "madrasi white 165");
+const edited = await post(update(editedSheet));
+const editedRates = JSON.parse(edited.json?.dryRun ?? "{}").rates ?? {};
+ok("one edited line commits exactly once",
+  edited.json?.committed === false && editedRates["gph-02"]?.variants?.["White Madrasi Dana"] === "₹ 165/Bag" &&
+  Object.keys(editedRates).length === 1,
+  (edited.json?.reply ?? "").split("\n")[0]);
 
 // 4. Simple product rate: dry-run content exact.
 const pid = await post(update("/price pidicryl 6800"));
 ok("/price pidicryl replies with short key + old → new",
   (pid.json?.reply ?? "").includes("pidicryl") && (pid.json?.reply ?? "").includes("₹ 6,500/Drum → ₹ 6,800/Drum"));
 const pidRates = JSON.parse(pid.json?.dryRun ?? "{}").rates ?? {};
-ok("pidicryl override content exact", pidRates["gph-01"]?.price === "₹ 6,800/Drum", pid.json?.dryRun?.slice(0, 80));
+ok("pidicryl override content exact", pidRates["gph-01"]?.price === "₹ 6,800/Drum");
+
+// 4b. Same-value rate is a no-op (sheet round-trips need this).
+const noop = await post(update("/price pidicryl 6500"));
+ok("same-value rate is a no-op", noop.json?.status === "unchanged" && !noop.json?.dryRun && /already ₹ 6,500\/Drum/.test(noop.json?.reply ?? ""));
 
 // 5. Variant rate via alias.
 const white = await post(update("/price madrasi white 165"));

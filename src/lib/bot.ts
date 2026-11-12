@@ -46,8 +46,8 @@ export type RateChange = {
 export type BotOutcome = {
   reply: string;
   change?: RateChange;
-  /** Set when the command could not be executed (bad product, rate, shade). */
-  status?: "error";
+  /** "error": bad input. "unchanged": already at the requested value. */
+  status?: "error" | "unchanged";
 };
 
 /** Short chat keys per product — what the owner types and sees. */
@@ -106,6 +106,33 @@ function rateLine(product: Product, variant?: { label: string; price: string }):
       .join("\n");
   }
   return `${key} - ${product.price}`;
+}
+
+/**
+ * The /rates output: a copy-edit-resend sheet. Every line is a live
+ * command for the current rate — edit a number in place (or turn a
+ * /quote line into a /price line) and paste the whole thing back; only
+ * the changed lines commit.
+ */
+function rateSheet(): string {
+  return products
+    .map((product) => {
+      const key = productKey(product.id);
+      if (product.kind === "simple") {
+        const amount = parsePrice(product.price).amount;
+        return amount !== undefined ? `/price ${key} ${amount}` : null;
+      }
+      return product.variants
+        .map((variant) => {
+          const amount = parsePrice(variant.price).amount;
+          return amount !== undefined
+            ? `/price ${key} ${variantKey(variant.label)} ${amount}`
+            : `/quote ${key} ${variantKey(variant.label)}`;
+        })
+        .join("\n");
+    })
+    .filter((line): line is string => line !== null)
+    .join("\n");
 }
 
 function listProducts(): string {
@@ -187,7 +214,7 @@ export function handleBotCommand(
 
   if (command === "/rates" || (command === "/price" && args.length === 0)) {
     return {
-      reply: `Current rates on the site:\n\n${listProducts()}\n\nUpdate: /price <product> <rate>\nShade: /price madrasi white 165\nQuote-only: /quote cmc white\nReset: /reset`,
+      reply: `Copy, edit the numbers, send back — only changed lines commit.\n\n${rateSheet()}\n\n(quote-only lines stay /quote; turn one into a /price line to list it)`,
     };
   }
 
@@ -231,6 +258,7 @@ export function handleBotCommand(
         if (variant.price === quotePrice) {
           return {
             reply: `${productKey(product.id)} ${variantKey(variant.label)} is already quote-only (${quotePrice}). No change.`,
+            status: "unchanged",
           };
         }
         const file = withRate(current, product, variant.label, quotePrice);
@@ -258,9 +286,15 @@ export function handleBotCommand(
 
     if (product.kind === "simple") {
       if (args.length > 2) {
-        return { reply: `${product.name} has a single rate. Use: /price ${args[0]} <rate>` };
+        return { reply: `${product.name} has a single rate. Use: /price ${args[0]} <rate>`, status: "error" };
       }
       const price = formatRate(amount, product.quantity.unit);
+      if (product.price === price) {
+        return {
+          reply: `${productKey(product.id)} is already ${price}. No change.`,
+          status: "unchanged",
+        };
+      }
       const file = withRate(current, product, null, price);
       return {
         reply: `✅ ${productKey(product.id)}\n${product.price} → ${price}`,
@@ -287,6 +321,12 @@ export function handleBotCommand(
       };
     }
     const price = formatRate(amount, product.quantity.unit);
+    if (variant.price === price) {
+      return {
+        reply: `${productKey(product.id)} ${variantKey(variant.label)} is already ${price}. No change.`,
+        status: "unchanged",
+      };
+    }
     const file = withRate(current, product, variant.label, price);
     return {
       reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${price}`,
@@ -355,9 +395,13 @@ export function handleBotMessage(
   const summaries: string[] = [];
   const problems: string[] = [];
   const notes: string[] = [];
+  let unchanged = 0;
 
   for (const rawLine of lines) {
     const line = normalizeLine(rawLine);
+    // Prose — not a command and not a paste-able rate line — is skipped
+    // silently, so the /rates hint lines can ride along in a paste-back.
+    if (!line.startsWith("/")) continue;
     const head = line.toLowerCase().split(/\s+/)[0];
     if (SKIPPED_COMMANDS.has(head)) {
       notes.push(`(skipped ${head} — send it on its own to see the list)`);
@@ -366,6 +410,10 @@ export function handleBotMessage(
     const outcome = handleBotCommand(line, file);
     if (outcome.status === "error") {
       problems.push(outcome.reply);
+      continue;
+    }
+    if (outcome.status === "unchanged") {
+      unchanged += 1;
       continue;
     }
     if (outcome.change) {
@@ -389,13 +437,23 @@ export function handleBotMessage(
   }
 
   if (summaries.length === 0) {
+    if (unchanged > 0) {
+      return {
+        reply: `No changes — ${unchanged} line${unchanged === 1 ? " is" : "s are"} already at these rates. Nothing to commit.`,
+        status: "unchanged",
+      };
+    }
     return { reply: notes.join("\n\n") || HELP };
   }
 
   const bullet = summaries.length === 1 ? "1 update" : `${summaries.length} updates`;
+  const unchangedNote =
+    unchanged > 0
+      ? `\n\n(${unchanged} line${unchanged === 1 ? "" : "s"} already at these rates)`
+      : "";
   return {
     reply:
-      `✅ ${bullet}:\n${summaries.join("\n")}` +
+      `✅ ${bullet}:\n${summaries.join("\n")}${unchangedNote}` +
       (notes.length > 0 ? `\n\n${notes.join("\n")}` : ""),
     change: {
       message: `Rate via bot: ${summaries.join("; ")}`,
