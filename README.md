@@ -149,6 +149,21 @@ to the owner as a possible lead).
 /reset                     — clear every override
 ```
 
+**Batching:** send several commands in one message (one per line) and
+they land as a single commit and a single deploy:
+
+```
+/price madrasi white 165
+/price madrasi red 210
+/price pidicryl 6800
+```
+
+Paste-friendly lines work too — `madrasi white - 165` without the
+slash is read as a price update. Validation is all-or-nothing: if any
+line is wrong, nothing is committed and the bot lists what to fix.
+Lines apply in order, so `/reset` followed by price lines works as
+written.
+
 A change is committed to `catalog.overrides.json` in the repo through
 the GitHub API, so every update is version-controlled and Vercel's git
 integration deploys it automatically — live in about a minute.
