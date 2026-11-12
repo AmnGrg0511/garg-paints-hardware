@@ -1,4 +1,4 @@
-import { products, type PriceType, type Product, type ProductVariant } from "@/config/businessData";
+import { products, type PriceType, type Product, type ProductVariant } from "@/config/effective-catalog";
 
 export type PriceInfo = {
   amount?: number;

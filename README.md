@@ -132,6 +132,43 @@ at that chat's number anyway.
      - **Google Sheets**: deploy an Apps Script web app that appends POST
        bodies to a sheet and set its URL here.
 
+#### Updating rates from the Telegram bot
+
+The shop's bot (@GargPaintsBot) is also the rate-control panel. Only
+chats listed in `ADMIN_CHAT_IDS` can issue commands; everyone else gets
+a polite redirect to the shop's WhatsApp (and their message is relayed
+to the owner as a possible lead).
+
+```
+/rates                     — current rates shown on the site
+/price trowel 80           — single-rate product
+/price madrasi white 165   — one shade of a variant product
+/price gph-02 red 1,250    — by id; commas and ₹ are fine
+/quote cmc yellow          — back to "Contact for Bulk Quote"
+/quote madrasi green       — back to "Contact for Price"
+/reset                     — clear every override
+```
+
+A change is committed to `catalog.overrides.json` in the repo through
+the GitHub API, so every update is version-controlled and Vercel's git
+integration deploys it automatically — live in about a minute.
+
+Required environment variables: `TELEGRAM_BOT_TOKEN` (from @BotFather),
+`TELEGRAM_WEBHOOK_SECRET` (random string, passed to setWebhook so
+Telegram signs each call), `ADMIN_CHAT_IDS` (comma-separated chat ids),
+`GITHUB_REPO` (`owner/name`) and `GITHUB_TOKEN` — a fine-grained PAT
+with **Contents: read + write** on this repository only. Register the
+webhook after deploying:
+
+```
+curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<domain>/api/telegram&secret_token=<SECRET>"
+```
+
+Note: FAQ answers that mention a figure in prose (e.g. ₹130/Kg) are
+owner-approved copy and change via the repo, not the bot. The bot
+updates every rendered price surface: cards, detail pages, JSON-LD
+offers, bulk chips, the starter kit and the cart.
+
 ## Data rules (do not break)
 
 - The GST number is intentionally absent from the entire site.

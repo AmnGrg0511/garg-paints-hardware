@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { SearchIcon, SlidersHorizontalIcon, XIcon } from "lucide-react";
 import type { ProductCardData } from "@/components/product/product-card";
-import { productCategories, products as allProducts } from "@/config/businessData";
+import { productCategories, products as allProducts } from "@/config/effective-catalog";
 import { parsePrice } from "@/lib/pricing";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { Input } from "@/components/ui/input";import { Checkbox } from "@/components/ui/checkbox";

@@ -1,6 +1,7 @@
 "use client";
 
-import { products, starterKit, type Product } from "@/config/businessData";
+import { starterKit } from "@/config/businessData";
+import { products, type Product } from "@/config/effective-catalog";
 import { getQuantityConfig } from "@/lib/pricing";
 import { WALL_SHADES } from "@/store/wall-shade";
 

@@ -1,9 +1,8 @@
 import {
   featuredProductIds,
   frequentlyBoughtTogether,
-  products,
-  type Product,
 } from "@/config/businessData";
+import { products, type Product } from "@/config/effective-catalog";
 import type { ProductCardData } from "@/components/product/product-card";
 
 export function getProductById(id: string): Product | undefined {

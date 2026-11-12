@@ -8,10 +8,8 @@ import {
   LayersIcon,
   WrenchIcon,
 } from "lucide-react";
-import {
-  business,
-  products,
-} from "@/config/businessData";
+import { business } from "@/config/businessData";
+import { products } from "@/config/effective-catalog";
 import {
   getFrequentlyBoughtTogether,
   getProductBySlug,

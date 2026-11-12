@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { products, SITE_URL } from "@/config/businessData";
+import { SITE_URL } from "@/config/businessData";
+import { products } from "@/config/effective-catalog";
 
 // Evaluated once per build so the sitemap stays static and never blocks a
 // dynamic render just to read the clock.

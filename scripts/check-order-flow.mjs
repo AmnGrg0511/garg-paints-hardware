@@ -29,7 +29,18 @@ ok("home renders add-to-cart buttons", addButtons.length >= 1, `${addButtons.len
 const madrasiButton = await page.$("button[aria-label*='Madrasi Dana'][aria-label*='Add to cart']");
 ok("Madrasi Dana quick-add button present", Boolean(madrasiButton));
 if (madrasiButton) {
-  await madrasiButton.click();
+  // scroll-behavior:smooth makes elementHandle.click() race the scroll —
+  // measure after an instant scroll, then dispatch a real mouse click.
+  const point = await page.evaluate(() => {
+    const el = document.querySelector(
+      "button[aria-label*='Madrasi Dana'][aria-label*='Add to cart']",
+    );
+    if (!el) return null;
+    el.scrollIntoView({ block: "center", behavior: "instant" });
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  });
+  if (point) await page.mouse.click(point.x, point.y);
   await new Promise((r) => setTimeout(r, 600));
 }
 
@@ -67,10 +78,13 @@ const expected =
 ok("WhatsApp message matches the owner template", message === expected, message || "missing");
 
 // 5. The WhatsApp channel link must be wa.me with the exact encoding.
+// Select the ORDER link specifically (it contains "purchase") — the lead
+// form's greeting link is also wa.me and must not be confused with it.
 const waHref = await page.evaluate(() => {
-  const a = [...document.querySelectorAll("a")].find((el) =>
-    (el.href || "").startsWith("https://wa.me/"),
-  );
+  const a = [...document.querySelectorAll("a")].find((el) => {
+    const href = el.href || "";
+    return href.startsWith("https://wa.me/") && decodeURIComponent(href).includes("purchase");
+  });
   return a ? a.href : null;
 });
 ok(
@@ -80,14 +94,22 @@ ok(
 );
 
 
-// 6. Click the WhatsApp channel → a new tab opens; wa.me redirects to
-// api.whatsapp.com while preserving the exact encoded message.
-await page.evaluate(() => {
-  const a = [...document.querySelectorAll("a")].find((el) =>
-    (el.href || "").startsWith("https://wa.me/"),
-  );
-  a.click();
+// 6. Click the WhatsApp channel with a real (trusted) mouse event —
+// programmatic a.click() is intermittently popup-blocked. wa.me redirects
+// to api.whatsapp.com while preserving the exact encoded message.
+const waPoint = await page.evaluate(() => {
+  const a = [...document.querySelectorAll("a")].find((el) => {
+    const href = el.href || "";
+    return href.startsWith("https://wa.me/") && decodeURIComponent(href).includes("purchase");
+  });
+  if (!a) return null;
+  a.scrollIntoView({ block: "center", behavior: "instant" });
+  const r = a.getBoundingClientRect();
+  return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
 });
+if (waPoint) {
+  await page.mouse.click(waPoint.x, waPoint.y);
+}
 await new Promise((r) => setTimeout(r, 2500));
 const waPopup = popups.find(
   (u) => u.startsWith("https://wa.me/") || u.startsWith("https://api.whatsapp.com/send"),

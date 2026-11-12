@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { globalFaqs } from "@/config/content";
-import { products } from "@/config/businessData";
+import { products } from "@/config/effective-catalog";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { SEO } from "@/components/SEO";

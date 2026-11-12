@@ -1,4 +1,4 @@
-import { products } from "@/config/businessData";
+import { products } from "@/config/effective-catalog";
 import { getCatalogueCards } from "@/lib/catalog";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, productListSchema } from "@/lib/schema";

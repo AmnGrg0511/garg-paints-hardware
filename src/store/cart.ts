@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { products } from "@/config/businessData";
+import { products } from "@/config/effective-catalog";
 
 export type CartLine = {
   key: string;
@@ -107,6 +107,20 @@ export const useCartStore = create<CartState>()(
       partialize: (state) => ({ lines: state.lines }),
       // v3: cart lines carry the variant bag art instead of the collective
       // tile, so a persisted Red bag shows as the red sack, not five bags.
+      // Merge instead of replace: persist rehydrates asynchronously, so a
+      // tap that lands before hydration must not be wiped by the stored
+      // (possibly empty) cart.
+      merge: (persisted, current) => {
+        const stored = Array.isArray(
+          (persisted as { lines?: CartLine[] } | null)?.lines,
+        )
+          ? ((persisted as { lines: CartLine[] }).lines ?? [])
+          : [];
+        return {
+          ...current,
+          lines: current.lines.length > 0 ? current.lines : stored,
+        };
+      },
       migrate: (persisted, version) => {
         if (version < 3 && persisted && typeof persisted === "object") {
           const state = persisted as { lines?: CartLine[] };
