@@ -50,20 +50,19 @@ if (form) {
   ok("no popup on invalid input", popupTargets.length === 0);
 }
 
-// 2. Valid number: POST stored; success state; nothing opens. WhatsApp is
-//    an optional link with a plain "Hello Mahesh" greeting.
+// 2. Valid number: types itself in — no click. POST stored; success state;
+//    nothing opens. WhatsApp is an optional link with a plain greeting.
 await page.evaluate(() => document.querySelector("#lead-phone-hero")?.focus());
 await page.evaluate(
   () => (document.querySelector("#lead-phone-hero").value = ""),
 );
 await form?.type("9876501234");
-await page.click("form button[type='submit']");
-await new Promise((r) => setTimeout(r, 2000));
+await new Promise((r) => setTimeout(r, 1500));
 
 const successShown = await page.evaluate(() =>
   (document.body.innerText || "").includes("Thanks"),
 );
-ok("success state shown", successShown);
+ok("success state shown (auto-sent, no click)", successShown);
 ok("no tab opened on submit — capture is form-only", popupTargets.length === 0);
 
 const waOption = await page.evaluate(() => {

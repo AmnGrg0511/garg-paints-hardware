@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRightIcon, CheckCircle2Icon, PhoneIcon } from "lucide-react";
 import { greetingWhatsAppUrl } from "@/lib/whatsapp";
 import { trackEvent } from "@/lib/analytics";
@@ -17,11 +17,13 @@ function normalizeIndianMobile(value: string): string {
 }
 
 /**
- * One-field lead capture, deliberately without OTP: the visitor enters a
- * mobile number, the server records it for the business, and the visit ends
- * there — nothing is opened, nothing has to be sent. WhatsApp stays one tap
- * away as an optional channel with a plain "Hello Mahesh" greeting; anyone
- * who chats there is reachable at that chat's number anyway.
+ * One-field lead capture, deliberately without OTP. The number ships itself:
+ * the moment a complete, valid 10-digit number sits in the field it is sent
+ * to the server — no second tap. A short debounce lets corrections cancel
+ * the pending send, and closing the form with a complete number flushes it
+ * rather than losing it. WhatsApp stays one tap away as an optional channel
+ * with a plain "Hello Mahesh" greeting; anyone who chats there is reachable
+ * at that chat's number anyway.
  */
 export function CallBackForm({
   source,
@@ -39,20 +41,19 @@ export function CallBackForm({
   const local10 = normalizeIndianMobile(phone);
   const valid = /^([6-9]\d{9})$/.test(local10);
 
-  const submit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (status === "sending" || !valid) {
-      if (!valid) setStatus("error");
-      return;
-    }
+  const sendLead = useCallback(async (digits: string) => {
+    if (sentRef.current) return;
+    sentRef.current = true;
     setStatus("sending");
-
     let stored = false;
     try {
       const response = await fetch("/api/lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ phone: local10, source }),
+        // keepalive lets the request finish even if the visitor closes the
+        // popup or navigates while it is in flight.
+        keepalive: true,
+        body: JSON.stringify({ phone: digits, source }),
       });
       if (response.ok) stored = true;
     } catch {
@@ -62,6 +63,57 @@ export function CallBackForm({
     trackEvent("generate_lead", { source, stored });
     setStatus("done");
     onDone?.();
+  }, [source, onDone]);
+
+  // Latest-value mirrors so the unmount flush below reads the state as of
+  // the last committed render, independent of cleanup ordering.
+  const stateRef = useRef({ local10: "", status: "idle" as Status });
+  const sendLeadRef = useRef(sendLead);
+  const sentRef = useRef(false);
+  useEffect(() => {
+    stateRef.current = { local10, status };
+    sendLeadRef.current = sendLead;
+  });
+
+  // Auto-send: a complete, valid number ships itself after a short pause —
+  // no second tap. Edits cancel the pending send.
+  useEffect(() => {
+    if (status !== "idle" || !valid) return;
+    const timer = window.setTimeout(() => void sendLead(local10), 500);
+    return () => window.clearTimeout(timer);
+  }, [local10, valid, status, sendLead]);
+
+  // Flush on dismiss: a complete number the visitor finished typing right
+  // before leaving must still reach the shop. pagehide/visibilitychange
+  // cover hard navigation, refresh and tab close (React cleanups do not
+  // run there); the cleanup return covers SPA unmounts like popup close.
+  useEffect(() => {
+    const flush = () => {
+      const { local10: digits, status: last } = stateRef.current;
+      if (last === "idle" && /^([6-9]\d{9})$/.test(digits)) {
+        void sendLeadRef.current(digits);
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") flush();
+    };
+    window.addEventListener("pagehide", flush);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.removeEventListener("pagehide", flush);
+      document.removeEventListener("visibilitychange", onVisibility);
+      flush();
+    };
+  }, []);
+
+  const submit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (status !== "idle") return;
+    if (!valid) {
+      setStatus("error");
+      return;
+    }
+    void sendLead(local10);
   };
 
   const whatsappLabel = (
@@ -188,8 +240,8 @@ export function CallBackForm({
           )}
           <p className="mt-2 text-[0.66rem] leading-relaxed text-muted-foreground">
             <Localized
-              en="Your number is used only to call back about your enquiry. Submitting is enough — the shop calls you."
-              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। भेजना काफ़ी है — call दुकान की तरफ़ से आएगा।"
+              en="Your number is used only to call back about your enquiry. It sends itself once the number is complete."
+              hi="आपका नंबर सिर्फ़ पूछताछ के call back में इस्तेमाल होगा। नंबर पूरा होते ही अपने-आप चला जाएगा।"
             />
           </p>
           <p className="mt-1.5 text-[0.66rem] leading-relaxed text-muted-foreground">
