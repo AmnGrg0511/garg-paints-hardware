@@ -67,13 +67,31 @@ export function CallBackForm({
 
   // Latest-value mirrors so the unmount flush below reads the state as of
   // the last committed render, independent of cleanup ordering.
-  const stateRef = useRef({ local10: "", status: "idle" as Status });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const stateRef = useRef({ local10: "", status: "idle" as Status, phone: "" });
   const sendLeadRef = useRef(sendLead);
   const sentRef = useRef(false);
   useEffect(() => {
-    stateRef.current = { local10, status };
+    stateRef.current = { local10, status, phone };
     sendLeadRef.current = sendLead;
   });
+
+  // Browser autofill writes its value without an event React can observe,
+  // so the field can sit filled while state stays empty. Poll the DOM and
+  // pull any unobserved value into state — the normal auto-send takes over
+  // from there.
+  useEffect(() => {
+    if (status !== "idle" && status !== "error") return;
+    const poll = window.setInterval(() => {
+      const el = inputRef.current;
+      if (!el) return;
+      if (el.value !== stateRef.current.phone) {
+        setPhone(el.value);
+        if (stateRef.current.status === "error") setStatus("idle");
+      }
+    }, 250);
+    return () => window.clearInterval(poll);
+  }, [status]);
 
   // Auto-send: a complete, valid number ships itself after a short pause —
   // no second tap. Edits cancel the pending send.
@@ -89,8 +107,14 @@ export function CallBackForm({
   // run there); the cleanup return covers SPA unmounts like popup close.
   useEffect(() => {
     const flush = () => {
-      const { local10: digits, status: last } = stateRef.current;
-      if (last === "idle" && /^([6-9]\d{9})$/.test(digits)) {
+      if (stateRef.current.status !== "idle") return;
+      // Prefer the DOM value: a just-autofilled field may not be in state
+      // yet, and a complete number must not be lost to a fast bounce.
+      const el = inputRef.current;
+      const digits = normalizeIndianMobile(
+        el?.value ?? stateRef.current.phone,
+      );
+      if (/^([6-9]\d{9})$/.test(digits)) {
         void sendLeadRef.current(digits);
       }
     };
@@ -191,6 +215,7 @@ export function CallBackForm({
               </label>
               <input
                 id={`lead-phone-${source}`}
+                ref={inputRef}
                 type="tel"
                 inputMode="numeric"
                 autoComplete="tel"

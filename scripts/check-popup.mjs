@@ -25,7 +25,7 @@ if (dialog) {
   // roundtrip, so wait for the success state rather than a fixed sleep.
   await page.waitForFunction(
     () => (document.body.innerText || "").includes("Thanks"),
-    { timeout: 15000 },
+    { timeout: 15000, polling: "mutation" },
   );
   ok("auto-send stores the lead without opening WhatsApp", popups.length === 0, popups[0]?.slice(0, 90));
   ok("success state shown (auto-sent, no click)", true);

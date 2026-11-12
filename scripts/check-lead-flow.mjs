@@ -61,7 +61,7 @@ await form?.type("9876501234");
 // POST includes the synchronous webhook roundtrip, so wait for the state.
 await page.waitForFunction(
   () => (document.body.innerText || "").includes("Thanks"),
-  { timeout: 15000 },
+  { timeout: 15000, polling: "mutation" },
 );
 
 const successShown = await page.evaluate(() =>
@@ -101,6 +101,24 @@ if (waOption) {
     (url || "none").slice(0, 90),
   );
 }
+
+// 3. Autofill: browsers write the DOM value without an event React can
+//    observe — the field sits filled while state stays empty. The poll
+//    must pull it in and auto-send with zero user events.
+await page.reload({ waitUntil: "networkidle0", timeout: 90000 });
+await page.evaluate(() => {
+  const el = document.querySelector("#lead-phone-hero");
+  const setter = Object.getOwnPropertyDescriptor(
+    window.HTMLInputElement.prototype,
+    "value",
+  ).set;
+  setter.call(el, "9876509988");
+});
+await page.waitForFunction(
+  () => (document.body.innerText || "").includes("Thanks"),
+  { timeout: 15000, polling: "mutation" },
+);
+ok("autofilled value syncs and auto-sends with no events", true);
 
 const stored = await page.evaluate(() =>
   fetch("/api/lead", {
