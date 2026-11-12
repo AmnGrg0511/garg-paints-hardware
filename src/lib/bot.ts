@@ -2,15 +2,21 @@ import { products } from "@/config/effective-catalog";
 import { products as baseProducts } from "@/config/businessData";
 import type { Product } from "@/config/effective-catalog";
 import { parsePrice } from "@/lib/pricing";
+
 /**
  * Command engine for @GargPaintsBot — the shop's rate-control channel.
  *
- * The owner chats with the bot the way they would dictate a price change:
+ * The owner chats with the bot the way they would dictate a price change.
+ * What /rates shows is exactly what the commands accept:
  *
- *   /rates                    — current rates, live on the site
+ *   pidicryl - ₹ 6,500/Drum
+ *   madrasi white - ₹ 150/Bag
+ *   ...
+ *
+ *   /rates                    — the list above
  *   /price madrasi white 165  — set a variant rate
  *   /price pidicryl 6800      — set a simple-product rate
- *   /quote cmc yellow         — back to "Contact for …" (repo copy)
+ *   /quote cmc yellow         — back to "Contact for …"
  *   /reset                    — clear every override
  *   /help
  *
@@ -42,74 +48,66 @@ export type BotOutcome = {
   change?: RateChange;
 };
 
-const PRODUCT_ALIASES: Record<string, string> = {
-  pidicryl: "gph-01",
-  binder: "gph-01",
-  "126m": "gph-01",
-  madrasi: "gph-02",
-  dana: "gph-02",
-  texture: "gph-02",
-  trowel: "gph-03",
-  gurmala: "gph-03",
-  cmc: "gph-04",
-  chamki: "gph-05",
-  glitter: "gph-05",
-};
+/** Short chat keys per product — what the owner types and sees. */
+const PRODUCT_KEYS: { id: string; key: string; aliases: string[] }[] = [
+  { id: "gph-01", key: "pidicryl", aliases: ["binder", "126m", "126"] },
+  { id: "gph-02", key: "madrasi", aliases: ["dana", "texture"] },
+  { id: "gph-03", key: "trowel", aliases: ["gurmala"] },
+  { id: "gph-04", key: "cmc", aliases: [] },
+  { id: "gph-05", key: "chamki", aliases: ["glitter"] },
+];
 
-const HELP = [
-  "Rate control for the website. Commands:",
-  "",
-  "/rates — current rates shown on the site",
-  "/price <product> <rate> — e.g. /price trowel 80",
-  "/price <product> <shade> <rate> — e.g. /price madrasi white 165",
-  "/quote <product> [shade] — back to Contact-for-price",
-  "/reset — clear every override, back to repo copy",
-  "",
-  "Product keys: pidicryl, madrasi (dana), trowel (gurmala), cmc, chamki",
-  "Shades: white, red, yellow, green, black, golden, silver",
-  "",
-  "A change commits to the repo and goes live in about a minute.",
-].join("\n");
+function productKey(productId: string): string {
+  return PRODUCT_KEYS.find((entry) => entry.id === productId)?.key ?? productId;
+}
+
+/** Variant short key = the distinguishing first word of the label. */
+function variantKey(label: string): string {
+  return label.split(/\s+/)[0].toLowerCase();
+}
+
+function variantKeys(product: Product): string {
+  if (product.kind !== "variant") return "";
+  return product.variants.map((v) => variantKey(v.label)).join(", ");
+}
 
 function findProduct(token: string): Product | undefined {
-  const t = token.toLowerCase().replace(/^gph[- ]?0?(\d)$/i, "gph-0$1");
-  const byIdOrSlug = products.find(
-    (p) => p.id === t || p.slug === t,
+  const t = token.toLowerCase().replace(/^gph[- ]?0*(\d)$/i, "gph-0$1");
+  const mapped = PRODUCT_KEYS.find(
+    (entry) => entry.key === t || entry.aliases.includes(t),
   );
+  if (mapped) return products.find((p) => p.id === mapped.id);
+  const byIdOrSlug = products.find((p) => p.id === t || p.slug === t);
   if (byIdOrSlug) return byIdOrSlug;
-  const alias = PRODUCT_ALIASES[t];
-  if (alias) return products.find((p) => p.id === alias);
-  const hits = products.filter(
-    (p) =>
-      p.name.toLowerCase().includes(t) || p.slug.toLowerCase().includes(t),
-  );
+  const hits = products.filter((p) => p.name.toLowerCase().includes(t));
   return hits.length === 1 ? hits[0] : undefined;
 }
 
 function findVariant(product: Product, token: string) {
   if (product.kind !== "variant") return undefined;
   const t = token.toLowerCase();
+  const exact = product.variants.find((v) => variantKey(v.label) === t);
+  if (exact) return exact;
   const hits = product.variants.filter((v) =>
     v.label.toLowerCase().includes(t),
   );
   return hits.length === 1 ? hits[0] : undefined;
 }
 
-function listVariants(product: Product): string {
-  if (product.kind !== "variant") return "";
-  return product.variants
-    .map((v) => `  ${v.label} — ${v.price}`)
-    .join("\n");
+/** One display line in the same terms the commands use. */
+function rateLine(product: Product, variant?: { label: string; price: string }): string {
+  const key = productKey(product.id);
+  if (variant) return `${key} ${variantKey(variant.label)} - ${variant.price}`;
+  if (product.kind === "variant") {
+    return product.variants
+      .map((v) => `${key} ${variantKey(v.label)} - ${v.price}`)
+      .join("\n");
+  }
+  return `${key} - ${product.price}`;
 }
 
 function listProducts(): string {
-  return products
-    .map((p) =>
-      p.kind === "variant"
-        ? `• ${p.name}\n${listVariants(p)}`
-        : `• ${p.name} — ${p.price}`,
-    )
-    .join("\n");
+  return products.map((product) => rateLine(product)).join("\n");
 }
 
 function parseRate(token: string): number | null {
@@ -158,6 +156,21 @@ function withRate(
   };
 }
 
+const HELP = [
+  "Rate control for the website. What /rates shows is what you type:",
+  "",
+  "/rates — current rates",
+  "/price pidicryl 6800",
+  "/price madrasi white 165",
+  "/quote madrasi green — back to Contact for Price",
+  "/reset — clear every override",
+  "",
+  "Products: pidicryl, madrasi, trowel, cmc, chamki",
+  "Shades come from the first word of each shade in /rates.",
+  "",
+  "A change commits to the repo and goes live in about a minute.",
+].join("\n");
+
 export function handleBotCommand(
   text: string,
   current: OverridesFile = { version: 1, updatedAt: null, rates: {} },
@@ -186,7 +199,7 @@ export function handleBotCommand(
     const product = findProduct(args[0]);
     if (!product) {
       return {
-        reply: `No product matches "${args[0]}". Known keys: pidicryl, madrasi, trowel, cmc, chamki.`,
+        reply: `No product matches "${args[0]}". Known products: ${PRODUCT_KEYS.map((p) => p.key).join(", ")}.`,
       };
     }
 
@@ -195,13 +208,13 @@ export function handleBotCommand(
       if (product.kind === "variant") {
         if (!variantToken) {
           return {
-            reply: `${product.name} has shades:\n${listVariants(product)}\n\nWhich one? Example: /quote cmc white`,
+            reply: `${productKey(product.id)} shades: ${variantKeys(product)}\nWhich one? Example: /quote cmc white`,
           };
         }
         const variant = findVariant(product, variantToken);
         if (!variant) {
           return {
-            reply: `No shade matches "${variantToken}" on ${product.name}. Shades:\n${listVariants(product)}`,
+            reply: `No shade "${variantToken}" on ${productKey(product.id)}. Shades: ${variantKeys(product)}`,
           };
         }
         const basePrice = baseVariantQuote(product, variant.label);
@@ -214,15 +227,15 @@ export function handleBotCommand(
             : "Contact for Price";
         if (variant.price === quotePrice) {
           return {
-            reply: `${variant.label} is already quote-only (${quotePrice}). No change.`,
+            reply: `${productKey(product.id)} ${variantKey(variant.label)} is already quote-only (${quotePrice}). No change.`,
           };
         }
         const file = withRate(current, product, variant.label, quotePrice);
         return {
-          reply: `✅ ${variant.label}\n${variant.price} → ${quotePrice}\nCommitting to the repo — live on the site in about a minute.`,
+          reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${quotePrice}\nCommitting to the repo — live on the site in about a minute.`,
           change: {
             message: `Rate via bot: ${variant.label} → quote-only (${quotePrice})`,
-            summary: `${variant.label}: ${variant.price} → ${quotePrice}`,
+            summary: `${productKey(product.id)} ${variantKey(variant.label)}: ${variant.price} → ${quotePrice}`,
             content: serialize(file),
           },
         };
@@ -246,10 +259,10 @@ export function handleBotCommand(
       const price = formatRate(amount, product.quantity.unit);
       const file = withRate(current, product, null, price);
       return {
-        reply: `✅ ${product.name}\n${product.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
+        reply: `✅ ${productKey(product.id)}\n${product.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
         change: {
           message: `Rate via bot: ${product.name} → ${price}`,
-          summary: `${product.name}: ${product.price} → ${price}`,
+          summary: `${productKey(product.id)}: ${product.price} → ${price}`,
           content: serialize(file),
         },
       };
@@ -258,22 +271,22 @@ export function handleBotCommand(
     const variantToken = args.length >= 3 ? args[args.length - 2] : null;
     if (!variantToken) {
       return {
-        reply: `${product.name} has shades:\n${listVariants(product)}\n\nWhich one? Example: /price madrasi white 165`,
+        reply: `${productKey(product.id)} shades: ${variantKeys(product)}\nWhich one? Example: /price madrasi white 165`,
       };
     }
     const variant = findVariant(product, variantToken);
     if (!variant) {
       return {
-        reply: `No shade matches "${variantToken}" on ${product.name}. Shades:\n${listVariants(product)}`,
+        reply: `No shade "${variantToken}" on ${productKey(product.id)}. Shades: ${variantKeys(product)}`,
       };
     }
     const price = formatRate(amount, product.quantity.unit);
     const file = withRate(current, product, variant.label, price);
     return {
-      reply: `✅ ${variant.label}\n${variant.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
+      reply: `✅ ${productKey(product.id)} ${variantKey(variant.label)}\n${variant.price} → ${price}\nCommitting to the repo — live on the site in about a minute.`,
       change: {
         message: `Rate via bot: ${variant.label} → ${price}`,
-        summary: `${variant.label}: ${variant.price} → ${price}`,
+        summary: `${productKey(product.id)} ${variantKey(variant.label)}: ${variant.price} → ${price}`,
         content: serialize(file),
       },
     };

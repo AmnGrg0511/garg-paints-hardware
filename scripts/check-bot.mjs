@@ -57,15 +57,20 @@ const stranger = await post(update("hello?", 9911223344));
 ok("stranger gets a shop redirect", stranger.status === 200 && stranger.json?.admin === false);
 ok("stranger reply points to WhatsApp", /wa\.me\/919899284391/.test(stranger.json?.reply ?? ""));
 
-// 3. Owner /rates lists live rates.
+// 3. Owner /rates lists live rates in the same short keys the commands use.
 const rates = await post(update("/rates"));
-ok("/rates lists Pidicryl at ₹ 6,500/Drum", (rates.json?.reply ?? "").includes("₹ 6,500/Drum"));
-ok("/rates lists Madrasi white at ₹ 150/Bag", (rates.json?.reply ?? "").includes("White Madrasi Dana — ₹ 150/Bag"));
-ok("/rates marks quote-only shades", (rates.json?.reply ?? "").includes("Green Madrasi Dana — Contact for Price"));
+const ratesText = rates.json?.reply ?? "";
+ok("/rates lists pidicryl in short key", ratesText.includes("pidicryl - ₹ 6,500/Drum"));
+ok("/rates lists madrasi white in short key", ratesText.includes("madrasi white - ₹ 150/Bag"));
+ok("/rates marks quote-only shades", ratesText.includes("madrasi green - Contact for Price"));
+ok("/rates lists cmc + chamki short keys",
+  ratesText.includes("cmc white - Contact for Bulk Quote") &&
+  ratesText.includes("chamki golden - Contact for Pack Sizes"));
 
 // 4. Simple product rate: dry-run content exact.
 const pid = await post(update("/price pidicryl 6800"));
-ok("/price pidicryl replies with old → new", (pid.json?.reply ?? "").includes("₹ 6,500/Drum → ₹ 6,800/Drum"));
+ok("/price pidicryl replies with short key + old → new",
+  (pid.json?.reply ?? "").includes("pidicryl") && (pid.json?.reply ?? "").includes("₹ 6,500/Drum → ₹ 6,800/Drum"));
 const pidRates = JSON.parse(pid.json?.dryRun ?? "{}").rates ?? {};
 ok("pidicryl override content exact", pidRates["gph-01"]?.price === "₹ 6,800/Drum", pid.json?.dryRun?.slice(0, 80));
 
@@ -73,6 +78,9 @@ ok("pidicryl override content exact", pidRates["gph-01"]?.price === "₹ 6,800/D
 const white = await post(update("/price madrasi white 165"));
 const whiteRates = JSON.parse(white.json?.dryRun ?? "{}").rates ?? {};
 ok("madrasi white override exact", whiteRates["gph-02"]?.variants?.["White Madrasi Dana"] === "₹ 165/Bag");
+ok("madrasi white reply uses short key",
+  /madrasi white/.test(white.json?.reply ?? "") &&
+  (white.json?.reply ?? "").includes("₹ 150/Bag → ₹ 165/Bag"));
 
 // 6. Variant rate via id + Indian comma formatting.
 const danaId = await post(update("/price gph-02 red 1,250"));
@@ -99,7 +107,7 @@ ok("unknown product suggests keys", /pidicryl, madrasi/.test(unknown.json?.reply
 const badRate = await post(update("/price madrasi white free"));
 ok("non-numeric rate rejected", /not a rate/.test(badRate.json?.reply ?? ""));
 const noVariant = await post(update("/price madrasi 100"));
-ok("variant product without shade asks which", /has shades/.test(noVariant.json?.reply ?? ""));
+ok("variant product without shade lists short keys", /shades: white, red, yellow, green, black/.test(noVariant.json?.reply ?? ""), noVariant.json?.reply?.slice(0, 60));
 
 // 11. /reset clears overrides.
 const reset = await post(update("/reset"));
