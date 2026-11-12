@@ -1,9 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-12T07:49:55.241Z",
+  "updatedAt": "2026-11-12T08:02:03.945Z",
   "rates": {
     "gph-03": {
       "price": "₹ 75/Piece"
+    },
+    "gph-02": {
+      "variants": {
+        "White Madrasi Dana": "₹ 150/Bag",
+        "Red Madrasi Dana": "₹ 200/Bag",
+        "Yellow Madrasi Dana": "₹ 280/Bag"
+      }
     }
   }
 }
