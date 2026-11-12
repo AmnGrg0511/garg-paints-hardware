@@ -1,5 +1,9 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "rates": {}
+  "updatedAt": "2026-11-12T07:49:55.241Z",
+  "rates": {
+    "gph-03": {
+      "price": "₹ 75/Piece"
+    }
+  }
 }
